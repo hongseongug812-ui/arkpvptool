@@ -172,54 +172,120 @@
     color: white;
 }
 
-/* Category Tabs */
-.category-tabs {
+/* Category Tabs Row - Accordion Style */
+.category-tabs-row {
     display: flex;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
     background: var(--color-bg-secondary);
     border-radius: var(--radius-lg);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     overflow-x: auto;
     scrollbar-width: thin;
 }
 
-.category-tab {
+.category-tab-btn {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-xs) var(--spacing-md);
-    background: transparent;
-    border: 1px solid transparent;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all var(--transition-fast);
     white-space: nowrap;
     flex-shrink: 0;
+    position: relative;
 }
 
-.category-tab:hover {
-    background: var(--color-bg-tertiary);
-    border-color: var(--color-border);
+.category-tab-btn:hover {
+    border-color: var(--color-accent);
+    background: var(--color-bg-card);
 }
 
-.category-tab--active {
+.category-tab-btn--active {
     background: var(--color-accent-dim);
     border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-glow);
 }
 
-.category-icon {
+.category-tab-btn--has-selected::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+}
+
+.category-tab-btn__icon {
     font-size: 1rem;
 }
 
-.category-label {
+.category-tab-btn__label {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-text-secondary);
 }
 
-.category-tab--active .category-label {
+.category-tab-btn--active .category-tab-btn__label {
     color: var(--color-accent);
+}
+
+.category-tab-btn__count {
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
+    font-size: 0.625rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-left: var(--spacing-xs);
+}
+
+/* Category Expanded Panel */
+.category-expanded-panel {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+}
+
+.category-panel-count {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
 }
 
 /* Dino Selection Grid - Card Style */
