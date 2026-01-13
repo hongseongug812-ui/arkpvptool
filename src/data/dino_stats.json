@@ -1,0 +1,3280 @@
+{
+    "version": "1.0.0",
+    "dinos": [
+        {
+            "id": "stego",
+            "name_kr": "스테고 (PVP 1티어 탱커)",
+            "stats": {
+                "health": {
+                    "base": 650,
+                    "inc_wild": 130
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 500,
+                    "inc_wild": 10
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "rex",
+            "name_kr": "티라노 (보스/메인 딜러)",
+            "stats": {
+                "health": {
+                    "base": 1100,
+                    "inc_wild": 220
+                },
+                "stamina": {
+                    "base": 420,
+                    "inc_wild": 42
+                },
+                "weight": {
+                    "base": 500,
+                    "inc_wild": 10
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "carcha",
+            "name_kr": "카르카 (신규 1티어 딜러)",
+            "stats": {
+                "health": {
+                    "base": 70000,
+                    "inc_wild": 14000
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 850,
+                    "inc_wild": 17
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "야생 스탯 기준. 조련 시 체력이 대폭 깎임 주의."
+        },
+        {
+            "id": "giga",
+            "name_kr": "기가노토 (전통의 딜러)",
+            "stats": {
+                "health": {
+                    "base": 80000,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 0.4
+                },
+                "weight": {
+                    "base": 700,
+                    "inc_wild": 14
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "therizino",
+            "name_kr": "테리지노 (대형 초식 딜러)",
+            "stats": {
+                "health": {
+                    "base": 870,
+                    "inc_wild": 174
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 365,
+                    "inc_wild": 7.3
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "carbonemys",
+            "name_kr": "카르보 (거북이/가성비 탱커)",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 280,
+                    "inc_wild": 5.6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "trike",
+            "name_kr": "트리케라 (대형 상대 탱커)",
+            "stats": {
+                "health": {
+                    "base": 375,
+                    "inc_wild": 75
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 365,
+                    "inc_wild": 7.3
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "paracer",
+            "name_kr": "파라케라 (플랫폼 탱커)",
+            "stats": {
+                "health": {
+                    "base": 1140,
+                    "inc_wild": 228
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 800,
+                    "inc_wild": 16
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "gasbag",
+            "name_kr": "가스백 (기동형 탱커)",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 60
+                },
+                "weight": {
+                    "base": 3000,
+                    "inc_wild": 60
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "rhino",
+            "name_kr": "울리 라이노 (죽창 딜러)",
+            "stats": {
+                "health": {
+                    "base": 500,
+                    "inc_wild": 100
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "pteranodon",
+            "name_kr": "프테라 (정찰/피커)",
+            "stats": {
+                "health": {
+                    "base": 210,
+                    "inc_wild": 42
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "argentavis",
+            "name_kr": "아르젠 (운반/전투)",
+            "stats": {
+                "health": {
+                    "base": 365,
+                    "inc_wild": 73
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "quetzal",
+            "name_kr": "케찰 (공중 요새)",
+            "stats": {
+                "health": {
+                    "base": 1200,
+                    "inc_wild": 240
+                },
+                "stamina": {
+                    "base": 800,
+                    "inc_wild": 80
+                },
+                "weight": {
+                    "base": 800,
+                    "inc_wild": 16
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "wyvern",
+            "name_kr": "와이번 (공중 폭격)",
+            "stats": {
+                "health": {
+                    "base": 1050,
+                    "inc_wild": 210
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 80,
+                    "inc_wild": 4
+                }
+            }
+        },
+        {
+            "id": "yuty",
+            "name_kr": "유티라누스 (버퍼)",
+            "stats": {
+                "health": {
+                    "base": 1100,
+                    "inc_wild": 220
+                },
+                "stamina": {
+                    "base": 420,
+                    "inc_wild": 42
+                },
+                "weight": {
+                    "base": 500,
+                    "inc_wild": 10
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "daedon",
+            "name_kr": "다에돈 (힐러)",
+            "stats": {
+                "health": {
+                    "base": 900,
+                    "inc_wild": 180
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "음식(Food) 스탯이 중요함 (Base: 2000, Inc: 200)"
+        },
+        {
+            "id": "shadowmane",
+            "name_kr": "쉐도우메인 (만능 OP)",
+            "stats": {
+                "health": {
+                    "base": 900,
+                    "inc_wild": 180
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            }
+        },
+        {
+            "id": "tusoteuthis",
+            "name_kr": "투소테우티스 (심해 최강)",
+            "stats": {
+                "health": {
+                    "base": 1600,
+                    "inc_wild": 320
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 800,
+                    "inc_wild": 16
+                },
+                "melee": {
+                    "base": 65,
+                    "inc_wild": 3.25
+                }
+            }
+        },
+        {
+            "id": "rhynio",
+            "name_kr": "리니오그나타 (공중 탱크)",
+            "stats": {
+                "health": {
+                    "base": 1400,
+                    "inc_wild": 280
+                },
+                "stamina": {
+                    "base": 800,
+                    "inc_wild": 80
+                },
+                "weight": {
+                    "base": 1100,
+                    "inc_wild": 22
+                },
+                "melee": {
+                    "base": 60,
+                    "inc_wild": 3
+                }
+            }
+        },
+        {
+            "id": "thyla",
+            "name_kr": "틸라콜레오 (지상 게릴라)",
+            "stats": {
+                "health": {
+                    "base": 700,
+                    "inc_wild": 140
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 40,
+                    "inc_wild": 2
+                }
+            }
+        },
+        {
+            "id": "archaeopteryx",
+            "name_kr": "아르카이옵테릭스",
+            "stats": {
+                "health": {
+                    "base": 130,
+                    "inc_wild": 26
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 30,
+                    "inc_wild": 0.6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "astrocetus",
+            "name_kr": "아스트로시터스 (우주 고래)",
+            "stats": {
+                "health": {
+                    "base": 24000,
+                    "inc_wild": 4800
+                },
+                "stamina": {
+                    "base": 2000,
+                    "inc_wild": 200
+                },
+                "weight": {
+                    "base": 5000,
+                    "inc_wild": 100
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "astrodelphis",
+            "name_kr": "아스트로델피스",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 370,
+                    "inc_wild": 7.4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "crystal_wyvern",
+            "name_kr": "크리스탈 와이번",
+            "stats": {
+                "health": {
+                    "base": 850,
+                    "inc_wild": 170
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "desmodus",
+            "name_kr": "데스모두스",
+            "stats": {
+                "health": {
+                    "base": 325,
+                    "inc_wild": 65
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 280,
+                    "inc_wild": 5.6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "dimorphodon",
+            "name_kr": "디모르포돈",
+            "stats": {
+                "health": {
+                    "base": 125,
+                    "inc_wild": 25
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 50,
+                    "inc_wild": 1
+                },
+                "melee": {
+                    "base": 23,
+                    "inc_wild": 1.15
+                }
+            }
+        },
+        {
+            "id": "featherlight",
+            "name_kr": "페더라이트",
+            "stats": {
+                "health": {
+                    "base": 120,
+                    "inc_wild": 24
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 55,
+                    "inc_wild": 1.1
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "fjordhawk",
+            "name_kr": "피요르드호크",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "giant_bee",
+            "name_kr": "거대 벌 (여왕)",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "griffin",
+            "name_kr": "그리핀",
+            "stats": {
+                "health": {
+                    "base": 950,
+                    "inc_wild": 190
+                },
+                "stamina": {
+                    "base": 225,
+                    "inc_wild": 22.5
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "ichthyornis",
+            "name_kr": "이크티오르니스",
+            "stats": {
+                "health": {
+                    "base": 50,
+                    "inc_wild": 10
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 45,
+                    "inc_wild": 0.9
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            }
+        },
+        {
+            "id": "lymantria",
+            "name_kr": "리만트리아 (나방)",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 150,
+                    "inc_wild": 3
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "onyc",
+            "name_kr": "오닉 (박쥐)",
+            "stats": {
+                "health": {
+                    "base": 275,
+                    "inc_wild": 55
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 50,
+                    "inc_wild": 1
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            }
+        },
+        {
+            "id": "pelagornis",
+            "name_kr": "펠라고르니스",
+            "stats": {
+                "health": {
+                    "base": 150,
+                    "inc_wild": 30
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "phoenix",
+            "name_kr": "피닉스",
+            "stats": {
+                "health": {
+                    "base": 600,
+                    "inc_wild": 120
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 375,
+                    "inc_wild": 7.5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "royal_griffin",
+            "name_kr": "로얄 그리핀",
+            "stats": {
+                "health": {
+                    "base": 1250,
+                    "inc_wild": 250
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "sinomacrops",
+            "name_kr": "시노마크롭스",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 55,
+                    "inc_wild": 1.1
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "snow_owl",
+            "name_kr": "설원 올빼미",
+            "stats": {
+                "health": {
+                    "base": 325,
+                    "inc_wild": 65
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 375,
+                    "inc_wild": 7.5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "tapejara",
+            "name_kr": "타페자라",
+            "stats": {
+                "health": {
+                    "base": 280,
+                    "inc_wild": 56
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 280,
+                    "inc_wild": 5.6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "tropeo",
+            "name_kr": "트로페오그나투스",
+            "stats": {
+                "health": {
+                    "base": 450,
+                    "inc_wild": 90
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 450,
+                    "inc_wild": 9
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "voidwyrm",
+            "name_kr": "보이드와이번",
+            "stats": {
+                "health": {
+                    "base": 1050,
+                    "inc_wild": 210
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 80,
+                    "inc_wild": 4
+                }
+            }
+        },
+        {
+            "id": "vulture",
+            "name_kr": "검독수리",
+            "stats": {
+                "health": {
+                    "base": 140,
+                    "inc_wild": 28
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 35,
+                    "inc_wild": 0.7
+                },
+                "melee": {
+                    "base": 26,
+                    "inc_wild": 1.3
+                }
+            }
+        },
+        {
+            "id": "mosasaurus",
+            "name_kr": "모사사우루스 (심해의 패왕)",
+            "stats": {
+                "health": {
+                    "base": 3600,
+                    "inc_wild": 720
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 1300,
+                    "inc_wild": 26
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "plesiosaur",
+            "name_kr": "플레시오사우루스 (수중 플랫폼)",
+            "stats": {
+                "health": {
+                    "base": 2400,
+                    "inc_wild": 480
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 600,
+                    "inc_wild": 12
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "basilosaurus",
+            "name_kr": "바실로사우루스 (CC 면역)",
+            "stats": {
+                "health": {
+                    "base": 2400,
+                    "inc_wild": 480
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 700,
+                    "inc_wild": 14
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "전기 충격, 잡기 등 모든 CC기에 면역."
+        },
+        {
+            "id": "megalodon",
+            "name_kr": "메갈로돈 (상어)",
+            "stats": {
+                "health": {
+                    "base": 600,
+                    "inc_wild": 120
+                },
+                "stamina": {
+                    "base": 320,
+                    "inc_wild": 32
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "baryonyx",
+            "name_kr": "바리오닉스 (수륙양용 스턴)",
+            "stats": {
+                "health": {
+                    "base": 440,
+                    "inc_wild": 88
+                },
+                "stamina": {
+                    "base": 325,
+                    "inc_wild": 32.5
+                },
+                "weight": {
+                    "base": 325,
+                    "inc_wild": 6.5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "물속에서 꼬리치기로 적을 기절시킴."
+        },
+        {
+            "id": "sarco",
+            "name_kr": "사르코 (악어/고속)",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "dunkleosteus",
+            "name_kr": "둔클레오스테우스 (수중 탱커)",
+            "stats": {
+                "health": {
+                    "base": 710,
+                    "inc_wild": 142
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 410,
+                    "inc_wild": 8.2
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "높은 데미지 감소율."
+        },
+        {
+            "id": "megachelon",
+            "name_kr": "메가켈론 (거대 거북)",
+            "stats": {
+                "health": {
+                    "base": 4800,
+                    "inc_wild": 960
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 2500,
+                    "inc_wild": 50
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "angler",
+            "name_kr": "아귀 (진주 채집)",
+            "stats": {
+                "health": {
+                    "base": 300,
+                    "inc_wild": 60
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "manta",
+            "name_kr": "만타 (고속 정찰)",
+            "stats": {
+                "health": {
+                    "base": 220,
+                    "inc_wild": 44
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "ichthyosaurus",
+            "name_kr": "이크티오사우루스 (돌고래)",
+            "stats": {
+                "health": {
+                    "base": 225,
+                    "inc_wild": 45
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "castoroides",
+            "name_kr": "카스토로이데스 (비버)",
+            "stats": {
+                "health": {
+                    "base": 450,
+                    "inc_wild": 90
+                },
+                "stamina": {
+                    "base": 280,
+                    "inc_wild": 28
+                },
+                "weight": {
+                    "base": 300,
+                    "inc_wild": 6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "electrophorus",
+            "name_kr": "에렉트로포루스 (전기뱀장어)",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 100,
+                    "inc_wild": 2
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "otter",
+            "name_kr": "수달 (온도/아티팩트)",
+            "stats": {
+                "health": {
+                    "base": 40,
+                    "inc_wild": 8
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 30,
+                    "inc_wild": 0.6
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "공격력(Melee)을 올리면 추위/더위 저항력이 올라감."
+        },
+        {
+            "id": "diplocaulus",
+            "name_kr": "디플로카울루스 (산소통)",
+            "stats": {
+                "health": {
+                    "base": 180,
+                    "inc_wild": 36
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 180,
+                    "inc_wild": 3.6
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "물속에서 기수에게 산소를 공급함."
+        },
+        {
+            "id": "hesperornis",
+            "name_kr": "헤스페로니스 (오리)",
+            "stats": {
+                "health": {
+                    "base": 120,
+                    "inc_wild": 24
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 85,
+                    "inc_wild": 1.7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            }
+        },
+        {
+            "id": "andrewsarchus",
+            "name_kr": "앤드류사르쿠스 (수륙양용)",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "물속 바닥을 걸어다닐 수 있음."
+        },
+        {
+            "id": "shastasaurus",
+            "name_kr": "샤스타사우루스 (ASA/잠수함)",
+            "stats": {
+                "health": {
+                    "base": 5000,
+                    "inc_wild": 1000
+                },
+                "stamina": {
+                    "base": 1000,
+                    "inc_wild": 100
+                },
+                "weight": {
+                    "base": 5000,
+                    "inc_wild": 100
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "ASA 전용. 수중 잠수함/플랫폼 역할."
+        },
+        {
+            "id": "achatina",
+            "name_kr": "아카티나 (달팽이)",
+            "stats": {
+                "health": {
+                    "base": 75,
+                    "inc_wild": 15
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 100,
+                    "inc_wild": 2
+                },
+                "melee": {
+                    "base": 0,
+                    "inc_wild": 0
+                }
+            },
+            "note": "유기 폴리머/아카티나 연고 생산."
+        },
+        {
+            "id": "allosaurus",
+            "name_kr": "알로사우루스",
+            "stats": {
+                "health": {
+                    "base": 630,
+                    "inc_wild": 126
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 500,
+                    "inc_wild": 10
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            },
+            "note": "무리 버프 및 출혈 공격."
+        },
+        {
+            "id": "amargasaurus",
+            "name_kr": "아마르가사우루스",
+            "stats": {
+                "health": {
+                    "base": 1250,
+                    "inc_wild": 250
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 550,
+                    "inc_wild": 11
+                },
+                "melee": {
+                    "base": 45,
+                    "inc_wild": 2.25
+                }
+            },
+            "note": "등 가시 발사 (화염/냉기/방관)."
+        },
+        {
+            "id": "ankylosaurus",
+            "name_kr": "안킬로사우루스",
+            "stats": {
+                "health": {
+                    "base": 700,
+                    "inc_wild": 140
+                },
+                "stamina": {
+                    "base": 175,
+                    "inc_wild": 17.5
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 50,
+                    "inc_wild": 2.5
+                }
+            },
+            "note": "철 채집 효율 최상."
+        },
+        {
+            "id": "araneo",
+            "name_kr": "아라네오 (거미)",
+            "stats": {
+                "health": {
+                    "base": 140,
+                    "inc_wild": 28
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 50,
+                    "inc_wild": 1
+                },
+                "melee": {
+                    "base": 15,
+                    "inc_wild": 0.75
+                }
+            }
+        },
+        {
+            "id": "arthropluera",
+            "name_kr": "아스로플레우라 (지네)",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 50,
+                    "inc_wild": 1
+                },
+                "melee": {
+                    "base": 18,
+                    "inc_wild": 0.9
+                }
+            },
+            "note": "반사 데미지 및 구조물 파괴."
+        },
+        {
+            "id": "basilisk",
+            "name_kr": "바실리스크",
+            "stats": {
+                "health": {
+                    "base": 2200,
+                    "inc_wild": 440
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 2200,
+                    "inc_wild": 44
+                },
+                "melee": {
+                    "base": 55,
+                    "inc_wild": 2.75
+                }
+            }
+        },
+        {
+            "id": "beelzebufo",
+            "name_kr": "벨제부포 (개구리)",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "시멘트 풀 생산 및 기절 공격."
+        },
+        {
+            "id": "bloodstalker",
+            "name_kr": "블러드스토커",
+            "stats": {
+                "health": {
+                    "base": 350,
+                    "inc_wild": 70
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            }
+        },
+        {
+            "id": "brontosaurus",
+            "name_kr": "브론토사우루스",
+            "stats": {
+                "health": {
+                    "base": 2070,
+                    "inc_wild": 414
+                },
+                "stamina": {
+                    "base": 240,
+                    "inc_wild": 24
+                },
+                "weight": {
+                    "base": 1600,
+                    "inc_wild": 32
+                },
+                "melee": {
+                    "base": 60,
+                    "inc_wild": 3
+                }
+            }
+        },
+        {
+            "id": "bulbdog",
+            "name_kr": "벌브독",
+            "stats": {
+                "health": {
+                    "base": 255,
+                    "inc_wild": 51
+                },
+                "stamina": {
+                    "base": 180,
+                    "inc_wild": 18
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 12,
+                    "inc_wild": 0.6
+                }
+            }
+        },
+        {
+            "id": "carnotaurus",
+            "name_kr": "카르노타우루스",
+            "stats": {
+                "health": {
+                    "base": 420,
+                    "inc_wild": 84
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 300,
+                    "inc_wild": 6
+                },
+                "melee": {
+                    "base": 42,
+                    "inc_wild": 2.1
+                }
+            },
+            "note": "출혈 공격."
+        },
+        {
+            "id": "ceratosaurus",
+            "name_kr": "케라토사우루스",
+            "stats": {
+                "health": {
+                    "base": 700,
+                    "inc_wild": 140
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 450,
+                    "inc_wild": 9
+                },
+                "melee": {
+                    "base": 45,
+                    "inc_wild": 2.25
+                }
+            }
+        },
+        {
+            "id": "chalicotherium",
+            "name_kr": "칼리코테리움",
+            "stats": {
+                "health": {
+                    "base": 650,
+                    "inc_wild": 130
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 32,
+                    "inc_wild": 1.6
+                }
+            },
+            "note": "투석기 역할 (돌 던지기)."
+        },
+        {
+            "id": "compy",
+            "name_kr": "콤피 (콤프소그나투스)",
+            "stats": {
+                "health": {
+                    "base": 50,
+                    "inc_wild": 10
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 25,
+                    "inc_wild": 0.5
+                },
+                "melee": {
+                    "base": 4,
+                    "inc_wild": 0.2
+                }
+            }
+        },
+        {
+            "id": "deinonychus",
+            "name_kr": "데이노니쿠스",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 180,
+                    "inc_wild": 18
+                },
+                "weight": {
+                    "base": 160,
+                    "inc_wild": 3.2
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "출혈 및 벽타기."
+        },
+        {
+            "id": "dilophosaur",
+            "name_kr": "딜로포사우루스",
+            "stats": {
+                "health": {
+                    "base": 130,
+                    "inc_wild": 26
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 45,
+                    "inc_wild": 0.9
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            }
+        },
+        {
+            "id": "dimetrodon",
+            "name_kr": "디메트로돈",
+            "stats": {
+                "health": {
+                    "base": 125,
+                    "inc_wild": 25
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "살아있는 에어컨 (알 부화)."
+        },
+        {
+            "id": "dinopithecus",
+            "name_kr": "디노피테쿠스 (전투 원숭이)",
+            "stats": {
+                "health": {
+                    "base": 625,
+                    "inc_wild": 125
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 38,
+                    "inc_wild": 1.9
+                }
+            },
+            "note": "수류탄 투척 및 벽타기."
+        },
+        {
+            "id": "diplodocus",
+            "name_kr": "디플로도쿠스",
+            "stats": {
+                "health": {
+                    "base": 600,
+                    "inc_wild": 120
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 800,
+                    "inc_wild": 16
+                },
+                "melee": {
+                    "base": 0,
+                    "inc_wild": 0
+                }
+            },
+            "note": "데미지가 없는 넉백 공격. 다인승."
+        },
+        {
+            "id": "direbear",
+            "name_kr": "다이어 베어",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 500,
+                    "inc_wild": 50
+                },
+                "weight": {
+                    "base": 650,
+                    "inc_wild": 13
+                },
+                "melee": {
+                    "base": 50,
+                    "inc_wild": 2.5
+                }
+            },
+            "note": "꿀 채집 효율 높음."
+        },
+        {
+            "id": "direwolf",
+            "name_kr": "다이어울프",
+            "stats": {
+                "health": {
+                    "base": 330,
+                    "inc_wild": 66
+                },
+                "stamina": {
+                    "base": 260,
+                    "inc_wild": 26
+                },
+                "weight": {
+                    "base": 170,
+                    "inc_wild": 3.4
+                },
+                "melee": {
+                    "base": 33,
+                    "inc_wild": 1.65
+                }
+            },
+            "note": "안장 없이 탑승. 무리 버프."
+        },
+        {
+            "id": "dodo",
+            "name_kr": "도도",
+            "stats": {
+                "health": {
+                    "base": 40,
+                    "inc_wild": 8
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 50,
+                    "inc_wild": 1
+                },
+                "melee": {
+                    "base": 5,
+                    "inc_wild": 0.25
+                }
+            }
+        },
+        {
+            "id": "doedicurus",
+            "name_kr": "도에디쿠루스",
+            "stats": {
+                "health": {
+                    "base": 850,
+                    "inc_wild": 170
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 250,
+                    "inc_wild": 5
+                },
+                "melee": {
+                    "base": 32,
+                    "inc_wild": 1.6
+                }
+            },
+            "note": "돌 채집 필수. 구르기 이동."
+        },
+        {
+            "id": "dreadnoughtus",
+            "name_kr": "드레드노투스 (ASA)",
+            "stats": {
+                "health": {
+                    "base": 100000,
+                    "inc_wild": 3200
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 3000,
+                    "inc_wild": 60
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 3.3
+                }
+            },
+            "note": "초거대 플랫폼 공룡."
+        },
+        {
+            "id": "dungbeetle",
+            "name_kr": "쇠똥구리",
+            "stats": {
+                "health": {
+                    "base": 150,
+                    "inc_wild": 30
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 5,
+                    "inc_wild": 0.1
+                },
+                "melee": {
+                    "base": 5,
+                    "inc_wild": 0.25
+                }
+            },
+            "note": "비료 및 오일 생산."
+        },
+        {
+            "id": "equus",
+            "name_kr": "에쿠스 (말)",
+            "stats": {
+                "health": {
+                    "base": 280,
+                    "inc_wild": 56
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "이동식 절구통."
+        },
+        {
+            "id": "fasolasuchus",
+            "name_kr": "파솔라수쿠스 (ASA)",
+            "stats": {
+                "health": {
+                    "base": 950,
+                    "inc_wild": 190
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 450,
+                    "inc_wild": 9
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "모래 수영 가능."
+        },
+        {
+            "id": "fenrir",
+            "name_kr": "펜리르",
+            "stats": {
+                "health": {
+                    "base": 350,
+                    "inc_wild": 70
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 300,
+                    "inc_wild": 6
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            },
+            "note": "피요르드 보스 보상. 얼음 갑옷."
+        },
+        {
+            "id": "ferox",
+            "name_kr": "페록스",
+            "stats": {
+                "health": {
+                    "base": 300,
+                    "inc_wild": 60
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 150,
+                    "inc_wild": 3
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "원소 섭취 시 거대화 변신."
+        },
+        {
+            "id": "gacha",
+            "name_kr": "가챠",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "자원을 먹고 아이템 크리스탈 생성."
+        },
+        {
+            "id": "gallimimus",
+            "name_kr": "갈리미무스",
+            "stats": {
+                "health": {
+                    "base": 80,
+                    "inc_wild": 16
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 220,
+                    "inc_wild": 4.4
+                },
+                "melee": {
+                    "base": 8,
+                    "inc_wild": 0.4
+                }
+            },
+            "note": "매우 빠른 이동 속도. 3인승."
+        },
+        {
+            "id": "gigantopithecus",
+            "name_kr": "기간토피테쿠스 (빅풋)",
+            "stats": {
+                "health": {
+                    "base": 540,
+                    "inc_wild": 108
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 220,
+                    "inc_wild": 4.4
+                },
+                "melee": {
+                    "base": 40,
+                    "inc_wild": 2
+                }
+            },
+            "note": "섬유 채집. 인간 던지기."
+        },
+        {
+            "id": "gigantoraptor",
+            "name_kr": "기가노토랩터 (ASA)",
+            "stats": {
+                "health": {
+                    "base": 770,
+                    "inc_wild": 154
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 320,
+                    "inc_wild": 6.4
+                },
+                "melee": {
+                    "base": 100,
+                    "inc_wild": 5
+                }
+            },
+            "note": "아기 공룡 육아 보조."
+        },
+        {
+            "id": "glowtail",
+            "name_kr": "글로우테일",
+            "stats": {
+                "health": {
+                    "base": 155,
+                    "inc_wild": 31
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 75,
+                    "inc_wild": 1.5
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "충전식 광원 펫."
+        },
+        {
+            "id": "hyaenodon",
+            "name_kr": "하이에노돈",
+            "stats": {
+                "health": {
+                    "base": 130,
+                    "inc_wild": 26
+                },
+                "stamina": {
+                    "base": 180,
+                    "inc_wild": 18
+                },
+                "weight": {
+                    "base": 110,
+                    "inc_wild": 2.2
+                },
+                "melee": {
+                    "base": 15,
+                    "inc_wild": 0.75
+                }
+            },
+            "note": "고기 팩 가방(부패 시간 연장)."
+        },
+        {
+            "id": "iguanodon",
+            "name_kr": "이구아노돈",
+            "stats": {
+                "health": {
+                    "base": 365,
+                    "inc_wild": 73
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 375,
+                    "inc_wild": 7.5
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "네 발로 달릴 때 기력 소모 없음."
+        },
+        {
+            "id": "jerboa",
+            "name_kr": "제르보아",
+            "stats": {
+                "health": {
+                    "base": 25,
+                    "inc_wild": 5
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 55,
+                    "inc_wild": 1.1
+                },
+                "melee": {
+                    "base": 5,
+                    "inc_wild": 0.25
+                }
+            },
+            "note": "날씨 변화 감지."
+        },
+        {
+            "id": "kairuku",
+            "name_kr": "카이루쿠 (펭귄)",
+            "stats": {
+                "health": {
+                    "base": 70,
+                    "inc_wild": 14
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 55,
+                    "inc_wild": 1.1
+                },
+                "melee": {
+                    "base": 5,
+                    "inc_wild": 0.25
+                }
+            },
+            "note": "유기 폴리머 공급원."
+        },
+        {
+            "id": "kaprosuchus",
+            "name_kr": "카프로수쿠스",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 140,
+                    "inc_wild": 2.8
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "점프 공격으로 플레이어 낚아채기."
+        },
+        {
+            "id": "karkinos",
+            "name_kr": "카르키노스 (게)",
+            "stats": {
+                "health": {
+                    "base": 2700,
+                    "inc_wild": 540
+                },
+                "stamina": {
+                    "base": 600,
+                    "inc_wild": 60
+                },
+                "weight": {
+                    "base": 3000,
+                    "inc_wild": 60
+                },
+                "melee": {
+                    "base": 57,
+                    "inc_wild": 2.85
+                }
+            },
+            "note": "생물을 집어 던질 수 있음. 방사능 면역."
+        },
+        {
+            "id": "kentrosaurus",
+            "name_kr": "켄트로사우루스",
+            "stats": {
+                "health": {
+                    "base": 325,
+                    "inc_wild": 65
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "반사 데미지 및 꼬치구이(집기) 공격."
+        },
+        {
+            "id": "lystrosaurus",
+            "name_kr": "리스트로사우루스",
+            "stats": {
+                "health": {
+                    "base": 120,
+                    "inc_wild": 24
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 40,
+                    "inc_wild": 0.8
+                },
+                "melee": {
+                    "base": 8,
+                    "inc_wild": 0.4
+                }
+            },
+            "note": "주변 아군 경험치 획득량 증가 버프."
+        },
+        {
+            "id": "maewing",
+            "name_kr": "메이윙",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "초고속 활강 이동. 아기 공룡 육아(수유) 담당."
+        },
+        {
+            "id": "magmasaur",
+            "name_kr": "마그마사우루스",
+            "stats": {
+                "health": {
+                    "base": 4500,
+                    "inc_wild": 900
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 1250,
+                    "inc_wild": 25
+                },
+                "melee": {
+                    "base": 65,
+                    "inc_wild": 3.25
+                }
+            },
+            "note": "이동식 화로 (철 굽기). 화염 브레스."
+        },
+        {
+            "id": "mammoth",
+            "name_kr": "매머드",
+            "stats": {
+                "health": {
+                    "base": 850,
+                    "inc_wild": 170
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 500,
+                    "inc_wild": 10
+                },
+                "melee": {
+                    "base": 48,
+                    "inc_wild": 2.4
+                }
+            },
+            "note": "목재 채집 효율 최상. 적 공격력 감소 포효."
+        },
+        {
+            "id": "managarmr",
+            "name_kr": "마나가르마",
+            "stats": {
+                "health": {
+                    "base": 850,
+                    "inc_wild": 170
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            },
+            "note": "로켓 점프 및 냉동 브레스."
+        },
+        {
+            "id": "mantis",
+            "name_kr": "사마귀 (맨티스)",
+            "stats": {
+                "health": {
+                    "base": 350,
+                    "inc_wild": 70
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 225,
+                    "inc_wild": 4.5
+                },
+                "melee": {
+                    "base": 35,
+                    "inc_wild": 1.75
+                }
+            },
+            "note": "도구(곡괭이/검 등) 장착 가능."
+        },
+        {
+            "id": "megalania",
+            "name_kr": "메갈라니아",
+            "stats": {
+                "health": {
+                    "base": 260,
+                    "inc_wild": 52
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "벽 타기 가능. 광견병 감염 공격."
+        },
+        {
+            "id": "megaloceros",
+            "name_kr": "메갈로케로스 (사슴)",
+            "stats": {
+                "health": {
+                    "base": 230,
+                    "inc_wild": 46
+                },
+                "stamina": {
+                    "base": 240,
+                    "inc_wild": 24
+                },
+                "weight": {
+                    "base": 220,
+                    "inc_wild": 4.4
+                },
+                "melee": {
+                    "base": 22,
+                    "inc_wild": 1.1
+                }
+            },
+            "note": "짚 채집 효율 높음."
+        },
+        {
+            "id": "megalosaurus",
+            "name_kr": "메갈로사우루스",
+            "stats": {
+                "health": {
+                    "base": 875,
+                    "inc_wild": 175
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 525,
+                    "inc_wild": 10.5
+                },
+                "melee": {
+                    "base": 75,
+                    "inc_wild": 3.75
+                }
+            },
+            "note": "밤에만 강력함. 낮에는 수면 상태."
+        },
+        {
+            "id": "megatherium",
+            "name_kr": "메가테리움",
+            "stats": {
+                "health": {
+                    "base": 740,
+                    "inc_wild": 148
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 550,
+                    "inc_wild": 11
+                },
+                "melee": {
+                    "base": 32,
+                    "inc_wild": 1.6
+                }
+            },
+            "note": "벌레 처치 시 강력한 버프 획득. 키틴 채집."
+        },
+        {
+            "id": "mesopithecus",
+            "name_kr": "메소피테쿠스 (원숭이)",
+            "stats": {
+                "health": {
+                    "base": 115,
+                    "inc_wild": 23
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 70,
+                    "inc_wild": 1.4
+                },
+                "melee": {
+                    "base": 16,
+                    "inc_wild": 0.8
+                }
+            },
+            "note": "어깨 탑승. 문 열기 가능."
+        },
+        {
+            "id": "microraptor",
+            "name_kr": "마이크로랩터",
+            "stats": {
+                "health": {
+                    "base": 70,
+                    "inc_wild": 14
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 35,
+                    "inc_wild": 0.7
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "기수를 강제로 하차시키고 기절시킴."
+        },
+        {
+            "id": "morellatops",
+            "name_kr": "모렐라톱스",
+            "stats": {
+                "health": {
+                    "base": 375,
+                    "inc_wild": 75
+                },
+                "stamina": {
+                    "base": 240,
+                    "inc_wild": 24
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 22,
+                    "inc_wild": 1.1
+                }
+            },
+            "note": "등에 물 저장 가능. 선인장 채집."
+        },
+        {
+            "id": "moschops",
+            "name_kr": "모스콥스",
+            "stats": {
+                "health": {
+                    "base": 375,
+                    "inc_wild": 75
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 18,
+                    "inc_wild": 0.9
+                }
+            },
+            "note": "안장 없이 탑승. 자원 채집 특화."
+        },
+        {
+            "id": "noglin",
+            "name_kr": "노글린",
+            "stats": {
+                "health": {
+                    "base": 70,
+                    "inc_wild": 14
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 0,
+                    "inc_wild": 0
+                },
+                "melee": {
+                    "base": 0,
+                    "inc_wild": 0
+                }
+            },
+            "note": "적 생물이나 플레이어를 정신 지배(조종) 가능."
+        },
+        {
+            "id": "oviraptor",
+            "name_kr": "오비랍토르",
+            "stats": {
+                "health": {
+                    "base": 140,
+                    "inc_wild": 28
+                },
+                "stamina": {
+                    "base": 120,
+                    "inc_wild": 12
+                },
+                "weight": {
+                    "base": 100,
+                    "inc_wild": 2
+                },
+                "melee": {
+                    "base": 12,
+                    "inc_wild": 0.6
+                }
+            },
+            "note": "주변 공룡의 산란 속도 증가."
+        },
+        {
+            "id": "ovis",
+            "name_kr": "오비스 (양)",
+            "stats": {
+                "health": {
+                    "base": 90,
+                    "inc_wild": 18
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 90,
+                    "inc_wild": 1.8
+                },
+                "melee": {
+                    "base": 0,
+                    "inc_wild": 0
+                }
+            },
+            "note": "양고기 및 털(Wool) 생산."
+        },
+        {
+            "id": "pachy",
+            "name_kr": "파키 (파키케팔로사우루스)",
+            "stats": {
+                "health": {
+                    "base": 175,
+                    "inc_wild": 35
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 150,
+                    "inc_wild": 3
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "박치기로 기절 수치를 쌓음."
+        },
+        {
+            "id": "pachyrhinosaurus",
+            "name_kr": "파키리노사우루스",
+            "stats": {
+                "health": {
+                    "base": 375,
+                    "inc_wild": 75
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 365,
+                    "inc_wild": 7.3
+                },
+                "melee": {
+                    "base": 25,
+                    "inc_wild": 1.25
+                }
+            },
+            "note": "페로몬 가스로 적을 진정/분노시킴."
+        },
+        {
+            "id": "parasaur",
+            "name_kr": "파라사우롤로푸스",
+            "stats": {
+                "health": {
+                    "base": 150,
+                    "inc_wild": 30
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 255,
+                    "inc_wild": 5.1
+                },
+                "melee": {
+                    "base": 12,
+                    "inc_wild": 0.6
+                }
+            },
+            "note": "적 감지 레이더 기능."
+        },
+        {
+            "id": "pegomastax",
+            "name_kr": "페고마스탁스",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 100,
+                    "inc_wild": 10
+                },
+                "weight": {
+                    "base": 55,
+                    "inc_wild": 1.1
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "소매치기 공룡. 어깨 탑승 가능."
+        },
+        {
+            "id": "phiomia",
+            "name_kr": "피오미아",
+            "stats": {
+                "health": {
+                    "base": 220,
+                    "inc_wild": 44
+                },
+                "stamina": {
+                    "base": 180,
+                    "inc_wild": 18
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 10,
+                    "inc_wild": 0.5
+                }
+            },
+            "note": "대량의 비료용 대변 생산."
+        },
+        {
+            "id": "procoptodon",
+            "name_kr": "프로콥토돈 (캥거루)",
+            "stats": {
+                "health": {
+                    "base": 350,
+                    "inc_wild": 70
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 450,
+                    "inc_wild": 9
+                },
+                "melee": {
+                    "base": 28,
+                    "inc_wild": 1.4
+                }
+            },
+            "note": "아기 공룡 육아 보조. 높은 점프력."
+        },
+        {
+            "id": "pulmonoscorpius",
+            "name_kr": "풀모노스콜피우스 (전갈)",
+            "stats": {
+                "health": {
+                    "base": 280,
+                    "inc_wild": 56
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 15,
+                    "inc_wild": 0.75
+                }
+            },
+            "note": "공격 시 기절 수치를 높임."
+        },
+        {
+            "id": "purlovia",
+            "name_kr": "푸를로비아",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 28,
+                    "inc_wild": 1.4
+                }
+            },
+            "note": "땅속 매복 기습(스턴). 지뢰 역할."
+        },
+        {
+            "id": "raptor",
+            "name_kr": "랩터 (유타랍토르)",
+            "stats": {
+                "health": {
+                    "base": 200,
+                    "inc_wild": 40
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 140,
+                    "inc_wild": 2.8
+                },
+                "melee": {
+                    "base": 15,
+                    "inc_wild": 0.75
+                }
+            },
+            "note": "빠른 속도. 무리 버프. 소형 생물 제압."
+        },
+        {
+            "id": "ravager",
+            "name_kr": "래비저",
+            "stats": {
+                "health": {
+                    "base": 400,
+                    "inc_wild": 80
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 25,
+                    "inc_wild": 1.25
+                }
+            },
+            "note": "짚라인 이동 가능. 자원 무게 감소."
+        },
+        {
+            "id": "reaper",
+            "name_kr": "리퍼 킹",
+            "stats": {
+                "health": {
+                    "base": 11500,
+                    "inc_wild": 2300
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 825,
+                    "inc_wild": 16.5
+                },
+                "melee": {
+                    "base": 64,
+                    "inc_wild": 3.2
+                }
+            },
+            "note": "임신으로만 획득. 빛 없으면 데미지 대폭 감소."
+        },
+        {
+            "id": "rock_drake",
+            "name_kr": "락 드레이크",
+            "stats": {
+                "health": {
+                    "base": 1950,
+                    "inc_wild": 390
+                },
+                "stamina": {
+                    "base": 450,
+                    "inc_wild": 45
+                },
+                "weight": {
+                    "base": 400,
+                    "inc_wild": 8
+                },
+                "melee": {
+                    "base": 60,
+                    "inc_wild": 3
+                }
+            },
+            "note": "벽 타기, 활강, 은신 기능. 방사능 면역."
+        },
+        {
+            "id": "rock_elemental",
+            "name_kr": "바위 정령 (골렘)",
+            "stats": {
+                "health": {
+                    "base": 9000,
+                    "inc_wild": 1800
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 650,
+                    "inc_wild": 13
+                },
+                "melee": {
+                    "base": 60,
+                    "inc_wild": 3
+                }
+            },
+            "note": "물리 데미지 50%~90% 감소. 강력한 탱커."
+        },
+        {
+            "id": "roll_rat",
+            "name_kr": "롤 랫",
+            "stats": {
+                "health": {
+                    "base": 600,
+                    "inc_wild": 120
+                },
+                "stamina": {
+                    "base": 300,
+                    "inc_wild": 30
+                },
+                "weight": {
+                    "base": 450,
+                    "inc_wild": 9
+                },
+                "melee": {
+                    "base": 42,
+                    "inc_wild": 2.1
+                }
+            },
+            "note": "구르기 이동(구조물 파괴). 목재/버섯 채집."
+        },
+        {
+            "id": "sabertooth",
+            "name_kr": "검치호",
+            "stats": {
+                "health": {
+                    "base": 250,
+                    "inc_wild": 50
+                },
+                "stamina": {
+                    "base": 200,
+                    "inc_wild": 20
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 29,
+                    "inc_wild": 1.45
+                }
+            },
+            "note": "가죽/키틴 채집 효율 높음."
+        },
+        {
+            "id": "shinehorn",
+            "name_kr": "샤인혼",
+            "stats": {
+                "health": {
+                    "base": 135,
+                    "inc_wild": 27
+                },
+                "stamina": {
+                    "base": 120,
+                    "inc_wild": 12
+                },
+                "weight": {
+                    "base": 65,
+                    "inc_wild": 1.3
+                },
+                "melee": {
+                    "base": 8,
+                    "inc_wild": 0.4
+                }
+            },
+            "note": "귀여운 광원 펫."
+        },
+        {
+            "id": "spinosaurus",
+            "name_kr": "스피노사우루스",
+            "stats": {
+                "health": {
+                    "base": 700,
+                    "inc_wild": 140
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 40,
+                    "inc_wild": 2
+                }
+            },
+            "note": "물 버프(Hydrated) 시 능력치 대폭 상승."
+        },
+        {
+            "id": "terror_bird",
+            "name_kr": "테러 버드",
+            "stats": {
+                "health": {
+                    "base": 270,
+                    "inc_wild": 54
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 18,
+                    "inc_wild": 0.9
+                }
+            },
+            "note": "단거리 활강 가능. 빠른 정찰."
+        },
+        {
+            "id": "thorny_dragon",
+            "name_kr": "가시 드래곤",
+            "stats": {
+                "health": {
+                    "base": 340,
+                    "inc_wild": 68
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 320,
+                    "inc_wild": 6.4
+                },
+                "melee": {
+                    "base": 24,
+                    "inc_wild": 1.2
+                }
+            },
+            "note": "이동식 작업대. 목재 채집 무게 감소."
+        },
+        {
+            "id": "titanoboa",
+            "name_kr": "티타노보아",
+            "stats": {
+                "health": {
+                    "base": 170,
+                    "inc_wild": 34
+                },
+                "stamina": {
+                    "base": 160,
+                    "inc_wild": 16
+                },
+                "weight": {
+                    "base": 200,
+                    "inc_wild": 4
+                },
+                "melee": {
+                    "base": 30,
+                    "inc_wild": 1.5
+                }
+            },
+            "note": "기절 공격. 탑승 불가."
+        },
+        {
+            "id": "titanosaur",
+            "name_kr": "티타노사우루스",
+            "stats": {
+                "health": {
+                    "base": 230000,
+                    "inc_wild": 0
+                },
+                "stamina": {
+                    "base": 2000,
+                    "inc_wild": 0
+                },
+                "weight": {
+                    "base": 50000,
+                    "inc_wild": 0
+                },
+                "melee": {
+                    "base": 1000,
+                    "inc_wild": 0
+                }
+            },
+            "note": "레이드용 공성 병기. 일시적 조련."
+        },
+        {
+            "id": "troodon",
+            "name_kr": "트루돈",
+            "stats": {
+                "health": {
+                    "base": 120,
+                    "inc_wild": 24
+                },
+                "stamina": {
+                    "base": 150,
+                    "inc_wild": 15
+                },
+                "weight": {
+                    "base": 120,
+                    "inc_wild": 2.4
+                },
+                "melee": {
+                    "base": 12,
+                    "inc_wild": 0.6
+                }
+            },
+            "note": "밤에 매우 강력함. 기절 수치 급상승."
+        },
+        {
+            "id": "unicorn",
+            "name_kr": "유니콘",
+            "stats": {
+                "health": {
+                    "base": 280,
+                    "inc_wild": 56
+                },
+                "stamina": {
+                    "base": 350,
+                    "inc_wild": 35
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 20,
+                    "inc_wild": 1
+                }
+            },
+            "note": "희귀한 에쿠스 변종. 맵당 1마리 스폰."
+        },
+        {
+            "id": "velonasaur",
+            "name_kr": "벨로나사우루스",
+            "stats": {
+                "health": {
+                    "base": 450,
+                    "inc_wild": 90
+                },
+                "stamina": {
+                    "base": 325,
+                    "inc_wild": 32.5
+                },
+                "weight": {
+                    "base": 350,
+                    "inc_wild": 7
+                },
+                "melee": {
+                    "base": 32,
+                    "inc_wild": 1.6
+                }
+            },
+            "note": "가시 발사(기관총) 모드. 생체 터렛."
+        },
+        {
+            "id": "woolly_rhino",
+            "name_kr": "울리 라이노",
+            "stats": {
+                "health": {
+                    "base": 500,
+                    "inc_wild": 100
+                },
+                "stamina": {
+                    "base": 250,
+                    "inc_wild": 25
+                },
+                "weight": {
+                    "base": 375,
+                    "inc_wild": 7.5
+                },
+                "melee": {
+                    "base": 40,
+                    "inc_wild": 2
+                }
+            },
+            "note": "돌진 거리에 비례하여 막대한 데미지(죽창)."
+        },
+        {
+            "id": "yi_ling",
+            "name_kr": "이 링 (ASA)",
+            "stats": {
+                "health": {
+                    "base": 450,
+                    "inc_wild": 90
+                },
+                "stamina": {
+                    "base": 400,
+                    "inc_wild": 40
+                },
+                "weight": {
+                    "base": 300,
+                    "inc_wild": 6
+                },
+                "melee": {
+                    "base": 40,
+                    "inc_wild": 2
+                }
+            },
+            "note": "ASA 에버레이션 생물. 벽 점프 및 깃털 발사."
+        }
+    ]
+}

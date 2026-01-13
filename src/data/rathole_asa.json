@@ -1,0 +1,327 @@
+{
+    "version": "1.0.0",
+    "last_updated": "2026-01-12",
+    "maps": [
+        {
+            "map_id": "the_island_asa",
+            "map_name": "The Island (ASA)",
+            "locations": [
+                {
+                    "id": "isl_se_ocean_vacuum",
+                    "name": "남동쪽 심해 진공 요새",
+                    "coords": {
+                        "lat": 92.5,
+                        "lon": 71.5
+                    },
+                    "type": "Underwater",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Glitch/Pixel",
+                    "description": "겉보기엔 평범한 암반이지만 내부는 운동장급으로 넓은 평지. 진공 구획(Vacuum Compartment) 설치 필수.",
+                    "strategy_note": "진입을 위해 의자/벤치 글리치가 필요할 수 있음. C4 보병전 외에는 공략이 거의 불가능한 난공불락 요새.",
+                    "pros": [
+                        "광활한 내부 평지",
+                        "스테고 진입 불가",
+                        "압도적 방어력"
+                    ],
+                    "cons": [
+                        "테크(Tek) 기술 필수",
+                        "초반 접근 불가"
+                    ]
+                },
+                {
+                    "id": "isl_herb_moss_cave",
+                    "name": "허브 섬 이끼 암반",
+                    "coords": {
+                        "lat": 96.3,
+                        "lon": 14.3
+                    },
+                    "type": "Underwater",
+                    "tribe_size": "Small/Medium",
+                    "difficulty": "Hard",
+                    "entrance_size": "Swimmer",
+                    "description": "해초(Mossy things)가 입구를 가리고 있어 자연 위장 효과가 탁월함. 스쿠버 장비 필요.",
+                    "strategy_note": "적의 정찰용 돌고래나 투소테우티스에게 발각될 확률이 낮음.",
+                    "pros": [
+                        "자연 위장",
+                        "수중 벙커 최적화"
+                    ],
+                    "cons": [
+                        "수중 장비 필요"
+                    ]
+                },
+                {
+                    "id": "isl_ice_cave_solo",
+                    "name": "내륙 설산 고립 피난처",
+                    "coords": {
+                        "lat": 25.6,
+                        "lon": 21.5
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Solo",
+                    "difficulty": "Medium",
+                    "entrance_size": "Crouch",
+                    "description": "혹한 지역(Super Cold Spot)에 위치한 소형 동굴. 입구가 작아 식별이 어려움.",
+                    "strategy_note": "추위가 자연 방어막 역할을 하여 레이드 온 적의 식량 소모를 유도함. 털옷/수달 필수.",
+                    "pros": [
+                        "환경 데미지 방어",
+                        "발각 위험 낮음"
+                    ],
+                    "cons": [
+                        "내부 협소",
+                        "지속적인 추위 데미지 관리 필요"
+                    ]
+                },
+                {
+                    "id": "isl_jungle_drop",
+                    "name": "남부 정글 나뭇잎 벙커",
+                    "coords": {
+                        "lat": 84.7,
+                        "lon": 57.0
+                    },
+                    "type": "Rathole",
+                    "tribe_size": "Solo",
+                    "difficulty": "Easy",
+                    "entrance_size": "Drop-down",
+                    "description": "울창한 숲 바닥의 수직형 구멍. 식생 제거 없이는 공중 정찰로 발견 불가.",
+                    "strategy_note": "공식 서버에서는 건축 제한 구역일 가능성 있음. 창고(Stash) 용도로 적합.",
+                    "pros": [
+                        "완벽한 시각적 은폐"
+                    ],
+                    "cons": [
+                        "공업용 화로 설치 불가",
+                        "공식 서버 건축 불가 가능성"
+                    ]
+                }
+            ]
+        },
+        {
+            "map_id": "aberration_asa",
+            "map_name": "Aberration (ASA)",
+            "locations": [
+                {
+                    "id": "abb_hidden_leaf",
+                    "name": "그린존 나뭇잎 은신처",
+                    "coords": {
+                        "lat": 38.5,
+                        "lon": 44.1
+                    },
+                    "type": "Tree Platform",
+                    "tribe_size": "Small",
+                    "difficulty": "Hard",
+                    "entrance_size": "Cosmo/Yi Ling",
+                    "description": "거대 버섯 나무 상층부, 나나이트 잎사귀 속에 파묻힌 공간. 코스모/이 링 필수.",
+                    "strategy_note": "입구는 38.5, 44.1이지만 내부는 40.2, 43.6까지 연결됨. 외부 시야 차단 완벽.",
+                    "pros": [
+                        "외부 시야 차단",
+                        "접근성 제한(특수 생물 필요)"
+                    ],
+                    "cons": [
+                        "공중 침투 방어 필요"
+                    ]
+                },
+                {
+                    "id": "abb_tree_city",
+                    "name": "거대 나무 도시",
+                    "coords": {
+                        "lat": 42.6,
+                        "lon": 34.2
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Medium",
+                    "entrance_size": "Large",
+                    "description": "맵 내 가장 큰 나무 내부의 빈 공간. 폭포 소리가 작업 소음을 마스킹(Sound Masking)해줌.",
+                    "strategy_note": "내부가 광활하여 대형 부족 기지로 적합.",
+                    "pros": [
+                        "소음 차단",
+                        "거대한 공간"
+                    ],
+                    "cons": [
+                        "입구 방어 필요"
+                    ]
+                },
+                {
+                    "id": "abb_led_plateau",
+                    "name": "블루존 LED 고원",
+                    "coords": {
+                        "lat": 45.0,
+                        "lon": 68.3
+                    },
+                    "type": "Plateau",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Medium",
+                    "entrance_size": "Open",
+                    "description": "배경이 LED처럼 빛나는 평평한 고원. 충전 노드가 바로 옆에 있어 네임리스 억제 가능.",
+                    "strategy_note": "평평한 지형으로 대형 건축 유리.",
+                    "pros": [
+                        "평지",
+                        "충전 노드 보유"
+                    ],
+                    "cons": [
+                        "개방된 지형 (방어 구조물 필수)"
+                    ]
+                },
+                {
+                    "id": "abb_cliff_plat",
+                    "name": "블루존 절벽 플랫폼 렛홀",
+                    "coords": {
+                        "lat": 33.4,
+                        "lon": 58.1
+                    },
+                    "type": "Cliff",
+                    "tribe_size": "Small",
+                    "difficulty": "Hard",
+                    "entrance_size": "Flyer/Climber",
+                    "description": "천장에 가까운 높은 절벽 틈새. 절벽 플랫폼 설치 필요.",
+                    "strategy_note": "육상 공룡 접근 불가. 락드/코스모/이링을 통한 침투만 가능하여 방어 경로 단일화 가능.",
+                    "pros": [
+                        "지상 유닛 접근 불가",
+                        "방어 집중 용이"
+                    ],
+                    "cons": [
+                        "플랫폼 필수",
+                        "낙사 위험"
+                    ]
+                }
+            ]
+        },
+        {
+            "map_id": "scorched_earth_asa",
+            "map_name": "Scorched Earth (ASA)",
+            "locations": [
+                {
+                    "id": "se_spiky_slit",
+                    "name": "스파이키 슬릿 (협곡 틈새)",
+                    "coords": null,
+                    "type": "Rathole",
+                    "tribe_size": "Small",
+                    "difficulty": "Hard",
+                    "entrance_size": "Pteranodon",
+                    "description": "협곡 벽면의 매우 좁은 세로형 틈새. 프테라노돈도 날개를 접어야 통과 가능.",
+                    "strategy_note": "대형 공룡 진입 불가. 뇌우 시 벨로나사우루스/검치호 등을 입구에 배치하여 보병 방어.",
+                    "pros": [
+                        "대형 공룡 방어",
+                        "좁은 입구"
+                    ],
+                    "cons": [
+                        "내부 공간 협소"
+                    ]
+                },
+                {
+                    "id": "se_world_border",
+                    "name": "세상의 끝 고지대",
+                    "coords": {
+                        "lat": 96.7,
+                        "lon": 23.2
+                    },
+                    "type": "Cliff",
+                    "tribe_size": "Small",
+                    "difficulty": "Medium",
+                    "entrance_size": "Flyer",
+                    "description": "맵 경계(Barrier)에 맞닿은 높은 절벽. 뒤쪽이 절대 뚫리지 않는 벽.",
+                    "strategy_note": "방어 방향을 전면과 하단으로 한정할 수 있어 소수 정예 방어에 최적.",
+                    "pros": [
+                        "후면 방어 불필요 (World Border)"
+                    ],
+                    "cons": [
+                        "공중 공격에 노출"
+                    ]
+                }
+            ]
+        },
+        {
+            "map_id": "the_center_asa",
+            "map_name": "The Center (ASA)",
+            "locations": [
+                {
+                    "id": "cnt_floating_plat",
+                    "name": "부유섬 절벽 플랫폼",
+                    "coords": {
+                        "lat": 83.6,
+                        "lon": 16.1
+                    },
+                    "type": "Cliff",
+                    "tribe_size": "Small",
+                    "difficulty": "Medium",
+                    "entrance_size": "Flyer",
+                    "description": "공중에 떠 있는 섬의 하단부 틈새. 지상 접근 불가.",
+                    "strategy_note": "아래쪽으로 터렛 배치 시 상승하는 적 요격 용이. 적 낙사 시 아이템 회수 불가 유도.",
+                    "pros": [
+                        "지상 접근 불가",
+                        "낙사 유도"
+                    ],
+                    "cons": [
+                        "플랫폼 필수"
+                    ]
+                },
+                {
+                    "id": "cnt_large_cavern",
+                    "name": "초소형 입구 동굴",
+                    "coords": {
+                        "lat": 75.5,
+                        "lon": 87.2
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Hard",
+                    "entrance_size": "Small",
+                    "description": "입구는 프테라급으로 작으나 내부는 기가노토 사육이 가능한 호리병 구조.",
+                    "strategy_note": "스테고 러시 방어 용이. 센터 맵 1티어 방어 거점.",
+                    "pros": [
+                        "호리병 구조",
+                        "넓은 내부"
+                    ],
+                    "cons": [
+                        "치열한 경쟁"
+                    ]
+                }
+            ]
+        },
+        {
+            "map_id": "future_maps",
+            "map_name": "Coming Soon (Ragnarok/Fjordur)",
+            "locations": [
+                {
+                    "id": "rag_desert_plateau",
+                    "name": "라그나로크 사막 고원",
+                    "coords": {
+                        "lat": 60.3,
+                        "lon": 59.8
+                    },
+                    "type": "Plateau",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Medium",
+                    "entrance_size": "Open",
+                    "description": "[예상] 사막 가장자리 거대 평지. 수원 확보 및 넓은 시야.",
+                    "strategy_note": "ASA 출시 시 나나이트 지형 변화 확인 필요.",
+                    "pros": [
+                        "농사 가능",
+                        "넓은 시야"
+                    ],
+                    "cons": [
+                        "개방형 지형"
+                    ]
+                },
+                {
+                    "id": "fjo_moria",
+                    "name": "피오르두르 모리아 광산",
+                    "coords": null,
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Hard",
+                    "entrance_size": "Large",
+                    "description": "[예상] 금속 밀집도 최상. 내부 평탄화 잘 되어있음.",
+                    "strategy_note": "자원 통제를 위한 알파 부족 1순위 타겟.",
+                    "pros": [
+                        "자원 풍부",
+                        "산업 단지 조성 용이"
+                    ],
+                    "cons": [
+                        "어그로 최상"
+                    ]
+                }
+            ]
+        }
+    ]
+}

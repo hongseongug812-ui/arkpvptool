@@ -1,0 +1,99 @@
+{
+    "structures": [
+        {
+            "id": "metal_wall",
+            "name": "Metal Wall",
+            "name_kr": "철제 벽",
+            "tier": "Metal",
+            "hp": 10000
+        },
+        {
+            "id": "metal_foundation",
+            "name": "Metal Foundation",
+            "name_kr": "철제 토대",
+            "tier": "Metal",
+            "hp": 15000
+        },
+        {
+            "id": "tek_wall",
+            "name": "Tek Wall",
+            "name_kr": "테크 벽",
+            "tier": "Tek",
+            "hp": 20000
+        },
+        {
+            "id": "tek_foundation",
+            "name": "Tek Foundation",
+            "name_kr": "테크 토대",
+            "tier": "Tek",
+            "hp": 30000
+        },
+        {
+            "id": "vault",
+            "name": "Vault",
+            "name_kr": "금고",
+            "tier": "Metal",
+            "hp": 50000
+        },
+        {
+            "id": "tek_forcefield",
+            "name": "Tek Forcefield",
+            "name_kr": "테크 포스필드",
+            "tier": "Tek",
+            "hp": 250000
+        }
+    ],
+    "explosives": [
+        {
+            "id": "c4",
+            "name": "C4 Charge",
+            "name_kr": "C4 폭약",
+            "damage": {
+                "Wood": 11812,
+                "Stone": 11812,
+                "Metal": 3544,
+                "Tek": 788
+            },
+            "recipe": {
+                "Gunpowder": 60,
+                "Crystal": 10,
+                "Cementing Paste": 5,
+                "Fiber": 50,
+                "Hide": 5,
+                "Polymer": 5,
+                "Electronics": 5
+            }
+        },
+        {
+            "id": "rocket_launcher",
+            "name": "Rocket Launcher",
+            "name_kr": "로켓 런처",
+            "damage": {
+                "Wood": 7350,
+                "Stone": 5512,
+                "Metal": 2205,
+                "Tek": 596
+            },
+            "recipe": {
+                "Gunpowder": 50,
+                "Crystal": 10,
+                "Cementing Paste": 8,
+                "Polymer": 2
+            }
+        },
+        {
+            "id": "tek_rifle",
+            "name": "Tek Rifle",
+            "name_kr": "테크 라이플",
+            "damage": {
+                "Wood": 536,
+                "Stone": 294,
+                "Metal": 29,
+                "Tek": 185
+            },
+            "recipe": {
+                "Element": 0.02
+            }
+        }
+    ]
+}

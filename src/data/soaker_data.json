@@ -1,0 +1,91 @@
+{
+    "turrets": [
+        {
+            "id": "auto_turret",
+            "name": "Auto Turret",
+            "name_kr": "자동 포탑",
+            "damage_per_shot": 77,
+            "multiplier_vs_dino": 2.2,
+            "rate_of_fire": 2.86
+        },
+        {
+            "id": "heavy_turret",
+            "name": "Heavy Auto Turret",
+            "name_kr": "중형 자동 포탑",
+            "damage_per_shot": 300,
+            "multiplier_vs_dino": 1.0,
+            "rate_of_fire": 2.5
+        },
+        {
+            "id": "tek_turret",
+            "name": "Tek Turret",
+            "name_kr": "테크 포탑",
+            "damage_per_shot": 500,
+            "multiplier_vs_dino": 1.0,
+            "rate_of_fire": 2.0
+        }
+    ],
+    "dinos": [
+        {
+            "id": "stego",
+            "name": "Stegosaurus",
+            "name_kr": "스테고",
+            "base_hp": 650,
+            "can_equip_saddle": true,
+            "special_abilities": [
+                {
+                    "mode_id": "hardened",
+                    "mode_name": "Hardened Plate (Orange)",
+                    "reduction_percent": 50
+                }
+            ]
+        },
+        {
+            "id": "carbonemys",
+            "name": "Carbonemys",
+            "name_kr": "카르보 (거북이)",
+            "base_hp": 250,
+            "can_equip_saddle": true,
+            "special_abilities": [
+                {
+                    "mode_id": "shell",
+                    "mode_name": "Shell Hit (등껍질)",
+                    "reduction_percent": 80
+                },
+                {
+                    "mode_id": "tail_leg",
+                    "mode_name": "Tail/Leg Hit (꼬리/다리)",
+                    "reduction_percent": 50
+                }
+            ]
+        },
+        {
+            "id": "gasbag",
+            "name": "Gasbag",
+            "name_kr": "가스백",
+            "base_hp": 400,
+            "can_equip_saddle": true,
+            "special_abilities": [
+                {
+                    "mode_id": "inflated",
+                    "mode_name": "Fully Inflated (가스 완충)",
+                    "reduction_percent": 80
+                }
+            ]
+        },
+        {
+            "id": "golem",
+            "name": "Rock Golem",
+            "name_kr": "바위 정령",
+            "base_hp": 2500,
+            "can_equip_saddle": true,
+            "special_abilities": [
+                {
+                    "mode_id": "passive",
+                    "mode_name": "Passive Reduction",
+                    "reduction_percent": 90
+                }
+            ]
+        }
+    ]
+}

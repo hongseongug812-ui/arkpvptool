@@ -1,0 +1,451 @@
+/* Page Header */
+.page-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-accent-glow);
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* Card Title */
+.card__title {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Grid Layout */
+.raid-calculator__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.raid-calculator__inputs,
+.raid-calculator__result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Select with Icon */
+.select-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    font-size: 1.25rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.select-with-icon .select {
+    padding-left: calc(var(--spacing-md) + 1.5rem + var(--spacing-sm));
+}
+
+/* Structure Info Card */
+.structure-info-card {
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.structure-info-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.structure-icon-lg {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px var(--color-accent-glow));
+}
+
+.structure-name {
+    font-size: 0.938rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    display: block;
+}
+
+.tier-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.tier-badge--metal {
+    background: rgba(156, 163, 175, 0.2);
+    color: #9ca3af;
+}
+
+.tier-badge--tek {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+}
+
+.tier-badge--stone {
+    background: rgba(161, 140, 114, 0.2);
+    color: #a18c72;
+}
+
+.tier-badge--wood {
+    background: rgba(139, 90, 43, 0.2);
+    color: #c9a66b;
+}
+
+.structure-hp {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    border-top: 1px dashed var(--color-border);
+}
+
+.structure-hp span:first-child {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.hp-value {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-danger);
+}
+
+/* Quantity Input */
+.quantity-input {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    background: var(--color-accent-dim);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.qty-value {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Calculate Button */
+.calculate-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    margin-top: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dim) 100%);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px var(--color-accent-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 25px var(--color-accent-glow), 0 0 40px var(--color-accent-dim);
+    }
+}
+
+/* Result Placeholder */
+.result-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+/* Result Error */
+.raid-result__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.error-icon {
+    font-size: 2.5rem;
+}
+
+/* Main Result with Impact */
+.raid-result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.raid-result__main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--color-accent-dim) 0%, rgba(255, 100, 50, 0.15) 100%);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Explosion Background Effect */
+.explosion-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--color-accent-glow) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: explosion-pulse 2s ease-in-out infinite;
+}
+
+@keyframes explosion-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+}
+
+.result-explosive-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+    filter: drop-shadow(0 0 15px var(--color-accent-glow));
+    position: relative;
+    z-index: 1;
+    animation: bounce 1s ease;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.result-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* Impact Number Animation */
+.result-count {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--color-accent);
+    text-shadow: 0 0 30px var(--color-accent-glow), 0 0 60px var(--color-accent-dim);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.animate-impact {
+    animation: impact 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes impact {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.result-unit {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats */
+.raid-result__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+}
+
+.stat-item span:first-child {
+    color: var(--color-text-muted);
+}
+
+.stat-item span:last-child {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+}
+
+/* Inventory Grid - Game Style */
+.raid-result__cost {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.raid-result__cost h4 {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.inventory-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.inventory-item:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.inventory-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.inventory-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+}
+
+.inventory-name {
+    font-size: 0.688rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inventory-amount {
+    font-family: var(--font-display);
+    font-size: 0.938rem;
+    font-weight: 700;
+    color: var(--color-success);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .raid-calculator__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-count {
+        font-size: 3rem;
+    }
+
+    .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+}

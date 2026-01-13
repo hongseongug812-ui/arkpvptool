@@ -1,0 +1,439 @@
+/* Page Header */
+.page-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-accent-glow);
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* ========================================
+   DINO GRID SECTION
+   ======================================== */
+.dino-grid-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.dino-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.dino-grid {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    scrollbar-width: thin;
+}
+
+.dino-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.dino-grid::-webkit-scrollbar-track {
+    background: var(--color-bg-tertiary);
+    border-radius: 3px;
+}
+
+.dino-grid::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+/* ========================================
+   DINO AVATAR
+   ======================================== */
+.dino-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.dino-avatar:hover {
+    transform: scale(1.05);
+}
+
+.dino-avatar__circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.dino-avatar:hover .dino-avatar__circle {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.dino-avatar--selected .dino-avatar__circle {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1));
+    box-shadow: 0 0 15px var(--color-accent-glow);
+}
+
+.dino-avatar__initial {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.dino-avatar--small .dino-avatar__circle {
+    width: 48px;
+    height: 48px;
+}
+
+.dino-avatar--small .dino-avatar__initial {
+    font-size: 1.25rem;
+}
+
+.dino-avatar--medium .dino-avatar__circle {
+    width: 60px;
+    height: 60px;
+}
+
+.dino-avatar--medium .dino-avatar__initial {
+    font-size: 1.5rem;
+}
+
+.dino-avatar--large .dino-avatar__circle {
+    width: 70px;
+    height: 70px;
+}
+
+.dino-avatar--large .dino-avatar__initial {
+    font-size: 1.75rem;
+}
+
+.dino-avatar__check {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--color-bg-primary);
+    box-shadow: 0 2px 6px rgba(0, 212, 255, 0.5);
+}
+
+.dino-avatar__name {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 56px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dino-avatar--selected .dino-avatar__name {
+    color: var(--color-accent);
+}
+
+/* ========================================
+   RATING GUIDE (Compact)
+   ======================================== */
+.rating-guide-compact {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.rating-guide-item {
+    opacity: 0.8;
+}
+
+/* ========================================
+   WATCHLIST CARDS
+   ======================================== */
+.watchlist-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Empty State */
+.watchlist-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xxl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--color-border);
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+}
+
+.watchlist-empty-state p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   WATCHLIST CARD
+   ======================================== */
+.watchlist-card {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.watchlist-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.watchlist-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-bg-tertiary), transparent);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.watchlist-card__info {
+    flex: 1;
+}
+
+.watchlist-card__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.watchlist-card__badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-shadow: 0 0 10px currentColor;
+}
+
+.watchlist-card__remove {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.watchlist-card__remove:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+}
+
+/* Stats Grid */
+.watchlist-card__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+}
+
+@media (min-width: 600px) {
+    .watchlist-card__stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   STAT COUNTER
+   ======================================== */
+.stat-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.stat-counter__label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-counter__controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.stat-counter__btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+
+.stat-counter__btn:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.stat-counter__btn:active {
+    transform: scale(0.95);
+}
+
+.stat-counter__btn--minus:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.stat-counter__value {
+    min-width: 50px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.stat-counter__point {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.stat-counter__point-value {
+    font-family: var(--font-display);
+    text-shadow: 0 0 8px currentColor;
+}
+
+.stat-counter__point-icon {
+    font-size: 0.75rem;
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+.btn--danger {
+    background: linear-gradient(135deg, #ff4757 0%, #c0392b 100%);
+    border-color: #ff4757;
+    color: white;
+}
+
+.btn--danger:hover {
+    background: linear-gradient(135deg, #ff6b7a 0%, #e74c3c 100%);
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+}
+
+.btn--sm {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.75rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 480px) {
+    .dino-grid-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .rating-guide-compact {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .watchlist-card__header {
+        flex-wrap: wrap;
+    }
+
+    .watchlist-card__stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-counter__value {
+        min-width: 40px;
+        font-size: 0.75rem;
+    }
+
+    .stat-counter__btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.875rem;
+    }
+}

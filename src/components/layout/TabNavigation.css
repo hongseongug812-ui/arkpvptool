@@ -1,0 +1,27 @@
+.tab-nav {
+    width: 100%;
+}
+
+.tab__icon {
+    font-size: 1rem;
+}
+
+.tab__label {
+    display: inline;
+}
+
+@media (max-width: 600px) {
+    .tab {
+        padding: var(--spacing-sm);
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .tab__icon {
+        font-size: 1.25rem;
+    }
+
+    .tab__label {
+        font-size: 0.625rem;
+    }
+}
