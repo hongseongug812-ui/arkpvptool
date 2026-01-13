@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGameVersion } from '../../context/GameVersionContext';
 import { dataManager } from '../../services/DataManager';
 import type { DinoStatsEntry, WatchlistEntry } from '../../types';
 import './StatEvaluator.css';
@@ -19,13 +20,19 @@ const LEVEL_CAP_PRESETS = [
 
 // Dino categories with all dinos properly categorized
 const DINO_CATEGORIES: Record<string, { icon: string; labelKr: string; labelEn: string; ids: string[] }> = {
-    pvp_meta: { icon: '⚔️', labelKr: 'PVP 메타', labelEn: 'PVP Meta', ids: ['stego', 'rex', 'carcha', 'giga', 'rhynio', 'shadowmane', 'thyla'] },
-    tankers: { icon: '🛡️', labelKr: '탱커', labelEn: 'Tankers', ids: ['carbonemys', 'trike', 'paracer', 'gasbag', 'therizino'] },
-    flyers: { icon: '🦅', labelKr: '비행', labelEn: 'Flyers', ids: ['pteranodon', 'argentavis', 'quetzal', 'wyvern', 'crystal_wyvern', 'desmodus', 'griffin', 'royal_griffin', 'rhynio', 'phoenix', 'pelagornis', 'lymantria', 'dimorphodon', 'archaeopteryx', 'sinomacrops', 'fjordhawk', 'featherlight', 'onyc', 'giant_bee', 'ichthyornis'] },
+    pvp_meta: { icon: '⚔️', labelKr: 'PVP 메타', labelEn: 'PVP Meta', ids: ['stego', 'rex', 'carcha', 'giga', 'shadowmane', 'thyla', 'rhynio'] },
+    dealers: { icon: '💥', labelKr: '딜러', labelEn: 'Dealers', ids: ['therizino', 'rhino', 'rex', 'carcha', 'giga', 'thyla'] },
+    tankers: { icon: '🛡️', labelKr: '탱커', labelEn: 'Tankers', ids: ['stego', 'carbonemys', 'trike', 'paracer', 'gasbag', 'rhynio'] },
+    flyers: { icon: '🦅', labelKr: '비행', labelEn: 'Flyers', ids: ['pteranodon', 'argentavis', 'quetzal', 'wyvern', 'crystal_wyvern', 'desmodus', 'griffin', 'rhynio', 'pelagornis'] },
     support: { icon: '💖', labelKr: '서포터', labelEn: 'Support', ids: ['yuty', 'daedon'] },
-    water: { icon: '🌊', labelKr: '수중', labelEn: 'Aquatic', ids: ['tusoteuthis'] },
-    utility: { icon: '🔧', labelKr: '유틸리티', labelEn: 'Utility', ids: ['rhino', 'astrocetus', 'astrodelphis'] },
+    water: { icon: '🌊', labelKr: '수중', labelEn: 'Aquatic', ids: ['tusoteuthis', 'carbonemys', 'pelagornis'] },
+    utility: { icon: '🔧', labelKr: '유틸리티', labelEn: 'Utility', ids: ['astrocetus', 'astrodelphis', 'sinomacrops', 'fjordhawk'] },
 };
+
+// ASA-only dinos (not in ASE)
+const ASA_ONLY_DINOS = ['carcha', 'rhynio', 'desmodus', 'fjordhawk', 'sinomacrops'];
+// ASE-only dinos (not in ASA yet)
+const ASE_ONLY_DINOS = ['astrocetus', 'astrodelphis', 'shadowmane', 'crystal_wyvern', 'gasbag'];
 
 const STAT_LABELS: Record<StatKey, { short: string; fullKr: string; fullEn: string }> = {
     health: { short: 'HP', fullKr: '체력', fullEn: 'Health' },
@@ -143,6 +150,7 @@ function WatchlistCard({ entry, dino, onStatChange, onRemove, isKorean, maxLevel
 
 export function StatEvaluator() {
     const { t, i18n } = useTranslation();
+    const { gameVersion } = useGameVersion();
     const isKorean = i18n.language === 'ko';
     const allDinos = dataManager.getAllDinoStats();
     const [watchlist, setWatchlist] = useState<WatchlistEntry[]>([]);
@@ -166,12 +174,25 @@ export function StatEvaluator() {
     useEffect(() => { if (watchlist.length > 0) localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist)); else localStorage.removeItem(WATCHLIST_KEY); }, [watchlist]);
     useEffect(() => { localStorage.setItem(LEVEL_CAP_KEY, JSON.stringify({ preset: levelCapPreset, custom: customLevelCap })); }, [levelCapPreset, customLevelCap]);
 
+    // Filter dinos by game version (ASA/ASE)
+    const versionFilteredDinos = useMemo(() => {
+        return allDinos.filter(dino => {
+            if (gameVersion === 'ASA') {
+                // In ASA mode, exclude ASE-only dinos
+                return !ASE_ONLY_DINOS.includes(dino.id);
+            } else {
+                // In ASE mode, exclude ASA-only dinos
+                return !ASA_ONLY_DINOS.includes(dino.id);
+            }
+        });
+    }, [allDinos, gameVersion]);
+
     // Group dinos by category
     const dinosByCategory = useMemo(() => {
         const grouped: Record<string, DinoStatsEntry[]> = {};
         const uncategorized: DinoStatsEntry[] = [];
 
-        for (const dino of allDinos) {
+        for (const dino of versionFilteredDinos) {
             const cat = getDinoCategory(dino.id);
             if (cat) {
                 if (!grouped[cat.key]) grouped[cat.key] = [];
@@ -186,7 +207,7 @@ export function StatEvaluator() {
         }
 
         return grouped;
-    }, [allDinos]);
+    }, [versionFilteredDinos]);
 
     // Filter dinos by search
     const filteredDinosByCategory = useMemo(() => {
