@@ -25,7 +25,7 @@ const DINO_CATEGORIES: Record<string, { icon: string; labelKr: string; labelEn: 
     tankers: { icon: '🛡️', labelKr: '탱커', labelEn: 'Tankers', ids: ['stego', 'carbonemys', 'trike', 'paracer', 'gasbag', 'rhynio'] },
     flyers: { icon: '🦅', labelKr: '비행', labelEn: 'Flyers', ids: ['pteranodon', 'argentavis', 'quetzal', 'wyvern', 'crystal_wyvern', 'desmodus', 'griffin', 'rhynio', 'pelagornis'] },
     support: { icon: '💖', labelKr: '서포터', labelEn: 'Support', ids: ['yuty', 'daedon'] },
-    water: { icon: '🌊', labelKr: '수중', labelEn: 'Aquatic', ids: ['tusoteuthis', 'carbonemys', 'pelagornis'] },
+    water: { icon: '🌊', labelKr: '수중', labelEn: 'Aquatic', ids: ['tusoteuthis', 'mosasaurus', 'megalodon', 'plesiosaurus', 'basilosaurus'] },
     utility: { icon: '🔧', labelKr: '유틸리티', labelEn: 'Utility', ids: ['astrocetus', 'astrodelphis', 'sinomacrops', 'fjordhawk'] },
 };
 
