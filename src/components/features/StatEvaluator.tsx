@@ -8,6 +8,16 @@ type StatKey = 'health' | 'stamina' | 'weight' | 'melee';
 
 interface Rating { tier: string; icon: string; nameKr: string; nameEn: string; color: string; bgColor: string; }
 
+// Dino categories for organization
+const DINO_CATEGORIES = {
+    pvp_meta: { icon: '⚔️', labelKr: 'PVP 메타', labelEn: 'PVP Meta', ids: ['stego', 'rex', 'carcha', 'giga', 'rhynio', 'shadowmane'] },
+    tankers: { icon: '🛡️', labelKr: '탱커', labelEn: 'Tankers', ids: ['carbonemys', 'trike', 'paracer', 'gasbag'] },
+    flyers: { icon: '🦅', labelKr: '비행', labelEn: 'Flyers', ids: ['pteranodon', 'argentavis', 'quetzal', 'wyvern', 'crystal_wyvern', 'desmodus', 'griffin'] },
+    support: { icon: '💖', labelKr: '서포터', labelEn: 'Support', ids: ['yuty', 'daedon'] },
+    water: { icon: '🌊', labelKr: '수중', labelEn: 'Aquatic', ids: ['tusoteuthis'] },
+    utility: { icon: '🔧', labelKr: '유틸리티', labelEn: 'Utility', ids: ['therizino', 'rhino', 'thyla'] },
+};
+
 const STAT_LABELS: Record<StatKey, { short: string; fullKr: string; fullEn: string }> = {
     health: { short: 'HP', fullKr: '체력', fullEn: 'Health' },
     stamina: { short: 'ST', fullKr: '기력', fullEn: 'Stamina' },
@@ -58,33 +68,24 @@ function StatCounter({ label, value, baseValue, incWild, point, rating, onChange
     );
 }
 
-interface DinoAvatarProps { dino: DinoStatsEntry; size?: 'small' | 'medium' | 'large'; isSelected?: boolean; onClick?: () => void; isKorean: boolean; }
-
-function DinoAvatar({ dino, size = 'medium', isSelected = false, onClick, isKorean }: DinoAvatarProps) {
-    const name = isKorean ? dino.name_kr : (dino.name_kr.split('(')[1]?.replace(')', '') || dino.name_kr);
-    const initial = name.charAt(0);
-    return (
-        <div className={`dino-avatar dino-avatar--${size} ${isSelected ? 'dino-avatar--selected' : ''}`} onClick={onClick} title={name}>
-            <div className="dino-avatar__circle"><span className="dino-avatar__initial">{initial}</span>{isSelected && <div className="dino-avatar__check">✓</div>}</div>
-            {size !== 'large' && <span className="dino-avatar__name">{name.split('(')[0].trim()}</span>}
-        </div>
-    );
-}
-
 interface WatchlistCardProps { entry: WatchlistEntry; dino: DinoStatsEntry; onStatChange: (statKey: StatKey, value: number) => void; onRemove: () => void; isKorean: boolean; }
 
 function WatchlistCard({ entry, dino, onStatChange, onRemove, isKorean }: WatchlistCardProps) {
     const statKeys: StatKey[] = ['health', 'stamina', 'weight', 'melee'];
     const points = statKeys.map(key => { const value = entry.currentStats[key]; const baseStat = dino.stats[key].base; const incWild = dino.stats[key].inc_wild; if (value <= baseStat || incWild === 0) return 0; return Math.round((value - baseStat) / incWild); });
     const overallRating = getOverallRating(points, isKorean);
-    const dinoName = isKorean ? dino.name_kr : (dino.name_kr.split('(')[1]?.replace(')', '') || dino.name_kr);
+    const dinoName = dino.name_kr.split('(')[0].trim();
+    const dinoRole = dino.name_kr.includes('(') ? dino.name_kr.split('(')[1]?.replace(')', '') : '';
 
     return (
         <div className="watchlist-card">
             <div className="watchlist-card__header">
-                <DinoAvatar dino={dino} size="large" isKorean={isKorean} />
+                <div className="watchlist-card__avatar">
+                    <span className="avatar-initial">{dinoName.charAt(0)}</span>
+                </div>
                 <div className="watchlist-card__info">
                     <h4 className="watchlist-card__name">{dinoName}</h4>
+                    {dinoRole && <span className="watchlist-card__role">{dinoRole}</span>}
                     {overallRating.badge && <span className="watchlist-card__badge" style={{ color: overallRating.color }}>{overallRating.badge}</span>}
                 </div>
                 <button className="watchlist-card__remove" onClick={onRemove} title={isKorean ? '제거' : 'Remove'}>✕</button>
@@ -108,9 +109,30 @@ export function StatEvaluator() {
     const isKorean = i18n.language === 'ko';
     const allDinos = dataManager.getAllDinoStats();
     const [watchlist, setWatchlist] = useState<WatchlistEntry[]>([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     useEffect(() => { const saved = localStorage.getItem(WATCHLIST_KEY); if (saved) { try { setWatchlist(JSON.parse(saved)); } catch (e) { console.error('Failed to parse watchlist:', e); } } }, []);
     useEffect(() => { if (watchlist.length > 0) localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist)); else localStorage.removeItem(WATCHLIST_KEY); }, [watchlist]);
+
+    // Filter dinos by search and category
+    const filteredDinos = useMemo(() => {
+        let result = allDinos;
+
+        // Filter by search
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            result = result.filter(d => d.name_kr.toLowerCase().includes(q) || d.id.toLowerCase().includes(q));
+        }
+
+        // Filter by category
+        if (selectedCategory && DINO_CATEGORIES[selectedCategory as keyof typeof DINO_CATEGORIES]) {
+            const categoryIds = DINO_CATEGORIES[selectedCategory as keyof typeof DINO_CATEGORIES].ids;
+            result = result.filter(d => categoryIds.includes(d.id));
+        }
+
+        return result;
+    }, [allDinos, searchQuery, selectedCategory]);
 
     const handleAddDino = useCallback((dino: DinoStatsEntry) => {
         if (watchlist.some(w => w.dinoId === dino.id)) { setWatchlist(prev => prev.filter(w => w.dinoId !== dino.id)); }
@@ -131,16 +153,91 @@ export function StatEvaluator() {
                 <p className="page-desc">{t('stats.desc')}</p>
             </div>
 
-            <div className="dino-grid-section">
-                <div className="dino-grid-header">
-                    <h3 className="section-title">🦖 {t('stats.selectDino')}</h3>
-                    {watchlist.length > 0 && <button className="btn btn--danger btn--sm" onClick={handleClearAll}>🗑️ {isKorean ? '전체 삭제' : 'Clear All'}</button>}
+            {/* Improved Dino Selection */}
+            <div className="dino-selector-section">
+                {/* Search Box */}
+                <div className="dino-search-box">
+                    <span className="search-icon">🔍</span>
+                    <input
+                        type="text"
+                        className="dino-search-input"
+                        placeholder={isKorean ? '공룡 검색...' : 'Search dino...'}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    {searchQuery && (
+                        <button className="search-clear" onClick={() => setSearchQuery('')}>✕</button>
+                    )}
                 </div>
-                <div className="dino-grid">
-                    {allDinos.map((dino) => <DinoAvatar key={dino.id} dino={dino} size="small" isSelected={watchlist.some(w => w.dinoId === dino.id)} onClick={() => handleAddDino(dino)} isKorean={isKorean} />)}
+
+                {/* Category Filter */}
+                <div className="category-tabs">
+                    <button
+                        className={`category-tab ${!selectedCategory ? 'category-tab--active' : ''}`}
+                        onClick={() => setSelectedCategory(null)}
+                    >
+                        <span className="category-icon">📋</span>
+                        <span className="category-label">{isKorean ? '전체' : 'All'}</span>
+                    </button>
+                    {Object.entries(DINO_CATEGORIES).map(([key, cat]) => (
+                        <button
+                            key={key}
+                            className={`category-tab ${selectedCategory === key ? 'category-tab--active' : ''}`}
+                            onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
+                        >
+                            <span className="category-icon">{cat.icon}</span>
+                            <span className="category-label">{isKorean ? cat.labelKr : cat.labelEn}</span>
+                        </button>
+                    ))}
                 </div>
+
+                {/* Dino Grid - Improved Visual Cards */}
+                <div className="dino-select-grid">
+                    {filteredDinos.length === 0 ? (
+                        <div className="no-dino-result">
+                            <span>🦕</span>
+                            <p>{isKorean ? '검색 결과가 없습니다' : 'No results found'}</p>
+                        </div>
+                    ) : (
+                        filteredDinos.map((dino) => {
+                            const isSelected = watchlist.some(w => w.dinoId === dino.id);
+                            const dinoName = dino.name_kr.split('(')[0].trim();
+                            const dinoRole = dino.name_kr.includes('(') ? dino.name_kr.split('(')[1]?.replace(')', '') : '';
+
+                            return (
+                                <div
+                                    key={dino.id}
+                                    className={`dino-select-card ${isSelected ? 'dino-select-card--selected' : ''}`}
+                                    onClick={() => handleAddDino(dino)}
+                                >
+                                    <div className="dino-select-card__avatar">
+                                        <span>{dinoName.charAt(0)}</span>
+                                        {isSelected && <div className="dino-select-card__check">✓</div>}
+                                    </div>
+                                    <div className="dino-select-card__info">
+                                        <span className="dino-select-card__name">{dinoName}</span>
+                                        {dinoRole && <span className="dino-select-card__role">{dinoRole}</span>}
+                                    </div>
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
+
+                {/* Action Bar */}
+                {watchlist.length > 0 && (
+                    <div className="dino-action-bar">
+                        <span className="selected-count">
+                            {isKorean ? `${watchlist.length}개 선택됨` : `${watchlist.length} selected`}
+                        </span>
+                        <button className="btn btn--danger btn--sm" onClick={handleClearAll}>
+                            🗑️ {isKorean ? '전체 삭제' : 'Clear All'}
+                        </button>
+                    </div>
+                )}
             </div>
 
+            {/* Rating Guide */}
             <div className="rating-guide-compact">
                 <span className="rating-guide-item" style={{ color: '#FFD700' }}>🔴 50+</span>
                 <span className="rating-guide-item" style={{ color: '#9B59B6' }}>🟣 40+</span>
@@ -149,6 +246,7 @@ export function StatEvaluator() {
                 <span className="rating-guide-item" style={{ color: '#888888' }}>💩 0-19</span>
             </div>
 
+            {/* Watchlist Cards */}
             <div className="watchlist-cards">
                 {watchlist.length === 0 ? (
                     <div className="watchlist-empty-state">
