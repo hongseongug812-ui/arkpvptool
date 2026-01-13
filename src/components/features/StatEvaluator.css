@@ -17,6 +17,103 @@
 }
 
 /* ========================================
+   LEVEL CAP SECTION
+   ======================================== */
+.level-cap-section {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.level-cap-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.level-cap-icon {
+    font-size: 1.25rem;
+}
+
+.level-cap-title {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    flex: 1;
+}
+
+.level-cap-value {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-shadow: 0 0 8px var(--color-accent-glow);
+}
+
+.level-cap-presets {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.level-cap-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.level-cap-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
+}
+
+.level-cap-btn--active {
+    background: var(--color-accent-dim);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.custom-level-input {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.custom-level-field {
+    width: 100px;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.custom-level-field:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+.custom-level-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* ========================================
    DINO SELECTOR SECTION - IMPROVED
    ======================================== */
 .dino-selector-section {
@@ -392,11 +489,41 @@
     margin: 0 0 var(--spacing-xs) 0;
 }
 
-.watchlist-card__role {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
+.watchlist-card__meta {
+    display: flex;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-xs);
+}
+
+.watchlist-card__category {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-accent-dim);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.watchlist-card__role {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg-tertiary);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.dino-select-card__category-tag {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 0.625rem;
+    background: var(--color-bg-secondary);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .watchlist-card__badge {
@@ -505,6 +632,32 @@
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text-primary);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+}
+
+.stat-counter__value:hover {
+    background: var(--color-bg-secondary);
+}
+
+.stat-counter__input {
+    width: 60px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs);
+}
+
+.stat-counter__input:focus {
+    outline: none;
+    box-shadow: 0 0 8px var(--color-accent-glow);
 }
 
 .stat-counter__point {
