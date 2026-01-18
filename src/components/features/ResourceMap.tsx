@@ -51,6 +51,9 @@ const RESOURCES: Record<string, Resource> = {
     obelisk: { id: 'obelisk', nameKr: '오벨리스크', nameEn: 'Obelisk', icon: '🔺', color: '#ff4444' },
     cave: { id: 'cave', nameKr: '동굴/아티팩트', nameEn: 'Cave/Artifact', icon: '🕳️', color: '#8844ff' },
     deepsea: { id: 'deepsea', nameKr: '딥시 크레이트', nameEn: 'Deep Sea Crate', icon: '📦', color: '#0088ff' },
+    water_vein: { id: 'water_vein', nameKr: '물 베인', nameEn: 'Water Vein', icon: '💧', color: '#00aaff' },
+    oil_vein: { id: 'oil_vein', nameKr: '오일 베인', nameEn: 'Oil Vein', icon: '🛢️', color: '#333333' },
+    wyvern: { id: 'wyvern', nameKr: '와이번 둥지', nameEn: 'Wyvern Nest', icon: '🐉', color: '#ff6600' },
 };
 
 // Maps with resource locations
@@ -96,13 +99,23 @@ const MAPS: GameMap[] = [
         nameEn: 'Scorched Earth',
         image: '/maps/ScorchedEarth.png',
         resources: [
-            { resourceId: 'metal', x: 80, y: 20, size: 'lg', note: '북동 산' },
-            { resourceId: 'metal', x: 20, y: 30, size: 'lg', note: '북서 산' },
-            { resourceId: 'crystal', x: 75, y: 25, size: 'md' },
+            // ===== Water Veins =====
+            { resourceId: 'water_vein', x: 18, y: 12.5, size: 'lg', note: 'NW Plateau 물 베인' },
+            { resourceId: 'water_vein', x: 47.7, y: 50.2, size: 'lg', note: 'Central Oasis 물 베인' },
+            { resourceId: 'water_vein', x: 72.9, y: 84.1, size: 'md', note: 'SE Dunes 물 베인' },
+            // ===== Oil Veins =====
+            { resourceId: 'oil_vein', x: 12.7, y: 18.4, size: 'lg', note: 'SW Oil Field' },
+            { resourceId: 'oil_vein', x: 50.5, y: 52.8, size: 'lg', note: 'Central Plateau' },
+            { resourceId: 'oil_vein', x: 86.3, y: 78.6, size: 'md', note: 'NE Field' },
+            // ===== Wyvern Nests =====
+            { resourceId: 'wyvern', x: 42, y: 48.7, size: 'lg', note: 'World Scar West' },
+            { resourceId: 'wyvern', x: 55.1, y: 53.6, size: 'lg', note: 'World Scar East' },
+            { resourceId: 'wyvern', x: 36.2, y: 64.9, size: 'md', note: 'South Pass' },
+            // ===== Sulfur =====
             { resourceId: 'sulfur', x: 85, y: 70, size: 'lg', note: '황무지' },
             { resourceId: 'sulfur', x: 15, y: 80, size: 'lg', note: '남서 사막' },
-            { resourceId: 'oil', x: 50, y: 50, size: 'md', note: '오아시스' },
-            { resourceId: 'cactussap', x: 40, y: 60, size: 'lg', note: '사막 전역' },
+            // ===== Cactus Sap =====
+            { resourceId: 'cactussap', x: 50, y: 50, size: 'lg', note: '사막 전역' },
         ]
     },
     {
