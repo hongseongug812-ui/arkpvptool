@@ -395,8 +395,8 @@ export function ResourceMap() {
                                 key={idx}
                                 className={`resource-point resource-point--${loc.size || 'md'}`}
                                 style={{
-                                    left: `${loc.x}%`,
-                                    top: `${loc.y}%`,
+                                    left: `${loc.y}%`,
+                                    top: `${loc.x}%`,
                                     '--point-color': res.color,
                                 } as React.CSSProperties}
                                 onMouseEnter={() => setHoveredPoint(loc)}
@@ -412,8 +412,8 @@ export function ResourceMap() {
                         <div
                             className="resource-tooltip"
                             style={{
-                                left: `${hoveredPoint.x}%`,
-                                top: `${hoveredPoint.y - 10}%`
+                                left: `${hoveredPoint.y}%`,
+                                top: `${hoveredPoint.x - 10}%`
                             }}
                         >
                             {RESOURCES[hoveredPoint.resourceId]?.icon} {isKorean ? RESOURCES[hoveredPoint.resourceId]?.nameKr : RESOURCES[hoveredPoint.resourceId]?.nameEn}
