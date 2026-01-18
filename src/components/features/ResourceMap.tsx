@@ -320,8 +320,8 @@ export function ResourceMap() {
     const [editMode, setEditMode] = useState(false);
     const [addMode, setAddMode] = useState(false);
     const [resourceToAdd, setResourceToAdd] = useState<string>('metal');
-    const [draggingIdx, setDraggingIdx] = useState<number | null>(null);
-    const [positionOverrides, setPositionOverrides] = useState<Record<string, Record<number, { x: number; y: number }>>>(() => {
+    const [draggingIdx, setDraggingIdx] = useState<string | null>(null);
+    const [positionOverrides, setPositionOverrides] = useState<Record<string, Record<string, { x: number; y: number }>>>(() => {
         const saved = localStorage.getItem('resourceMapPositions');
         return saved ? JSON.parse(saved) : {};
     });
@@ -337,32 +337,36 @@ export function ResourceMap() {
 
     const currentMap = useMemo(() => MAPS.find(m => m.id === selectedMap), [selectedMap]);
 
-    const getAdjustedPosition = (mapId: string, idx: number, original: { x: number; y: number }) => {
-        return positionOverrides[mapId]?.[idx] || original;
+    const getAdjustedPosition = (mapId: string, key: string, original: { x: number; y: number }) => {
+        return positionOverrides[mapId]?.[key] || original;
     };
 
     // Combine built-in resources with custom markers, excluding hidden ones
+    // Each item includes the original index and isCustom flag for proper tracking
     const allResources = useMemo(() => {
         if (!currentMap) return [];
         const hidden = hiddenMarkers[currentMap.id] || [];
-        const builtIn = currentMap.resources.filter((_, idx) => !hidden.includes(idx));
-        const custom = customMarkers[currentMap.id] || [];
+        const builtIn = currentMap.resources
+            .map((loc, idx) => ({ loc, originalIdx: idx, isCustom: false }))
+            .filter(item => !hidden.includes(item.originalIdx));
+        const custom = (customMarkers[currentMap.id] || [])
+            .map((loc, idx) => ({ loc, originalIdx: idx, isCustom: true }));
         return [...builtIn, ...custom];
     }, [currentMap, customMarkers, hiddenMarkers]);
 
     const filteredResources = useMemo(() => {
         if (!selectedResource) return allResources;
-        return allResources.filter(r => r.resourceId === selectedResource);
+        return allResources.filter(item => item.loc.resourceId === selectedResource);
     }, [allResources, selectedResource]);
 
     const uniqueResourceIds = useMemo(() => {
-        return [...new Set(allResources.map(r => r.resourceId))];
+        return [...new Set(allResources.map(item => item.loc.resourceId))];
     }, [allResources]);
 
-    const handleMouseDown = (e: React.MouseEvent, idx: number) => {
+    const handleMouseDown = (e: React.MouseEvent, markerKey: string) => {
         if (!editMode || addMode) return;
         e.preventDefault();
-        setDraggingIdx(idx);
+        setDraggingIdx(markerKey);
     };
 
     const handleMouseMove = (e: React.MouseEvent) => {
@@ -416,33 +420,25 @@ export function ResourceMap() {
         console.log('➕ Added new marker:', newMarker);
     };
 
-    const deleteMarker = (loc: ResourceLocation, allIdx: number) => {
+    const deleteMarker = (item: { loc: ResourceLocation; originalIdx: number; isCustom: boolean }) => {
         if (!currentMap) return;
 
-        // Find original index in currentMap.resources
-        const originalIdx = currentMap.resources.indexOf(loc);
-        const isBuiltIn = originalIdx !== -1;
-
-        if (isBuiltIn) {
+        if (!item.isCustom) {
             // Hide built-in marker
             const currentHidden = hiddenMarkers[currentMap.id] || [];
-            const updated = { ...hiddenMarkers, [currentMap.id]: [...currentHidden, originalIdx] };
+            const updated = { ...hiddenMarkers, [currentMap.id]: [...currentHidden, item.originalIdx] };
             setHiddenMarkers(updated);
             localStorage.setItem('resourceMapHiddenMarkers', JSON.stringify(updated));
-            console.log('👁️ Hidden built-in marker at index:', originalIdx);
+            console.log('👁️ Hidden built-in marker at originalIdx:', item.originalIdx);
         } else {
             // Delete custom marker
-            const hidden = hiddenMarkers[currentMap.id] || [];
-            const visibleBuiltInCount = currentMap.resources.filter((_, idx) => !hidden.includes(idx)).length;
-            const customIdx = allIdx - visibleBuiltInCount;
-
             const currentCustom = customMarkers[currentMap.id] || [];
-            const newCustom = currentCustom.filter((_, i) => i !== customIdx);
+            const newCustom = currentCustom.filter((_, i) => i !== item.originalIdx);
 
             const updated = { ...customMarkers, [currentMap.id]: newCustom };
             setCustomMarkers(updated);
             localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
-            console.log('🗑️ Deleted custom marker, remaining:', newCustom.length);
+            console.log('🗑️ Deleted custom marker at originalIdx:', item.originalIdx);
         }
     };
 
@@ -575,16 +571,16 @@ export function ResourceMap() {
                     />
 
                     {/* Resource Points */}
-                    {currentMap && filteredResources.map((loc, idx) => {
+                    {currentMap && filteredResources.map((item) => {
+                        const { loc, isCustom, originalIdx } = item;
                         const res = RESOURCES[loc.resourceId];
                         if (!res) return null;
-                        const allIdx = allResources.indexOf(loc);
-                        const pos = getAdjustedPosition(currentMap.id, allIdx, { x: loc.x, y: loc.y });
-                        const isCustom = allIdx >= currentMap.resources.length;
+                        const markerKey = `${isCustom ? 'c' : 'b'}-${originalIdx}`;
+                        const pos = getAdjustedPosition(currentMap.id, markerKey, { x: loc.x, y: loc.y });
                         return (
                             <div
-                                key={idx}
-                                className={`resource-point resource-point--${loc.size || 'md'} ${editMode && !addMode ? 'draggable' : ''} ${draggingIdx === allIdx ? 'dragging' : ''} ${isCustom ? 'custom' : ''}`}
+                                key={markerKey}
+                                className={`resource-point resource-point--${loc.size || 'md'} ${editMode && !addMode ? 'draggable' : ''} ${draggingIdx === markerKey ? 'dragging' : ''} ${isCustom ? 'custom' : ''}`}
                                 style={{
                                     left: `${pos.x}%`,
                                     top: `${pos.y}%`,
@@ -592,10 +588,10 @@ export function ResourceMap() {
                                 } as React.CSSProperties}
                                 onMouseEnter={() => !editMode && setHoveredPoint(loc)}
                                 onMouseLeave={() => setHoveredPoint(null)}
-                                onMouseDown={(e) => handleMouseDown(e, allIdx)}
+                                onMouseDown={(e) => handleMouseDown(e, markerKey)}
                                 onContextMenu={(e) => {
                                     e.preventDefault();
-                                    if (editMode) deleteMarker(loc, allIdx);
+                                    if (editMode) deleteMarker(item);
                                 }}
                             >
                                 <span>{res.icon}</span>
@@ -603,7 +599,7 @@ export function ResourceMap() {
                                 {editMode && (
                                     <button
                                         className="delete-marker-btn"
-                                        onClick={(e) => { e.stopPropagation(); deleteMarker(loc, allIdx); }}
+                                        onClick={(e) => { e.stopPropagation(); deleteMarker(item); }}
                                     >
                                         ✕
                                     </button>

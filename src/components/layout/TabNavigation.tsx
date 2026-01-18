@@ -7,8 +7,8 @@ interface TabNavigationProps {
 }
 
 const tabs: { id: TabId; label: string; icon: string }[] = [
-    { id: 'raid', label: 'Raid Calculator', icon: '💣' },
-    { id: 'soak', label: 'Soaking Sim', icon: '🦖' },
+    { id: 'combat', label: 'Raid Calculator', icon: '💣' },
+    { id: 'dino', label: 'Soaking Sim', icon: '🦖' },
     { id: 'map', label: 'Rathole DB', icon: '🗺️' },
 ];
 
