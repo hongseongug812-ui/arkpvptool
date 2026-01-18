@@ -99,6 +99,7 @@ function getDinoImageUrl(dinoId: string): string {
         'carcha': 'carcharodontosaurus',
         'stego': 'stegosaurus',
         'giga': 'giganotosaurus',
+        'yuty': 'yutyrannus',
         'rex': 'rex',
         'daedon': 'daeodon',
         'thyla': 'thylacoleo',

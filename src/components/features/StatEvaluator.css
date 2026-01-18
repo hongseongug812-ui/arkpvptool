@@ -317,18 +317,30 @@
     color: var(--color-text-muted);
 }
 
-/* Dino Selection Grid - Card Style */
+/* Dino Selection Grid - Dododex Card Style */
 .dino-select-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: var(--spacing-sm);
-    max-height: 300px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    max-height: 500px;
     overflow-y: auto;
     padding: var(--spacing-md);
     background: var(--color-bg-secondary);
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
     scrollbar-width: thin;
+}
+
+@media (max-width: 768px) {
+    .dino-select-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .dino-select-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .dino-select-grid::-webkit-scrollbar {
@@ -344,84 +356,46 @@
     border-radius: 3px;
 }
 
-/* Dino Select Card */
+/* Dino Select Card - Large Image Style */
 .dino-select-card {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    flex-direction: column;
     background: var(--color-bg-tertiary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
+    overflow: hidden;
 }
 
 .dino-select-card:hover {
     border-color: var(--color-accent);
-    background: var(--color-bg-card);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .dino-select-card--selected {
     border-color: var(--color-accent);
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 212, 255, 0.05));
-    box-shadow: 0 0 15px var(--color-accent-glow);
+    box-shadow: 0 0 20px var(--color-accent-glow);
 }
 
-.dino-select-card__avatar {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
-    border: 2px solid var(--color-border);
-    border-radius: 50%;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    flex-shrink: 0;
-}
-
-.dino-select-card--selected .dino-select-card__avatar {
-    border-color: var(--color-accent);
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 212, 255, 0.1));
-}
-
-.dino-select-card__check {
-    position: absolute;
-    bottom: -3px;
-    right: -3px;
-    width: 16px;
-    height: 16px;
-    background: var(--color-accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.625rem;
-    font-weight: bold;
-    color: var(--color-bg-primary);
-}
-
+/* Card Header with Name */
 .dino-select-card__info {
-    flex: 1;
-    min-width: 0;
     display: flex;
     flex-direction: column;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), transparent);
+    order: -1;
 }
 
 .dino-select-card__name {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.875rem;
+    font-weight: 700;
     color: var(--color-text-primary);
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .dino-select-card--selected .dino-select-card__name {
@@ -431,9 +405,57 @@
 .dino-select-card__role {
     font-size: 0.625rem;
     color: var(--color-text-muted);
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+}
+
+/* Card Avatar/Image Container */
+.dino-select-card__avatar {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
+    overflow: hidden;
+}
+
+.dino-select-card__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.dino-select-card__initial {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.dino-select-card__check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--color-bg-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* No Result */
@@ -582,25 +604,6 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-}
-
-.dino-select-card__avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.dino-select-card__initial {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
 }
 
 .watchlist-card__info {
