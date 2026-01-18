@@ -59,6 +59,10 @@ const RESOURCES: Record<string, Resource> = {
     drake_nest: { id: 'drake_nest', nameKr: '락 드레이크 둥지', nameEn: 'Rock Drake Nest', icon: '🦎', color: '#00ccff' },
     reaper: { id: 'reaper', nameKr: '리퍼 퀘 구역', nameEn: 'Reaper Queen Zone', icon: '👾', color: '#ff0066' },
     surface: { id: 'surface', nameKr: '지표 입구', nameEn: 'Surface Entrance', icon: '☀️', color: '#ffaa00' },
+    osd: { id: 'osd', nameKr: 'OSD', nameEn: 'Orbital Supply Drop', icon: '📡', color: '#00ff00' },
+    element_vein: { id: 'element_vein', nameKr: '엘리먼트 베인', nameEn: 'Element Vein', icon: '💎', color: '#ff00ff' },
+    titan: { id: 'titan', nameKr: '타이탄 터미널', nameEn: 'Titan Terminal', icon: '👹', color: '#ff4400' },
+    city: { id: 'city', nameKr: '도시 터미널', nameEn: 'City Terminal', icon: '🏙️', color: '#00ffff' },
 };
 
 // Maps with resource locations
@@ -163,12 +167,28 @@ const MAPS: GameMap[] = [
         nameEn: 'Extinction',
         image: '/maps/Extinction.png',
         resources: [
-            { resourceId: 'metal', x: 25, y: 25, size: 'lg', note: '눈 돔' },
-            { resourceId: 'metal', x: 70, y: 30, size: 'lg', note: '황무지' },
-            { resourceId: 'crystal', x: 30, y: 28, size: 'md', note: '눈 돔' },
-            { resourceId: 'oil', x: 55, y: 25, size: 'lg', note: '도시 북쪽' },
-            { resourceId: 'element', x: 50, y: 50, size: 'lg', note: '도시 중심' },
-            { resourceId: 'polymer', x: 50, y: 55, size: 'md', note: '도시' },
+            // ===== OSD Pads =====
+            { resourceId: 'osd', x: 18.9, y: 12.4, size: 'lg', note: 'NW Industrial Sector' },
+            { resourceId: 'osd', x: 31.1, y: 24.8, size: 'lg', note: 'West Ruins' },
+            { resourceId: 'osd', x: 50.4, y: 49.6, size: 'lg', note: 'Sanctuary Rooftop' },
+            { resourceId: 'osd', x: 63, y: 69.2, size: 'md', note: 'South Park / Plaza' },
+            // ===== Element Veins =====
+            { resourceId: 'element_vein', x: 22.5, y: 15, size: 'md', note: '10k - North Corridor' },
+            { resourceId: 'element_vein', x: 52.2, y: 48.9, size: 'lg', note: '25k - Mid-City' },
+            { resourceId: 'element_vein', x: 45.3, y: 86.6, size: 'lg', note: '50k - Corrupted Core Edge' },
+            // ===== City Terminal =====
+            { resourceId: 'city', x: 50, y: 50, size: 'lg', note: 'Sanctuary Center' },
+            // ===== Titan Terminals =====
+            { resourceId: 'titan', x: 40.5, y: 28, size: 'lg', note: 'Forest Titan' },
+            { resourceId: 'titan', x: 68.1, y: 72.4, size: 'lg', note: 'Desert Titan' },
+            { resourceId: 'titan', x: 82.2, y: 12, size: 'lg', note: 'Ice Titan' },
+            // ===== Landmarks =====
+            { resourceId: 'obelisk', x: 92.7, y: 10.5, size: 'lg', note: 'Snow Dome ❄️' },
+            { resourceId: 'obelisk', x: 12.6, y: 78.9, size: 'lg', note: 'Desert Dome 🏜️' },
+            { resourceId: 'obelisk', x: 72, y: 60.3, size: 'lg', note: 'Sunken Forest 🌳' },
+            // ===== Resources =====
+            { resourceId: 'element', x: 54, y: 46.8, size: 'lg', note: 'Element Dust - City Benches' },
+            { resourceId: 'polymer', x: 32.4, y: 88.1, size: 'lg', note: 'Corrupted Nodules' },
         ]
     },
     {
