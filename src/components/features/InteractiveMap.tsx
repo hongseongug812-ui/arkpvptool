@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useRef, useEffect } from 'react';
 import type { RatholeLocation } from '../../types';
 import './InteractiveMap.css';
 
@@ -109,6 +109,12 @@ export function InteractiveMap({
 
     // Get map image URL
     const mapImageUrl = MAP_IMAGES[mapId] || null;
+
+    // Reset image state when map changes
+    useEffect(() => {
+        setImageLoaded(false);
+        setImageError(false);
+    }, [mapId]);
 
     // Get unique location types for legend
     const locationTypes = useMemo(() => {
