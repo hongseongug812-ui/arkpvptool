@@ -84,6 +84,53 @@ function getDinoCategory(dinoId: string): { key: string; icon: string; labelKr: 
     return null;
 }
 
+// Get dino image URL - handles various naming conventions
+function getDinoImageUrl(dinoId: string): string {
+    // Convert id to potential file names
+    const variations = [
+        dinoId.replace(/_/g, '-'),           // underscore to hyphen
+        dinoId.replace(/-/g, '_'),           // hyphen to underscore
+        dinoId.replace(/[_-]/g, ''),         // no separator
+        dinoId,                               // as-is
+    ];
+
+    // Special mappings for known mismatches
+    const specialMappings: Record<string, string> = {
+        'carcha': 'carcharodontosaurus',
+        'stego': 'stegosaurus',
+        'giga': 'giganotosaurus',
+        'rex': 'rex',
+        'daedon': 'daeodon',
+        'thyla': 'thylacoleo',
+        'therizino': 'therizinosaur',
+        'rhynio': 'rhyniognatha',
+        'trike': 'triceratops',
+        'paracer': 'paraceratherium',
+        'gasbag': 'gasbags',
+        'rhino': 'woolly-rhino',
+        'giant_bee': 'giant-queen-bee',
+        'royal_griffin': 'griffin',
+        'woolly_rhino': 'woolly-rhino',
+        'dire_bear': 'dire-bear',
+        'rock_elemental': 'rock-elemental',
+        'rock_drake': 'rock-drake',
+        'snow_owl': 'snow-owl',
+        'terror_bird': 'terror-bird',
+        'dung_beetle': 'dung-beetle',
+        'thorny_dragon': 'thorny-dragon',
+        'crystal_wyvern': 'crystal-wyvern',
+        'tek_stryder': 'tek-stryder',
+        'stryder': 'tek-stryder',
+        'spinosaurus': 'spino',
+        'carbonemys': 'carbonemys',
+        'tusoteuthis': 'tusoteuthis',
+        'yi_ling': 'yi-ling',
+    };
+
+    const mappedId = specialMappings[dinoId] || variations[0];
+    return `/dinos/${mappedId}.png`;
+}
+
 interface StatCounterProps { label: string; value: number; baseValue: number; incWild: number; point: number; rating: Rating; onChange: (value: number) => void; isKorean: boolean; maxPoints: number; }
 
 function StatCounter({ label, value, baseValue, incWild, point, rating, onChange, isKorean, maxPoints }: StatCounterProps) {
@@ -130,7 +177,18 @@ function WatchlistCard({ entry, dino, onStatChange, onRemove, isKorean, maxLevel
     return (
         <div className="watchlist-card">
             <div className="watchlist-card__header">
-                <div className="watchlist-card__avatar"><span className="avatar-initial">{dinoName.charAt(0)}</span></div>
+                <div className="watchlist-card__avatar">
+                    <img
+                        src={getDinoImageUrl(dino.id)}
+                        alt={dinoName}
+                        className="watchlist-card__avatar-img"
+                        onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                        }}
+                    />
+                    <span className="avatar-initial hidden">{dinoName.charAt(0)}</span>
+                </div>
                 <div className="watchlist-card__info">
                     <h4 className="watchlist-card__name">{dinoName}</h4>
                     <div className="watchlist-card__meta">
@@ -337,7 +395,17 @@ export function StatEvaluator() {
                                 return (
                                     <div key={dino.id} className={`dino-select-card ${isSelected ? 'dino-select-card--selected' : ''}`} onClick={() => handleAddDino(dino)}>
                                         <div className="dino-select-card__avatar">
-                                            <span>{dinoName.charAt(0)}</span>
+                                            <img
+                                                src={getDinoImageUrl(dino.id)}
+                                                alt={dinoName}
+                                                className="dino-select-card__avatar-img"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    const sibling = e.currentTarget.nextElementSibling as HTMLElement;
+                                                    if (sibling) sibling.style.display = 'flex';
+                                                }}
+                                            />
+                                            <span className="dino-select-card__initial" style={{ display: 'none' }}>{dinoName.charAt(0)}</span>
                                             {isSelected && <div className="dino-select-card__check">✓</div>}
                                         </div>
                                         <div className="dino-select-card__info">

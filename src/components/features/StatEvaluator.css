@@ -573,6 +573,36 @@
     text-shadow: 0 0 10px var(--color-accent-glow);
 }
 
+.avatar-initial.hidden {
+    display: none;
+}
+
+.watchlist-card__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dino-select-card__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dino-select-card__initial {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .watchlist-card__info {
     flex: 1;
 }
