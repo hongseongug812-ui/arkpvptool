@@ -26,22 +26,22 @@ const MAP_IMAGES: Record<string, string> = {
     'scorched_earth_asa': '/maps/ScorchedEarth.png',
     'scorched_earth_ase': '/maps/ScorchedEarth.png',
     // Aberration
-    'aberration': '/maps/Aberration.png',
-    'aberration_asa': '/maps/Aberration.png',
-    'aberration_ase': '/maps/Aberration.png',
+    'aberration': '/maps/aberration.png',
+    'aberration_asa': '/maps/aberration.png',
+    'aberration_ase': '/maps/aberration.png',
     // The Center
     'the_center': '/maps/thecenter.png',
     'the_center_asa': '/maps/thecenter.png',
     'the_center_ase': '/maps/thecenter.png',
     // Extinction
-    'extinction': '/maps/Extinction.png',
-    'extinction_ase': '/maps/Extinction.png',
+    'extinction': '/maps/extinction.png',
+    'extinction_ase': '/maps/extinction.png',
     // Ragnarok
-    'ragnarok': '/maps/Ragnarok.png',
-    'ragnarok_ase': '/maps/Ragnarok.png',
+    'ragnarok': '/maps/ragnarok.png',
+    'ragnarok_ase': '/maps/ragnarok.png',
     // Valguero
-    'valguero': '/maps/Valguero.png',
-    'valguero_ase': '/maps/Valguero.png',
+    'valguero': '/maps/valguero.png',
+    'valguero_ase': '/maps/valguero.png',
     // Genesis (Part 1 and Part 2)
     'genesis': '/maps/Gensispart1.png',
     'genesis_ase': '/maps/Gensispart1.png',
