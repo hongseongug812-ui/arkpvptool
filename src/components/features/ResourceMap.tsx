@@ -67,6 +67,11 @@ const RESOURCES: Record<string, Resource> = {
     charcoal: { id: 'charcoal', nameKr: '숭', nameEn: 'Charcoal', icon: '🪨', color: '#333333' },
     dungeon: { id: 'dungeon', nameKr: '던전 입구', nameEn: 'Dungeon Entrance', icon: '🚧', color: '#aa4400' },
     wild_crop: { id: 'wild_crop', nameKr: '야생 작물', nameEn: 'Wild Crops', icon: '🥕', color: '#88cc00' },
+    mission: { id: 'mission', nameKr: '미션 디스패처', nameEn: 'Mission Dispatcher', icon: '🎯', color: '#00ff88' },
+    teleport: { id: 'teleport', nameKr: '텔레포트', nameEn: 'Teleport Zone', icon: '✨', color: '#aa00ff' },
+    glitch: { id: 'glitch', nameKr: '글리치', nameEn: 'Story Glitch', icon: '👾', color: '#ff00aa' },
+    ambergris: { id: 'ambergris', nameKr: '앨버그리스', nameEn: 'Ambergris', icon: '🟢', color: '#44ff44' },
+    element_shard: { id: 'element_shard', nameKr: '엘리먼트 샤드', nameEn: 'Element Shard', icon: '🔶', color: '#ff44ff' },
 };
 
 // Maps with resource locations
@@ -237,11 +242,46 @@ const MAPS: GameMap[] = [
         nameEn: 'Genesis',
         image: '/maps/Gensispart1.png',
         resources: [
-            { resourceId: 'metal', x: 15, y: 50, size: 'lg', note: '북극' },
-            { resourceId: 'metal', x: 85, y: 50, size: 'lg', note: '화산' },
-            { resourceId: 'element', x: 50, y: 50, size: 'lg', note: '우주 바이옴' },
-            { resourceId: 'blackpearl', x: 50, y: 80, size: 'lg', note: '바다 바이옴' },
-            { resourceId: 'honey', x: 50, y: 20, size: 'md', note: '숲 바이옴' },
+            // ===== Mission Dispatchers =====
+            { resourceId: 'mission', x: 22.4, y: 18.2, size: 'lg', note: 'Gauntlet - Bog' },
+            { resourceId: 'mission', x: 72.1, y: 28.4, size: 'lg', note: 'Hunt - Ocean' },
+            { resourceId: 'mission', x: 45.8, y: 56.1, size: 'lg', note: 'Race - Volcanic' },
+            { resourceId: 'mission', x: 60.5, y: 80, size: 'lg', note: 'Capture - Arctic' },
+            { resourceId: 'mission', x: 10.8, y: 40.2, size: 'lg', note: 'Escort - Lunar' },
+            // ===== Story Glitches =====
+            { resourceId: 'glitch', x: 20.9, y: 16.5, size: 'md', note: 'Bog Glitch Node' },
+            { resourceId: 'glitch', x: 70, y: 30, size: 'md', note: 'Ocean Glitch Node' },
+            // ===== Teleport Zones (Bog) =====
+            { resourceId: 'teleport', x: 22.4, y: 15.6, size: 'sm', note: 'Bog North' },
+            { resourceId: 'teleport', x: 24.8, y: 18, size: 'sm', note: 'Bog East' },
+            { resourceId: 'teleport', x: 22.6, y: 20.3, size: 'sm', note: 'Bog South' },
+            { resourceId: 'teleport', x: 19.2, y: 18.1, size: 'sm', note: 'Bog West' },
+            // ===== Teleport Zones (Ocean) =====
+            { resourceId: 'teleport', x: 72, y: 25.6, size: 'sm', note: 'Ocean North' },
+            { resourceId: 'teleport', x: 75.2, y: 29.8, size: 'sm', note: 'Ocean East' },
+            { resourceId: 'teleport', x: 70.3, y: 31.2, size: 'sm', note: 'Ocean South' },
+            { resourceId: 'teleport', x: 68, y: 28.6, size: 'sm', note: 'Ocean West' },
+            // ===== Teleport Zones (Volcanic) =====
+            { resourceId: 'teleport', x: 44.5, y: 53, size: 'sm', note: 'Volcanic North' },
+            { resourceId: 'teleport', x: 48, y: 57.5, size: 'sm', note: 'Volcanic East' },
+            { resourceId: 'teleport', x: 44, y: 59, size: 'sm', note: 'Volcanic South' },
+            { resourceId: 'teleport', x: 41.5, y: 56, size: 'sm', note: 'Volcanic West' },
+            // ===== Teleport Zones (Arctic) =====
+            { resourceId: 'teleport', x: 60.2, y: 78.1, size: 'sm', note: 'Arctic North' },
+            { resourceId: 'teleport', x: 63.5, y: 82, size: 'sm', note: 'Arctic East' },
+            { resourceId: 'teleport', x: 57.5, y: 81.5, size: 'sm', note: 'Arctic South' },
+            { resourceId: 'teleport', x: 58.8, y: 77, size: 'sm', note: 'Arctic West' },
+            // ===== Teleport Zones (Lunar) =====
+            { resourceId: 'teleport', x: 12.2, y: 37, size: 'sm', note: 'Lunar North' },
+            { resourceId: 'teleport', x: 14.9, y: 41.5, size: 'sm', note: 'Lunar East' },
+            { resourceId: 'teleport', x: 11, y: 44.3, size: 'sm', note: 'Lunar South' },
+            { resourceId: 'teleport', x: 8.4, y: 40.1, size: 'sm', note: 'Lunar West' },
+            // ===== Element Shards (Volcanic) =====
+            { resourceId: 'element_shard', x: 47.2, y: 57.8, size: 'lg', note: 'Red Trees Cluster 1' },
+            { resourceId: 'element_shard', x: 42.9, y: 59.5, size: 'md', note: 'Red Trees Cluster 2' },
+            // ===== Ambergris (Lunar) =====
+            { resourceId: 'ambergris', x: 11.2, y: 39, size: 'lg', note: 'Green Rocks A' },
+            { resourceId: 'ambergris', x: 9.1, y: 41, size: 'md', note: 'Green Rocks B' },
         ]
     },
 ];
