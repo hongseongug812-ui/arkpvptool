@@ -8,8 +8,8 @@ interface TabNavigationProps {
 
 const tabs: { id: TabId; label: string; icon: string }[] = [
     { id: 'raid', label: 'Raid Calculator', icon: '💣' },
-    { id: 'soaking', label: 'Soaking Sim', icon: '🦖' },
-    { id: 'rathole', label: 'Rathole DB', icon: '🗺️' },
+    { id: 'soak', label: 'Soaking Sim', icon: '🦖' },
+    { id: 'map', label: 'Rathole DB', icon: '🗺️' },
 ];
 
 export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {

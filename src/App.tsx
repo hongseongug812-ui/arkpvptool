@@ -12,7 +12,7 @@ import { Settings } from './components/features/Settings';
 import { dataManager } from './services/DataManager';
 import './App.css';
 
-type TabId = 'raid' | 'soak' | 'stat' | 'breed' | 'map' | 'settings';
+export type TabId = 'raid' | 'soak' | 'stat' | 'breed' | 'map' | 'settings';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

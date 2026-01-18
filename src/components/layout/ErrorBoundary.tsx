@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, type ErrorInfo, type ReactNode } from 'react';
 import './ErrorBoundary.css';
 
 interface Props {
@@ -61,7 +61,7 @@ export class ErrorBoundary extends Component<Props, State> {
                                 🔃 페이지 새로고침
                             </button>
                         </div>
-                        {process.env.NODE_ENV === 'development' && this.state.errorInfo && (
+                        {import.meta.env.DEV && this.state.errorInfo && (
                             <details className="error-details">
                                 <summary>개발자 정보</summary>
                                 <pre>{this.state.errorInfo.componentStack}</pre>

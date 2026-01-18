@@ -25,7 +25,7 @@ export function BreedingSimulator({ onClose }: BreedingSimulatorProps) {
     const [parentA, setParentA] = useState<BreedingStats>({ health: 40, stamina: 30, weight: 30, melee: 40 });
     const [parentB, setParentB] = useState<BreedingStats>({ health: 38, stamina: 32, weight: 28, melee: 42 });
     const [targetMutations, setTargetMutations] = useState(20);
-    const [simulationRuns, setSimulationRuns] = useState(1000);
+    const [simulationRuns, _setSimulationRuns] = useState(1000);
     const [results, setResults] = useState<{ avgGenerations: number; successRate: number; expectedOffspring: number } | null>(null);
 
     const statConfig = [
