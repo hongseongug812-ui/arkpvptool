@@ -318,9 +318,15 @@ export function ResourceMap() {
     const [selectedResource, setSelectedResource] = useState<string | null>(null);
     const [hoveredPoint, setHoveredPoint] = useState<ResourceLocation | null>(null);
     const [editMode, setEditMode] = useState(false);
+    const [addMode, setAddMode] = useState(false);
+    const [resourceToAdd, setResourceToAdd] = useState<string>('metal');
     const [draggingIdx, setDraggingIdx] = useState<number | null>(null);
     const [positionOverrides, setPositionOverrides] = useState<Record<string, Record<number, { x: number; y: number }>>>(() => {
         const saved = localStorage.getItem('resourceMapPositions');
+        return saved ? JSON.parse(saved) : {};
+    });
+    const [customMarkers, setCustomMarkers] = useState<Record<string, ResourceLocation[]>>(() => {
+        const saved = localStorage.getItem('resourceMapCustomMarkers');
         return saved ? JSON.parse(saved) : {};
     });
     const containerRef = useRef<HTMLDivElement>(null);
@@ -331,19 +337,25 @@ export function ResourceMap() {
         return positionOverrides[mapId]?.[idx] || original;
     };
 
-    const filteredResources = useMemo(() => {
+    // Combine built-in resources with custom markers
+    const allResources = useMemo(() => {
         if (!currentMap) return [];
-        if (!selectedResource) return currentMap.resources;
-        return currentMap.resources.filter(r => r.resourceId === selectedResource);
-    }, [currentMap, selectedResource]);
+        const builtIn = currentMap.resources;
+        const custom = customMarkers[currentMap.id] || [];
+        return [...builtIn, ...custom];
+    }, [currentMap, customMarkers]);
+
+    const filteredResources = useMemo(() => {
+        if (!selectedResource) return allResources;
+        return allResources.filter(r => r.resourceId === selectedResource);
+    }, [allResources, selectedResource]);
 
     const uniqueResourceIds = useMemo(() => {
-        if (!currentMap) return [];
-        return [...new Set(currentMap.resources.map(r => r.resourceId))];
-    }, [currentMap]);
+        return [...new Set(allResources.map(r => r.resourceId))];
+    }, [allResources]);
 
     const handleMouseDown = (e: React.MouseEvent, idx: number) => {
-        if (!editMode) return;
+        if (!editMode || addMode) return;
         e.preventDefault();
         setDraggingIdx(idx);
     };
@@ -366,24 +378,68 @@ export function ResourceMap() {
 
     const handleMouseUp = () => {
         if (draggingIdx !== null) {
-            // Save to localStorage
             localStorage.setItem('resourceMapPositions', JSON.stringify(positionOverrides));
-            console.log('📍 Updated positions saved! Export data:');
-            console.log(JSON.stringify(positionOverrides, null, 2));
+            console.log('📍 Updated positions saved!');
             setDraggingIdx(null);
         }
     };
 
+    const handleMapClick = (e: React.MouseEvent) => {
+        if (!addMode || !containerRef.current || !currentMap) return;
+        if (draggingIdx !== null) return; // Don't add while dragging
+
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        const newMarker: ResourceLocation = {
+            resourceId: resourceToAdd,
+            x: Math.round(x * 10) / 10,
+            y: Math.round(y * 10) / 10,
+            size: 'md',
+            note: `Custom marker (${Math.round(x)}, ${Math.round(y)})`
+        };
+
+        setCustomMarkers(prev => {
+            const updated = { ...prev };
+            if (!updated[currentMap.id]) updated[currentMap.id] = [];
+            updated[currentMap.id] = [...updated[currentMap.id], newMarker];
+            localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
+            return updated;
+        });
+
+        console.log('➕ Added new marker:', newMarker);
+    };
+
+    const deleteMarker = (idx: number) => {
+        if (!currentMap) return;
+        const builtInCount = currentMap.resources.length;
+        if (idx < builtInCount) {
+            alert(isKorean ? '기본 마커는 삭제할 수 없습니다!' : 'Cannot delete built-in markers!');
+            return;
+        }
+        const customIdx = idx - builtInCount;
+        setCustomMarkers(prev => {
+            const updated = { ...prev };
+            updated[currentMap.id] = updated[currentMap.id].filter((_, i) => i !== customIdx);
+            localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
+            return updated;
+        });
+    };
+
     const exportPositions = () => {
-        console.log('=== RESOURCE MAP POSITION OVERRIDES ===');
-        console.log(JSON.stringify(positionOverrides, null, 2));
-        alert(isKorean ? '콘솔에 좌표 데이터가 출력되었습니다!' : 'Position data exported to console!');
+        const exportData = { positions: positionOverrides, customMarkers };
+        console.log('=== RESOURCE MAP EXPORT DATA ===');
+        console.log(JSON.stringify(exportData, null, 2));
+        alert(isKorean ? '콘솔에 데이터가 출력되었습니다!' : 'Data exported to console!');
     };
 
     const resetPositions = () => {
-        if (confirm(isKorean ? '모든 위치 수정을 초기화할까요?' : 'Reset all position adjustments?')) {
+        if (confirm(isKorean ? '모든 수정을 초기화할까요?' : 'Reset all adjustments?')) {
             setPositionOverrides({});
+            setCustomMarkers({});
             localStorage.removeItem('resourceMapPositions');
+            localStorage.removeItem('resourceMapCustomMarkers');
         }
     };
 
@@ -396,12 +452,18 @@ export function ResourceMap() {
                 <div className="resource-map__edit-controls">
                     <button
                         className={`edit-btn ${editMode ? 'active' : ''}`}
-                        onClick={() => setEditMode(!editMode)}
+                        onClick={() => { setEditMode(!editMode); if (editMode) setAddMode(false); }}
                     >
                         {editMode ? '✅ 편집 완료' : '✏️ 위치 수정'}
                     </button>
                     {editMode && (
                         <>
+                            <button
+                                className={`edit-btn ${addMode ? 'add-active' : ''}`}
+                                onClick={() => setAddMode(!addMode)}
+                            >
+                                {addMode ? '🎯 추가 중' : '➕ 마커 추가'}
+                            </button>
                             <button className="edit-btn export" onClick={exportPositions}>
                                 📤 내보내기
                             </button>
@@ -411,8 +473,24 @@ export function ResourceMap() {
                         </>
                     )}
                 </div>
-                {editMode && (
+                {editMode && !addMode && (
                     <p className="edit-hint">💡 마커를 드래그하여 위치를 조정하세요</p>
+                )}
+                {editMode && addMode && (
+                    <div className="add-marker-panel">
+                        <p className="edit-hint">🎯 맵을 클릭하여 새 마커를 추가하세요</p>
+                        <select
+                            value={resourceToAdd}
+                            onChange={(e) => setResourceToAdd(e.target.value)}
+                            className="resource-select"
+                        >
+                            {Object.entries(RESOURCES).map(([id, res]) => (
+                                <option key={id} value={id}>
+                                    {res.icon} {isKorean ? res.nameKr : res.nameEn}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 )}
             </div>
 
@@ -457,10 +535,11 @@ export function ResourceMap() {
             <div className="resource-map__display">
                 <div
                     ref={containerRef}
-                    className={`resource-map__container ${editMode ? 'edit-mode' : ''}`}
+                    className={`resource-map__container ${editMode ? 'edit-mode' : ''} ${addMode ? 'add-mode' : ''}`}
                     onMouseMove={handleMouseMove}
                     onMouseUp={handleMouseUp}
                     onMouseLeave={handleMouseUp}
+                    onClick={handleMapClick}
                 >
                     <img
                         src={currentMap?.image}
@@ -473,12 +552,13 @@ export function ResourceMap() {
                     {currentMap && filteredResources.map((loc, idx) => {
                         const res = RESOURCES[loc.resourceId];
                         if (!res) return null;
-                        const originalIdx = currentMap.resources.indexOf(loc);
-                        const pos = getAdjustedPosition(currentMap.id, originalIdx, { x: loc.x, y: loc.y });
+                        const allIdx = allResources.indexOf(loc);
+                        const pos = getAdjustedPosition(currentMap.id, allIdx, { x: loc.x, y: loc.y });
+                        const isCustom = allIdx >= currentMap.resources.length;
                         return (
                             <div
                                 key={idx}
-                                className={`resource-point resource-point--${loc.size || 'md'} ${editMode ? 'draggable' : ''} ${draggingIdx === originalIdx ? 'dragging' : ''}`}
+                                className={`resource-point resource-point--${loc.size || 'md'} ${editMode && !addMode ? 'draggable' : ''} ${draggingIdx === allIdx ? 'dragging' : ''} ${isCustom ? 'custom' : ''}`}
                                 style={{
                                     left: `${pos.x}%`,
                                     top: `${pos.y}%`,
@@ -486,9 +566,14 @@ export function ResourceMap() {
                                 } as React.CSSProperties}
                                 onMouseEnter={() => !editMode && setHoveredPoint(loc)}
                                 onMouseLeave={() => setHoveredPoint(null)}
-                                onMouseDown={(e) => handleMouseDown(e, originalIdx)}
+                                onMouseDown={(e) => handleMouseDown(e, allIdx)}
+                                onContextMenu={(e) => {
+                                    e.preventDefault();
+                                    if (editMode && isCustom) deleteMarker(allIdx);
+                                }}
                             >
                                 <span>{res.icon}</span>
+                                {isCustom && <span className="custom-badge">✦</span>}
                             </div>
                         );
                     })}
