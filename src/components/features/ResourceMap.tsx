@@ -411,20 +411,26 @@ export function ResourceMap() {
         console.log('➕ Added new marker:', newMarker);
     };
 
-    const deleteMarker = (idx: number) => {
+    const deleteMarker = (allIdx: number) => {
         if (!currentMap) return;
         const builtInCount = currentMap.resources.length;
-        if (idx < builtInCount) {
+        console.log('🗑️ Delete request - allIdx:', allIdx, 'builtInCount:', builtInCount);
+
+        if (allIdx < builtInCount) {
             alert(isKorean ? '기본 마커는 삭제할 수 없습니다!' : 'Cannot delete built-in markers!');
             return;
         }
-        const customIdx = idx - builtInCount;
-        setCustomMarkers(prev => {
-            const updated = { ...prev };
-            updated[currentMap.id] = updated[currentMap.id].filter((_, i) => i !== customIdx);
-            localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
-            return updated;
-        });
+
+        const customIdx = allIdx - builtInCount;
+        console.log('🗑️ Deleting custom marker at index:', customIdx);
+
+        const currentCustom = customMarkers[currentMap.id] || [];
+        const newCustom = currentCustom.filter((_, i) => i !== customIdx);
+
+        const updated = { ...customMarkers, [currentMap.id]: newCustom };
+        setCustomMarkers(updated);
+        localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
+        console.log('✅ Marker deleted, remaining:', newCustom.length);
     };
 
     const exportPositions = () => {
@@ -478,18 +484,23 @@ export function ResourceMap() {
                 )}
                 {editMode && addMode && (
                     <div className="add-marker-panel">
-                        <p className="edit-hint">🎯 맵을 클릭하여 새 마커를 추가하세요</p>
-                        <select
-                            value={resourceToAdd}
-                            onChange={(e) => setResourceToAdd(e.target.value)}
-                            className="resource-select"
-                        >
+                        <p className="edit-hint">🎯 추가할 자원 선택 후 맵 클릭</p>
+                        <div className="resource-icon-grid">
                             {Object.entries(RESOURCES).map(([id, res]) => (
-                                <option key={id} value={id}>
-                                    {res.icon} {isKorean ? res.nameKr : res.nameEn}
-                                </option>
+                                <button
+                                    key={id}
+                                    className={`resource-icon-btn ${resourceToAdd === id ? 'selected' : ''}`}
+                                    onClick={() => setResourceToAdd(id)}
+                                    style={{ '--btn-color': res.color } as React.CSSProperties}
+                                    title={isKorean ? res.nameKr : res.nameEn}
+                                >
+                                    {res.icon}
+                                </button>
                             ))}
-                        </select>
+                        </div>
+                        <p className="selected-resource">
+                            선택: {RESOURCES[resourceToAdd]?.icon} {isKorean ? RESOURCES[resourceToAdd]?.nameKr : RESOURCES[resourceToAdd]?.nameEn}
+                        </p>
                     </div>
                 )}
             </div>

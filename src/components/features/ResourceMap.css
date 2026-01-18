@@ -176,28 +176,52 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-sm);
-}
-
-.resource-select {
-    padding: var(--spacing-sm) var(--spacing-md);
     background: var(--color-bg-secondary);
-    border: 1px solid var(--color-accent);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    border: 1px solid #00ff88;
+}
+
+.resource-icon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    max-width: 400px;
+}
+
+.resource-icon-btn {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--color-border);
     border-radius: var(--radius-md);
-    color: var(--color-text-primary);
-    font-size: 0.875rem;
+    background: var(--color-bg-primary);
+    font-size: 1.25rem;
     cursor: pointer;
-    min-width: 200px;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.resource-select:focus {
-    outline: none;
-    box-shadow: 0 0 10px var(--color-accent);
+.resource-icon-btn:hover {
+    border-color: var(--btn-color, var(--color-accent));
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--btn-color, var(--color-accent));
 }
 
-.edit-btn.add-active {
-    background: #00ff88;
-    border-color: #00ff88;
-    color: #000;
+.resource-icon-btn.selected {
+    border-color: var(--btn-color, var(--color-accent));
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--btn-color, var(--color-accent));
+    transform: scale(1.15);
+}
+
+.selected-resource {
+    color: #00ff88;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0;
 }
 
 .resource-map__image {
