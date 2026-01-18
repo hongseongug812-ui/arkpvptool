@@ -1,0 +1,45 @@
+/* MapViewer Styles */
+.map-viewer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Mode Toggle */
+.map-mode-toggle {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.map-mode-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.map-mode-btn:hover {
+    border-color: var(--color-accent);
+}
+
+.map-mode-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+/* Content */
+.map-content {
+    flex: 1;
+    overflow-y: auto;
+}

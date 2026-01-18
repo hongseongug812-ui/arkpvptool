@@ -55,7 +55,7 @@ const MAPS: GameMap[] = [
         id: 'island',
         nameKr: '아일랜드',
         nameEn: 'The Island',
-        image: '/maps/island.png',
+        image: '/maps/theisland.png',
         resources: [
             // Metal
             { resourceId: 'metal', x: 25, y: 15, size: 'lg', note: '눈산 (Snow Mountain)' },
@@ -90,7 +90,7 @@ const MAPS: GameMap[] = [
         id: 'scorched',
         nameKr: '스코치드 어스',
         nameEn: 'Scorched Earth',
-        image: '/maps/scorched.png',
+        image: '/maps/ScorchedEarth.png',
         resources: [
             { resourceId: 'metal', x: 80, y: 20, size: 'lg', note: '북동 산' },
             { resourceId: 'metal', x: 20, y: 30, size: 'lg', note: '북서 산' },
@@ -105,7 +105,7 @@ const MAPS: GameMap[] = [
         id: 'aberration',
         nameKr: '에버레이션',
         nameEn: 'Aberration',
-        image: '/maps/aberration.png',
+        image: '/maps/Aberration.png',
         resources: [
             { resourceId: 'metal', x: 50, y: 30, size: 'lg', note: '상층부' },
             { resourceId: 'gem_blue', x: 30, y: 50, size: 'lg', note: '중층부' },
@@ -119,7 +119,7 @@ const MAPS: GameMap[] = [
         id: 'extinction',
         nameKr: '익스팅션',
         nameEn: 'Extinction',
-        image: '/maps/extinction.png',
+        image: '/maps/Extinction.png',
         resources: [
             { resourceId: 'metal', x: 25, y: 25, size: 'lg', note: '눈 돔' },
             { resourceId: 'metal', x: 70, y: 30, size: 'lg', note: '황무지' },
@@ -133,7 +133,7 @@ const MAPS: GameMap[] = [
         id: 'ragnarok',
         nameKr: '라그나로크',
         nameEn: 'Ragnarok',
-        image: '/maps/ragnarok.png',
+        image: '/maps/Ragnarok.png',
         resources: [
             { resourceId: 'metal', x: 25, y: 35, size: 'lg', note: '하이랜드' },
             { resourceId: 'metal', x: 45, y: 15, size: 'lg', note: '화산' },
@@ -148,7 +148,7 @@ const MAPS: GameMap[] = [
         id: 'genesis',
         nameKr: '제네시스',
         nameEn: 'Genesis',
-        image: '/maps/genesis.png',
+        image: '/maps/Gensispart1.png',
         resources: [
             { resourceId: 'metal', x: 15, y: 50, size: 'lg', note: '북극' },
             { resourceId: 'metal', x: 85, y: 50, size: 'lg', note: '화산' },

@@ -6,7 +6,7 @@ import { PWAInstallPrompt } from './components/layout/PWAInstallPrompt';
 import { CombatCalculator } from './components/features/CombatCalculator';
 import { DinoEncyclopedia } from './components/features/DinoEncyclopedia';
 import { FoodCalculator } from './components/features/FoodCalculator';
-import { ResourceMap } from './components/features/ResourceMap';
+import { MapViewer } from './components/features/MapViewer';
 import { IniGenerator } from './components/features/IniGenerator';
 import { Settings } from './components/features/Settings';
 import { dataManager } from './services/DataManager';
@@ -89,7 +89,7 @@ function App() {
         {activeTab === 'food' && <FoodCalculator />}
       </div>
       <div className={`tab-panel ${activeTab === 'map' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
-        {activeTab === 'map' && <ResourceMap />}
+        {activeTab === 'map' && <MapViewer />}
       </div>
       <div className={`tab-panel ${activeTab === 'ini' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'ini' && <IniGenerator />}
