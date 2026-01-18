@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './ResourceMap.css';
 
@@ -317,8 +317,19 @@ export function ResourceMap() {
     const [selectedMap, setSelectedMap] = useState<string>('island');
     const [selectedResource, setSelectedResource] = useState<string | null>(null);
     const [hoveredPoint, setHoveredPoint] = useState<ResourceLocation | null>(null);
+    const [editMode, setEditMode] = useState(false);
+    const [draggingIdx, setDraggingIdx] = useState<number | null>(null);
+    const [positionOverrides, setPositionOverrides] = useState<Record<string, Record<number, { x: number; y: number }>>>(() => {
+        const saved = localStorage.getItem('resourceMapPositions');
+        return saved ? JSON.parse(saved) : {};
+    });
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const currentMap = useMemo(() => MAPS.find(m => m.id === selectedMap), [selectedMap]);
+
+    const getAdjustedPosition = (mapId: string, idx: number, original: { x: number; y: number }) => {
+        return positionOverrides[mapId]?.[idx] || original;
+    };
 
     const filteredResources = useMemo(() => {
         if (!currentMap) return [];
@@ -331,12 +342,78 @@ export function ResourceMap() {
         return [...new Set(currentMap.resources.map(r => r.resourceId))];
     }, [currentMap]);
 
+    const handleMouseDown = (e: React.MouseEvent, idx: number) => {
+        if (!editMode) return;
+        e.preventDefault();
+        setDraggingIdx(idx);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (draggingIdx === null || !containerRef.current || !currentMap) return;
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        const clampedX = Math.max(0, Math.min(100, x));
+        const clampedY = Math.max(0, Math.min(100, y));
+
+        setPositionOverrides(prev => {
+            const newOverrides = { ...prev };
+            if (!newOverrides[currentMap.id]) newOverrides[currentMap.id] = {};
+            newOverrides[currentMap.id][draggingIdx] = { x: clampedX, y: clampedY };
+            return newOverrides;
+        });
+    };
+
+    const handleMouseUp = () => {
+        if (draggingIdx !== null) {
+            // Save to localStorage
+            localStorage.setItem('resourceMapPositions', JSON.stringify(positionOverrides));
+            console.log('📍 Updated positions saved! Export data:');
+            console.log(JSON.stringify(positionOverrides, null, 2));
+            setDraggingIdx(null);
+        }
+    };
+
+    const exportPositions = () => {
+        console.log('=== RESOURCE MAP POSITION OVERRIDES ===');
+        console.log(JSON.stringify(positionOverrides, null, 2));
+        alert(isKorean ? '콘솔에 좌표 데이터가 출력되었습니다!' : 'Position data exported to console!');
+    };
+
+    const resetPositions = () => {
+        if (confirm(isKorean ? '모든 위치 수정을 초기화할까요?' : 'Reset all position adjustments?')) {
+            setPositionOverrides({});
+            localStorage.removeItem('resourceMapPositions');
+        }
+    };
+
     return (
         <div className="resource-map">
             {/* Header */}
             <div className="resource-map__header">
                 <h2>🗺️ {isKorean ? '자원 맵' : 'Resource Map'}</h2>
                 <p>{isKorean ? 'ARK 맵별 자원 위치' : 'Resource locations by ARK map'}</p>
+                <div className="resource-map__edit-controls">
+                    <button
+                        className={`edit-btn ${editMode ? 'active' : ''}`}
+                        onClick={() => setEditMode(!editMode)}
+                    >
+                        {editMode ? '✅ 편집 완료' : '✏️ 위치 수정'}
+                    </button>
+                    {editMode && (
+                        <>
+                            <button className="edit-btn export" onClick={exportPositions}>
+                                📤 내보내기
+                            </button>
+                            <button className="edit-btn reset" onClick={resetPositions}>
+                                🔄 초기화
+                            </button>
+                        </>
+                    )}
+                </div>
+                {editMode && (
+                    <p className="edit-hint">💡 마커를 드래그하여 위치를 조정하세요</p>
+                )}
             </div>
 
             {/* Map Selector */}
@@ -378,7 +455,13 @@ export function ResourceMap() {
 
             {/* Map Display */}
             <div className="resource-map__display">
-                <div className="resource-map__container">
+                <div
+                    ref={containerRef}
+                    className={`resource-map__container ${editMode ? 'edit-mode' : ''}`}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}
+                >
                     <img
                         src={currentMap?.image}
                         alt={currentMap?.nameEn}
@@ -387,20 +470,23 @@ export function ResourceMap() {
                     />
 
                     {/* Resource Points */}
-                    {filteredResources.map((loc, idx) => {
+                    {currentMap && filteredResources.map((loc, idx) => {
                         const res = RESOURCES[loc.resourceId];
                         if (!res) return null;
+                        const originalIdx = currentMap.resources.indexOf(loc);
+                        const pos = getAdjustedPosition(currentMap.id, originalIdx, { x: loc.x, y: loc.y });
                         return (
                             <div
                                 key={idx}
-                                className={`resource-point resource-point--${loc.size || 'md'}`}
+                                className={`resource-point resource-point--${loc.size || 'md'} ${editMode ? 'draggable' : ''} ${draggingIdx === originalIdx ? 'dragging' : ''}`}
                                 style={{
-                                    left: `${loc.x}%`,
-                                    top: `${loc.y}%`,
+                                    left: `${pos.x}%`,
+                                    top: `${pos.y}%`,
                                     '--point-color': res.color,
                                 } as React.CSSProperties}
-                                onMouseEnter={() => setHoveredPoint(loc)}
+                                onMouseEnter={() => !editMode && setHoveredPoint(loc)}
                                 onMouseLeave={() => setHoveredPoint(null)}
+                                onMouseDown={(e) => handleMouseDown(e, originalIdx)}
                             >
                                 <span>{res.icon}</span>
                             </div>
