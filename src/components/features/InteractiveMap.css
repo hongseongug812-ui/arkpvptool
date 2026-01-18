@@ -105,15 +105,19 @@
 
 /* Map Markers */
 .map-marker {
-    transition: transform 0.2s ease;
+    cursor: pointer;
 }
 
-.map-marker:hover {
-    transform: scale(1.5);
+.map-marker circle {
+    transition: r 0.2s ease, filter 0.2s ease;
+}
+
+.map-marker:hover circle {
+    filter: drop-shadow(0 0 6px currentColor) brightness(1.2);
 }
 
 .map-marker--hovered circle {
-    filter: drop-shadow(0 0 4px currentColor);
+    filter: drop-shadow(0 0 6px currentColor);
 }
 
 /* Pulse Animation */
