@@ -35,6 +35,7 @@ const RESOURCES: Record<string, Resource> = {
     oil: { id: 'oil', nameKr: '오일', nameEn: 'Oil', icon: '🛢️', color: '#2d2d2d' },
     polymer: { id: 'polymer', nameKr: '폴리머', nameEn: 'Polymer', icon: '🔷', color: '#4a4aff' },
     silica: { id: 'silica', nameKr: '실리카 펄', nameEn: 'Silica Pearls', icon: '⚪', color: '#f0f0f0' },
+    paste: { id: 'paste', nameKr: '시멘트 풀', nameEn: 'Cementing Paste', icon: '🏠', color: '#c4a35a' },
     blackpearl: { id: 'blackpearl', nameKr: '검은 진주', nameEn: 'Black Pearls', icon: '⚫', color: '#0d0d0d' },
     sulfur: { id: 'sulfur', nameKr: '황', nameEn: 'Sulfur', icon: '🟡', color: '#ffff00' },
     element: { id: 'element', nameKr: '엘레멘트', nameEn: 'Element', icon: '💠', color: '#ff00ff' },
@@ -57,33 +58,25 @@ const MAPS: GameMap[] = [
         nameEn: 'The Island',
         image: '/maps/theisland.png',
         resources: [
-            // Metal
-            { resourceId: 'metal', x: 25, y: 15, size: 'lg', note: '눈산 (Snow Mountain)' },
-            { resourceId: 'metal', x: 45, y: 12, size: 'lg', note: '화산 (Volcano)' },
-            { resourceId: 'metal', x: 80, y: 20, size: 'md', note: '북동쪽 산' },
-            { resourceId: 'metal', x: 55, y: 45, size: 'md', note: '중앙 산' },
-            // Crystal
-            { resourceId: 'crystal', x: 25, y: 18, size: 'lg', note: '눈산' },
-            { resourceId: 'crystal', x: 45, y: 15, size: 'md', note: '화산' },
-            { resourceId: 'crystal', x: 15, y: 85, size: 'md', note: '남서 동굴' },
-            // Obsidian
-            { resourceId: 'obsidian', x: 45, y: 10, size: 'lg', note: '화산 정상' },
-            { resourceId: 'obsidian', x: 25, y: 12, size: 'md', note: '눈산' },
-            // Oil
-            { resourceId: 'oil', x: 10, y: 10, size: 'lg', note: '북쪽 해저' },
-            { resourceId: 'oil', x: 90, y: 15, size: 'md', note: '북동 해저' },
-            { resourceId: 'oil', x: 5, y: 50, size: 'md', note: '서해안' },
-            // Silica
-            { resourceId: 'silica', x: 50, y: 90, size: 'lg', note: '남쪽 해저' },
-            { resourceId: 'silica', x: 20, y: 85, size: 'md', note: '남서 해저' },
-            // Honey
-            { resourceId: 'honey', x: 75, y: 75, size: 'md', note: '레드우드' },
-            { resourceId: 'honey', x: 70, y: 60, size: 'sm', note: '레드우드 숲' },
-            // Rare Mushroom/Flower
-            { resourceId: 'raremushroom', x: 55, y: 70, size: 'md', note: '늪지대' },
-            { resourceId: 'rareflower', x: 60, y: 65, size: 'md', note: '늪지대' },
-            // Sap
-            { resourceId: 'sap', x: 72, y: 70, size: 'lg', note: '레드우드' },
+            // 철 (Metal) - 화산
+            { resourceId: 'metal', x: 38, y: 42, size: 'lg', note: '화산 (Volcano) - 최고의 철 광산' },
+            // 크리스탈 (Crystal) - 화산 꼭대기
+            { resourceId: 'crystal', x: 38, y: 42, size: 'lg', note: '화산 분화구 입구' },
+            // 흑요석 (Obsidian) - 화산 분화구 내부
+            { resourceId: 'obsidian', x: 38, y: 42, size: 'lg', note: '화산 분화구 내부' },
+            // 오일 (Oil) - 북서쪽 설원 해안가
+            { resourceId: 'oil', x: 40, y: 15, size: 'lg', note: '북서쪽 설원 해안가 - 물에 안 들어가도 됨' },
+            // 시멘트 풀 (Cementing Paste) - 히든 레이크
+            { resourceId: 'paste', x: 68, y: 22, size: 'lg', note: '히든 레이크 비버 댐' },
+            // 진주 (Silica Pearl) - 북서쪽 설원 얕은 물
+            { resourceId: 'silica', x: 10, y: 30, size: 'lg', note: '북서쪽 설원 얕은 물가' },
+            // 추가 자원들
+            { resourceId: 'metal', x: 20, y: 25, size: 'md', note: '눈산 (Snow Mountain)' },
+            { resourceId: 'crystal', x: 20, y: 25, size: 'md', note: '눈산' },
+            { resourceId: 'honey', x: 55, y: 65, size: 'md', note: '레드우드 (Redwood)' },
+            { resourceId: 'sap', x: 55, y: 65, size: 'lg', note: '레드우드 수액 탭' },
+            { resourceId: 'raremushroom', x: 55, y: 75, size: 'md', note: '늪지대 (Swamp)' },
+            { resourceId: 'rareflower', x: 55, y: 75, size: 'md', note: '늪지대' },
         ]
     },
     {
