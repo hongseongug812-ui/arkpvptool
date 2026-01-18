@@ -329,6 +329,10 @@ export function ResourceMap() {
         const saved = localStorage.getItem('resourceMapCustomMarkers');
         return saved ? JSON.parse(saved) : {};
     });
+    const [hiddenMarkers, setHiddenMarkers] = useState<Record<string, number[]>>(() => {
+        const saved = localStorage.getItem('resourceMapHiddenMarkers');
+        return saved ? JSON.parse(saved) : {};
+    });
     const containerRef = useRef<HTMLDivElement>(null);
 
     const currentMap = useMemo(() => MAPS.find(m => m.id === selectedMap), [selectedMap]);
@@ -337,13 +341,14 @@ export function ResourceMap() {
         return positionOverrides[mapId]?.[idx] || original;
     };
 
-    // Combine built-in resources with custom markers
+    // Combine built-in resources with custom markers, excluding hidden ones
     const allResources = useMemo(() => {
         if (!currentMap) return [];
-        const builtIn = currentMap.resources;
+        const hidden = hiddenMarkers[currentMap.id] || [];
+        const builtIn = currentMap.resources.filter((_, idx) => !hidden.includes(idx));
         const custom = customMarkers[currentMap.id] || [];
         return [...builtIn, ...custom];
-    }, [currentMap, customMarkers]);
+    }, [currentMap, customMarkers, hiddenMarkers]);
 
     const filteredResources = useMemo(() => {
         if (!selectedResource) return allResources;
@@ -411,30 +416,38 @@ export function ResourceMap() {
         console.log('➕ Added new marker:', newMarker);
     };
 
-    const deleteMarker = (allIdx: number) => {
+    const deleteMarker = (loc: ResourceLocation, allIdx: number) => {
         if (!currentMap) return;
-        const builtInCount = currentMap.resources.length;
-        console.log('🗑️ Delete request - allIdx:', allIdx, 'builtInCount:', builtInCount);
 
-        if (allIdx < builtInCount) {
-            alert(isKorean ? '기본 마커는 삭제할 수 없습니다!' : 'Cannot delete built-in markers!');
-            return;
+        // Find original index in currentMap.resources
+        const originalIdx = currentMap.resources.indexOf(loc);
+        const isBuiltIn = originalIdx !== -1;
+
+        if (isBuiltIn) {
+            // Hide built-in marker
+            const currentHidden = hiddenMarkers[currentMap.id] || [];
+            const updated = { ...hiddenMarkers, [currentMap.id]: [...currentHidden, originalIdx] };
+            setHiddenMarkers(updated);
+            localStorage.setItem('resourceMapHiddenMarkers', JSON.stringify(updated));
+            console.log('👁️ Hidden built-in marker at index:', originalIdx);
+        } else {
+            // Delete custom marker
+            const hidden = hiddenMarkers[currentMap.id] || [];
+            const visibleBuiltInCount = currentMap.resources.filter((_, idx) => !hidden.includes(idx)).length;
+            const customIdx = allIdx - visibleBuiltInCount;
+
+            const currentCustom = customMarkers[currentMap.id] || [];
+            const newCustom = currentCustom.filter((_, i) => i !== customIdx);
+
+            const updated = { ...customMarkers, [currentMap.id]: newCustom };
+            setCustomMarkers(updated);
+            localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
+            console.log('🗑️ Deleted custom marker, remaining:', newCustom.length);
         }
-
-        const customIdx = allIdx - builtInCount;
-        console.log('🗑️ Deleting custom marker at index:', customIdx);
-
-        const currentCustom = customMarkers[currentMap.id] || [];
-        const newCustom = currentCustom.filter((_, i) => i !== customIdx);
-
-        const updated = { ...customMarkers, [currentMap.id]: newCustom };
-        setCustomMarkers(updated);
-        localStorage.setItem('resourceMapCustomMarkers', JSON.stringify(updated));
-        console.log('✅ Marker deleted, remaining:', newCustom.length);
     };
 
     const exportPositions = () => {
-        const exportData = { positions: positionOverrides, customMarkers };
+        const exportData = { positions: positionOverrides, customMarkers, hiddenMarkers };
         console.log('=== RESOURCE MAP EXPORT DATA ===');
         console.log(JSON.stringify(exportData, null, 2));
         alert(isKorean ? '콘솔에 데이터가 출력되었습니다!' : 'Data exported to console!');
@@ -444,8 +457,10 @@ export function ResourceMap() {
         if (confirm(isKorean ? '모든 수정을 초기화할까요?' : 'Reset all adjustments?')) {
             setPositionOverrides({});
             setCustomMarkers({});
+            setHiddenMarkers({});
             localStorage.removeItem('resourceMapPositions');
             localStorage.removeItem('resourceMapCustomMarkers');
+            localStorage.removeItem('resourceMapHiddenMarkers');
         }
     };
 
@@ -580,15 +595,15 @@ export function ResourceMap() {
                                 onMouseDown={(e) => handleMouseDown(e, allIdx)}
                                 onContextMenu={(e) => {
                                     e.preventDefault();
-                                    if (editMode && isCustom) deleteMarker(allIdx);
+                                    if (editMode) deleteMarker(loc, allIdx);
                                 }}
                             >
                                 <span>{res.icon}</span>
                                 {isCustom && <span className="custom-badge">✦</span>}
-                                {editMode && isCustom && (
+                                {editMode && (
                                     <button
                                         className="delete-marker-btn"
-                                        onClick={(e) => { e.stopPropagation(); deleteMarker(allIdx); }}
+                                        onClick={(e) => { e.stopPropagation(); deleteMarker(loc, allIdx); }}
                                     >
                                         ✕
                                     </button>
