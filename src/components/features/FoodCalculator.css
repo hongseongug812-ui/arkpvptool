@@ -1,31 +1,64 @@
-/* Food Calculator Styles */
-.food-calculator {
+/* Food Calculator - Dododex Style */
+.food-calc {
     padding: var(--spacing-md);
     max-height: calc(100vh - 140px);
     overflow-y: auto;
 }
 
 /* Header */
-.food-header {
+.food-calc__header {
     text-align: center;
     margin-bottom: var(--spacing-lg);
 }
 
-.food-header h2 {
+.food-calc__header h2 {
     font-family: var(--font-display);
     font-size: 1.5rem;
     color: var(--color-accent);
     margin: 0 0 var(--spacing-xs) 0;
 }
 
-.food-header p {
+.food-calc__header p {
     color: var(--color-text-muted);
     font-size: 0.875rem;
     margin: 0;
 }
 
+/* Search */
+.food-calc__search {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    margin: 0 auto var(--spacing-md) auto;
+    max-width: 400px;
+}
+
+.food-calc__search:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px var(--color-accent-glow);
+}
+
+.food-calc__search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.food-calc__search button {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
 /* Categories */
-.food-categories {
+.food-calc__categories {
     display: flex;
     gap: var(--spacing-xs);
     justify-content: center;
@@ -33,244 +66,229 @@
     margin-bottom: var(--spacing-lg);
 }
 
-.food-category-btn {
+.food-cat-btn {
     padding: var(--spacing-sm) var(--spacing-lg);
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
     color: var(--color-text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.813rem;
     cursor: pointer;
     transition: all var(--transition-fast);
 }
 
-.food-category-btn:hover {
+.food-cat-btn:hover {
     border-color: var(--color-accent);
 }
 
-.food-category-btn.active {
+.food-cat-btn.active {
     background: var(--color-accent);
     border-color: var(--color-accent);
     color: var(--color-bg-primary);
     font-weight: 600;
 }
 
-/* Content Layout */
-.food-content {
+/* Recipe Grid - Dododex Style */
+.food-grid {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
 }
 
-@media (max-width: 768px) {
-    .food-content {
-        grid-template-columns: 1fr;
+/* Food Card - Dododex Style */
+.food-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: center;
+}
+
+.food-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.food-card--selected {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), transparent);
+    box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.food-card__icon {
+    font-size: 2rem;
+}
+
+.food-card__name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.food-card__tier {
+    font-size: 0.625rem;
+    color: var(--color-accent);
+    background: var(--color-accent-dim);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+/* Recipe Detail Panel */
+.food-detail {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Recipes Section */
-.food-recipes {
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-md);
-}
-
-.food-recipes__header {
+.food-detail__header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: var(--spacing-md);
 }
 
-.food-recipes__header h3 {
-    font-size: 1rem;
+.food-detail__title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.food-detail__icon {
+    font-size: 3rem;
+}
+
+.food-detail__title h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
     color: var(--color-text-primary);
     margin: 0;
 }
 
-.food-clear-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-    background: transparent;
-    border: 1px solid var(--color-danger);
-    border-radius: var(--radius-md);
-    color: var(--color-danger);
+.food-detail__craft {
     font-size: 0.75rem;
-    cursor: pointer;
-    transition: all var(--transition-fast);
+    color: var(--color-text-muted);
 }
 
-.food-clear-btn:hover {
-    background: var(--color-danger);
-    color: white;
-}
-
-.food-recipes__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-/* Recipe Card */
-.food-recipe-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-sm) var(--spacing-md);
+.food-detail__close {
+    width: 32px;
+    height: 32px;
     background: var(--color-bg-tertiary);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: 50%;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-size: 1rem;
     transition: all var(--transition-fast);
 }
 
-.food-recipe-card.active {
-    border-color: var(--color-accent);
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+.food-detail__close:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
 }
 
-.food-recipe-card__info {
+/* Effect Box */
+.food-detail__effect {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(0, 255, 100, 0.1), transparent);
+    border: 1px solid rgba(0, 255, 100, 0.3);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    color: #00ff66;
+    font-size: 0.875rem;
 }
 
-.food-recipe-card__icon {
+/* Ingredients Section */
+.food-detail__ingredients h4 {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.food-ingredient-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.food-ingredient {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.food-ingredient__icon {
     font-size: 1.25rem;
 }
 
-.food-recipe-card__text {
-    display: flex;
-    flex-direction: column;
-}
-
-.food-recipe-card__name {
-    font-size: 0.875rem;
-    color: var(--color-text-primary);
-    font-weight: 500;
-}
-
-.food-recipe-card__note {
-    font-size: 0.625rem;
-    color: var(--color-accent);
-}
-
-.food-recipe-card__controls {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.food-recipe-card__controls button {
-    width: 28px;
-    height: 28px;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-primary);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.food-recipe-card__controls button:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-bg-primary);
-}
-
-.food-recipe-card__controls input {
-    width: 50px;
-    text-align: center;
-    padding: var(--spacing-xs);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-primary);
-    font-size: 0.875rem;
-}
-
-/* Totals Section */
-.food-totals {
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-accent);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-md);
-    position: sticky;
-    top: var(--spacing-md);
-}
-
-.food-totals h3 {
-    font-size: 1rem;
-    color: var(--color-text-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.food-totals__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-.food-total-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    background: var(--color-bg-tertiary);
-    border-radius: var(--radius-sm);
-}
-
-.food-total-item__icon {
-    font-size: 1rem;
-}
-
-.food-total-item__name {
+.food-ingredient__name {
     flex: 1;
-    font-size: 0.75rem;
-    color: var(--color-text-secondary);
+    font-size: 0.813rem;
+    color: var(--color-text-primary);
 }
 
-.food-total-item__amount {
+.food-ingredient__amount {
     font-family: var(--font-display);
     font-size: 0.875rem;
     color: var(--color-accent);
     font-weight: 700;
 }
 
-.food-totals__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-xl);
-    color: var(--color-text-muted);
-    text-align: center;
-}
+/* Responsive */
+@media (max-width: 480px) {
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-.food-totals__empty span {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-sm);
-}
+    .food-card {
+        padding: var(--spacing-sm);
+    }
 
-.food-totals__empty p {
-    font-size: 0.875rem;
-    margin: 0;
+    .food-card__icon {
+        font-size: 1.5rem;
+    }
+
+    .food-ingredient-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Scrollbar */
-.food-recipes__list::-webkit-scrollbar,
-.food-totals__list::-webkit-scrollbar {
+.food-calc::-webkit-scrollbar {
     width: 4px;
 }
 
-.food-recipes__list::-webkit-scrollbar-thumb,
-.food-totals__list::-webkit-scrollbar-thumb {
+.food-calc::-webkit-scrollbar-thumb {
     background: var(--color-accent);
     border-radius: 2px;
 }

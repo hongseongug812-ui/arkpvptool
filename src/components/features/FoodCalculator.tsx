@@ -2,146 +2,305 @@ import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import './FoodCalculator.css';
 
-// Ingredient types
-interface Ingredient {
-    id: string;
-    nameKr: string;
-    nameEn: string;
-    icon: string;
-}
-
 interface Recipe {
     id: string;
     nameKr: string;
     nameEn: string;
     icon: string;
-    category: 'kibble' | 'food' | 'consumable' | 'custom';
-    ingredients: { ingredientId: string; amount: number }[];
-    result: number;
-    note?: string;
+    category: 'kibble' | 'food' | 'consumable' | 'dye' | 'other';
+    tier?: string;
+    ingredients: { name: string; nameKr: string; amount: number; icon: string }[];
+    effect?: string;
+    effectKr?: string;
+    craftedIn?: string;
 }
 
-// All ingredients
-const INGREDIENTS: Record<string, Ingredient> = {
-    // Meats
-    raw_meat: { id: 'raw_meat', nameKr: '생고기', nameEn: 'Raw Meat', icon: '🥩' },
-    cooked_meat: { id: 'cooked_meat', nameKr: '익힌 고기', nameEn: 'Cooked Meat', icon: '🍖' },
-    raw_prime: { id: 'raw_prime', nameKr: '최상급 생고기', nameEn: 'Raw Prime Meat', icon: '🥩' },
-    cooked_prime: { id: 'cooked_prime', nameKr: '익힌 최상급 고기', nameEn: 'Cooked Prime Meat', icon: '🍖' },
-    raw_fish: { id: 'raw_fish', nameKr: '생선회', nameEn: 'Raw Fish Meat', icon: '🐟' },
-    cooked_fish: { id: 'cooked_fish', nameKr: '익힌 생선', nameEn: 'Cooked Fish', icon: '🍣' },
-    jerky: { id: 'jerky', nameKr: '육포', nameEn: 'Cooked Meat Jerky', icon: '🥓' },
-    prime_jerky: { id: 'prime_jerky', nameKr: '최상급 육포', nameEn: 'Prime Meat Jerky', icon: '🥓' },
-
-    // Eggs
-    extra_small_egg: { id: 'extra_small_egg', nameKr: '아주 작은 알', nameEn: 'Extra Small Egg', icon: '🥚' },
-    small_egg: { id: 'small_egg', nameKr: '작은 알', nameEn: 'Small Egg', icon: '🥚' },
-    medium_egg: { id: 'medium_egg', nameKr: '중간 알', nameEn: 'Medium Egg', icon: '🥚' },
-    large_egg: { id: 'large_egg', nameKr: '큰 알', nameEn: 'Large Egg', icon: '🥚' },
-    extra_large_egg: { id: 'extra_large_egg', nameKr: '아주 큰 알', nameEn: 'Extra Large Egg', icon: '🥚' },
-    special_egg: { id: 'special_egg', nameKr: '특수 알', nameEn: 'Special Egg', icon: '🥚' },
-
-    // Vegetables & Fruits
-    mejoberry: { id: 'mejoberry', nameKr: '메조베리', nameEn: 'Mejoberry', icon: '🫐' },
-    tintoberry: { id: 'tintoberry', nameKr: '틴토베리', nameEn: 'Tintoberry', icon: '🍇' },
-    amarberry: { id: 'amarberry', nameKr: '아마르베리', nameEn: 'Amarberry', icon: '🍒' },
-    azulberry: { id: 'azulberry', nameKr: '아줄베리', nameEn: 'Azulberry', icon: '🫐' },
-    stimberry: { id: 'stimberry', nameKr: '스팀베리', nameEn: 'Stimberry', icon: '🍓' },
-    narcoberry: { id: 'narcoberry', nameKr: '나코베리', nameEn: 'Narcoberry', icon: '🍇' },
-    rockarrot: { id: 'rockarrot', nameKr: '록캐롯', nameEn: 'Rockarrot', icon: '🥕' },
-    longrass: { id: 'longrass', nameKr: '롱그라스', nameEn: 'Longrass', icon: '🌾' },
-    savoroot: { id: 'savoroot', nameKr: '세이보루트', nameEn: 'Savoroot', icon: '🥔' },
-    citronal: { id: 'citronal', nameKr: '시트로날', nameEn: 'Citronal', icon: '🍋' },
-
-    // Other
-    fiber: { id: 'fiber', nameKr: '섬유', nameEn: 'Fiber', icon: '🧵' },
-    thatch: { id: 'thatch', nameKr: '초가', nameEn: 'Thatch', icon: '🌿' },
-    water: { id: 'water', nameKr: '물', nameEn: 'Water', icon: '💧' },
-    oil: { id: 'oil', nameKr: '오일', nameEn: 'Oil', icon: '🛢️' },
-    sparkpowder: { id: 'sparkpowder', nameKr: '스파크파우더', nameEn: 'Sparkpowder', icon: '✨' },
-    honey: { id: 'honey', nameKr: '꿀', nameEn: 'Giant Bee Honey', icon: '🍯' },
-    rare_mushroom: { id: 'rare_mushroom', nameKr: '희귀 버섯', nameEn: 'Rare Mushroom', icon: '🍄' },
-    rare_flower: { id: 'rare_flower', nameKr: '희귀 꽃', nameEn: 'Rare Flower', icon: '🌸' },
-    sap: { id: 'sap', nameKr: '수액', nameEn: 'Sap', icon: '🧴' },
-    polymer: { id: 'polymer', nameKr: '폴리머', nameEn: 'Polymer', icon: '🔷' },
-    organic_polymer: { id: 'organic_polymer', nameKr: '유기 폴리머', nameEn: 'Organic Polymer', icon: '🦭' },
-    focal_chili: { id: 'focal_chili', nameKr: '포컬 칠리', nameEn: 'Focal Chili', icon: '🌶️' },
-};
-
-// Recipes
+// All ARK Recipes
 const RECIPES: Recipe[] = [
-    // Kibbles (ASA Simplified)
+    // ========== KIBBLES ==========
     {
-        id: 'basic_kibble', nameKr: '기본 키블', nameEn: 'Basic Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'extra_small_egg', amount: 1 }, { ingredientId: 'cooked_meat', amount: 1 }, { ingredientId: 'amarberry', amount: 10 }, { ingredientId: 'mejoberry', amount: 5 }, { ingredientId: 'tintoberry', amount: 10 }, { ingredientId: 'fiber', amount: 5 }], result: 1
+        id: 'basic_kibble', nameKr: '기본 키블', nameEn: 'Basic Kibble', icon: '🥣', category: 'kibble', tier: 'Basic',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Extra Small Egg', nameKr: '아주 작은 알', amount: 1, icon: '🥚' },
+            { name: 'Cooked Meat', nameKr: '익힌 고기', amount: 1, icon: '🍖' },
+            { name: 'Amarberry', nameKr: '아마르베리', amount: 10, icon: '🍒' },
+            { name: 'Tintoberry', nameKr: '틴토베리', amount: 10, icon: '🍇' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 5, icon: '🫐' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
-        id: 'simple_kibble', nameKr: '간단 키블', nameEn: 'Simple Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'small_egg', amount: 1 }, { ingredientId: 'cooked_fish', amount: 1 }, { ingredientId: 'rockarrot', amount: 2 }, { ingredientId: 'mejoberry', amount: 5 }], result: 1
+        id: 'simple_kibble', nameKr: '간단 키블', nameEn: 'Simple Kibble', icon: '🥣', category: 'kibble', tier: 'Simple',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Small Egg', nameKr: '작은 알', amount: 1, icon: '🥚' },
+            { name: 'Cooked Fish', nameKr: '익힌 생선', amount: 1, icon: '🐟' },
+            { name: 'Rockarrot', nameKr: '록캐롯', amount: 2, icon: '🥕' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 5, icon: '🫐' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
-        id: 'regular_kibble', nameKr: '일반 키블', nameEn: 'Regular Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'medium_egg', amount: 1 }, { ingredientId: 'jerky', amount: 1 }, { ingredientId: 'longrass', amount: 2 }, { ingredientId: 'savoroot', amount: 2 }], result: 1
+        id: 'regular_kibble', nameKr: '일반 키블', nameEn: 'Regular Kibble', icon: '🥣', category: 'kibble', tier: 'Regular',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Medium Egg', nameKr: '중간 알', amount: 1, icon: '🥚' },
+            { name: 'Cooked Meat Jerky', nameKr: '육포', amount: 1, icon: '🥓' },
+            { name: 'Longrass', nameKr: '롱그라스', amount: 2, icon: '🌾' },
+            { name: 'Savoroot', nameKr: '세이보루트', amount: 2, icon: '🥔' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
-        id: 'superior_kibble', nameKr: '상급 키블', nameEn: 'Superior Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'large_egg', amount: 1 }, { ingredientId: 'prime_jerky', amount: 1 }, { ingredientId: 'citronal', amount: 2 }, { ingredientId: 'sap', amount: 2 }, { ingredientId: 'rare_mushroom', amount: 2 }], result: 1
+        id: 'superior_kibble', nameKr: '상급 키블', nameEn: 'Superior Kibble', icon: '🥣', category: 'kibble', tier: 'Superior',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Large Egg', nameKr: '큰 알', amount: 1, icon: '🥚' },
+            { name: 'Prime Meat Jerky', nameKr: '최상급 육포', amount: 1, icon: '🥓' },
+            { name: 'Citronal', nameKr: '시트로날', amount: 2, icon: '🍋' },
+            { name: 'Rare Mushroom', nameKr: '희귀 버섯', amount: 2, icon: '🍄' },
+            { name: 'Sap', nameKr: '수액', amount: 2, icon: '🧴' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
-        id: 'exceptional_kibble', nameKr: '특상급 키블', nameEn: 'Exceptional Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'extra_large_egg', amount: 1 }, { ingredientId: 'prime_jerky', amount: 1 }, { ingredientId: 'focal_chili', amount: 1 }, { ingredientId: 'rare_flower', amount: 10 }, { ingredientId: 'mejoberry', amount: 10 }], result: 1
+        id: 'exceptional_kibble', nameKr: '특상급 키블', nameEn: 'Exceptional Kibble', icon: '🥣', category: 'kibble', tier: 'Exceptional',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Extra Large Egg', nameKr: '아주 큰 알', amount: 1, icon: '🥚' },
+            { name: 'Focal Chili', nameKr: '포컬 칠리', amount: 1, icon: '🌶️' },
+            { name: 'Rare Flower', nameKr: '희귀 꽃', amount: 10, icon: '🌸' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
-        id: 'extraordinary_kibble', nameKr: '최상급 키블', nameEn: 'Extraordinary Kibble', icon: '🥣', category: 'kibble',
-        ingredients: [{ ingredientId: 'special_egg', amount: 1 }, { ingredientId: 'honey', amount: 1 }, { ingredientId: 'rare_flower', amount: 10 }, { ingredientId: 'rare_mushroom', amount: 10 }, { ingredientId: 'mejoberry', amount: 10 }], result: 1
+        id: 'extraordinary_kibble', nameKr: '최상급 키블', nameEn: 'Extraordinary Kibble', icon: '🥣', category: 'kibble', tier: 'Extraordinary',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Special Egg', nameKr: '특수 알', amount: 1, icon: '🥚' },
+            { name: 'Giant Bee Honey', nameKr: '꿀', amount: 1, icon: '🍯' },
+            { name: 'Lazarus Chowder', nameKr: '라자루스 차우더', amount: 1, icon: '🥘' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Fiber', nameKr: '섬유', amount: 5, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
 
-    // Foods
+    // ========== FOODS (Stat Buffs) ==========
     {
         id: 'focal_chili', nameKr: '포컬 칠리', nameEn: 'Focal Chili', icon: '🌶️', category: 'food',
-        ingredients: [{ ingredientId: 'cooked_meat', amount: 9 }, { ingredientId: 'citronal', amount: 5 }, { ingredientId: 'tintoberry', amount: 20 }, { ingredientId: 'amarberry', amount: 20 }, { ingredientId: 'azulberry', amount: 20 }, { ingredientId: 'mejoberry', amount: 10 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '+25% 속도, 15분'
+        effect: '+25% Movement Speed, +100% Crafting Speed for 15 min', effectKr: '이동속도 +25%, 제작속도 +100% (15분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Cooked Meat', nameKr: '익힌 고기', amount: 9, icon: '🍖' },
+            { name: 'Citronal', nameKr: '시트로날', amount: 5, icon: '🍋' },
+            { name: 'Tintoberry', nameKr: '틴토베리', amount: 20, icon: '🍇' },
+            { name: 'Amarberry', nameKr: '아마르베리', amount: 20, icon: '🍒' },
+            { name: 'Azulberry', nameKr: '아줄베리', amount: 20, icon: '🫐' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
         id: 'enduro_stew', nameKr: '인듀로 스튜', nameEn: 'Enduro Stew', icon: '🍲', category: 'food',
-        ingredients: [{ ingredientId: 'cooked_meat', amount: 9 }, { ingredientId: 'rockarrot', amount: 5 }, { ingredientId: 'savoroot', amount: 5 }, { ingredientId: 'mejoberry', amount: 10 }, { ingredientId: 'stimberry', amount: 10 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '+15% 근접, 15분'
+        effect: '+1.2 HP/sec, +15% Melee for 15 min', effectKr: 'HP회복 +1.2/초, 근접공격 +15% (15분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Cooked Meat', nameKr: '익힌 고기', amount: 9, icon: '🍖' },
+            { name: 'Rockarrot', nameKr: '록캐롯', amount: 5, icon: '🥕' },
+            { name: 'Savoroot', nameKr: '세이보루트', amount: 5, icon: '🥔' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 10, icon: '🍓' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
         id: 'lazarus_chowder', nameKr: '라자루스 차우더', nameEn: 'Lazarus Chowder', icon: '🥘', category: 'food',
-        ingredients: [{ ingredientId: 'cooked_meat', amount: 9 }, { ingredientId: 'savoroot', amount: 5 }, { ingredientId: 'longrass', amount: 5 }, { ingredientId: 'mejoberry', amount: 10 }, { ingredientId: 'narcoberry', amount: 10 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '산소 소모 15% 감소, 10분'
+        effect: '-85% Oxygen consumption, +1.5 Stamina/sec for 10 min', effectKr: '산소 소모 -85%, 기력회복 +1.5/초 (10분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Cooked Meat', nameKr: '익힌 고기', amount: 9, icon: '🍖' },
+            { name: 'Savoroot', nameKr: '세이보루트', amount: 5, icon: '🥔' },
+            { name: 'Longrass', nameKr: '롱그라스', amount: 5, icon: '🌾' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Narcoberry', nameKr: '나코베리', amount: 10, icon: '🍇' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
         id: 'calien_soup', nameKr: '칼리엔 수프', nameEn: 'Calien Soup', icon: '🍜', category: 'food',
-        ingredients: [{ ingredientId: 'citronal', amount: 5 }, { ingredientId: 'tintoberry', amount: 20 }, { ingredientId: 'amarberry', amount: 20 }, { ingredientId: 'mejoberry', amount: 10 }, { ingredientId: 'stimberry', amount: 10 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '열 저항, 15분'
+        effect: '+50 Hyperthermal Insulation for 15 min', effectKr: '열 저항 +50 (15분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Citronal', nameKr: '시트로날', amount: 5, icon: '🍋' },
+            { name: 'Tintoberry', nameKr: '틴토베리', amount: 20, icon: '🍇' },
+            { name: 'Amarberry', nameKr: '아마르베리', amount: 20, icon: '🍒' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 10, icon: '🍓' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
         id: 'fria_curry', nameKr: '프리아 커리', nameEn: 'Fria Curry', icon: '🍛', category: 'food',
-        ingredients: [{ ingredientId: 'citronal', amount: 5 }, { ingredientId: 'longrass', amount: 5 }, { ingredientId: 'rockarrot', amount: 5 }, { ingredientId: 'azulberry', amount: 20 }, { ingredientId: 'mejoberry', amount: 10 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '냉기 저항, 15분'
+        effect: '+50 Hypothermal Insulation for 15 min', effectKr: '냉기 저항 +50 (15분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Longrass', nameKr: '롱그라스', amount: 5, icon: '🌾' },
+            { name: 'Rockarrot', nameKr: '록캐롯', amount: 5, icon: '🥕' },
+            { name: 'Azulberry', nameKr: '아줄베리', amount: 20, icon: '🫐' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 10, icon: '🫐' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
+    },
+    {
+        id: 'shadow_steak', nameKr: '쉐도우 스테이크', nameEn: 'Shadow Steak Saute', icon: '🥩', category: 'food',
+        effect: '+50 Hypothermal, Removes Blind effect for 3 min', effectKr: '눈부심 효과 제거, 냉기 저항 +50 (3분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Cooked Prime Meat', nameKr: '익힌 최상급', amount: 3, icon: '🍖' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 20, icon: '🫐' },
+            { name: 'Narcoberry', nameKr: '나코베리', amount: 20, icon: '🍇' },
+            { name: 'Rare Mushroom', nameKr: '희귀 버섯', amount: 2, icon: '🍄' },
+            { name: 'Rare Flower', nameKr: '희귀 꽃', amount: 2, icon: '🌸' },
+            { name: 'Savoroot', nameKr: '세이보루트', amount: 1, icon: '🥔' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
+    },
+    {
+        id: 'battle_tartare', nameKr: '배틀 타르타르', nameEn: 'Battle Tartare', icon: '🍖', category: 'food',
+        effect: '+60% Melee, +50% Resist, -90% HP regen for 3 min', effectKr: '근접 +60%, 저항 +50%, HP회복 -90% (3분)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Raw Prime Meat', nameKr: '최상급 생고기', amount: 3, icon: '🥩' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 20, icon: '🫐' },
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 20, icon: '🍓' },
+            { name: 'Rare Mushroom', nameKr: '희귀 버섯', amount: 2, icon: '🍄' },
+            { name: 'Rare Flower', nameKr: '희귀 꽃', amount: 2, icon: '🌸' },
+            { name: 'Rockarrot', nameKr: '록캐롯', amount: 1, icon: '🥕' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
+    },
+    {
+        id: 'mindwipe_tonic', nameKr: '마인드와이프 토닉', nameEn: 'Mindwipe Tonic', icon: '🧠', category: 'food',
+        effect: 'Reset Engrams and Stat Points', effectKr: '스탯 및 엔그램 초기화',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Cooked Prime Meat', nameKr: '익힌 최상급', amount: 24, icon: '🍖' },
+            { name: 'Mejoberry', nameKr: '메조베리', amount: 200, icon: '🫐' },
+            { name: 'Narcoberry', nameKr: '나코베리', amount: 72, icon: '🍇' },
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 72, icon: '🍓' },
+            { name: 'Rare Mushroom', nameKr: '희귀 버섯', amount: 24, icon: '🍄' },
+            { name: 'Rare Flower', nameKr: '희귀 꽃', amount: 24, icon: '🌸' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
 
-    // Consumables
+    // ========== CONSUMABLES ==========
     {
         id: 'narcotic', nameKr: '마취약', nameEn: 'Narcotic', icon: '💊', category: 'consumable',
-        ingredients: [{ ingredientId: 'narcoberry', amount: 5 }, { ingredientId: 'sparkpowder', amount: 1 }], result: 1
+        effect: '+40 Torpor', effectKr: '기절도 +40',
+        craftedIn: 'Mortar & Pestle',
+        ingredients: [
+            { name: 'Narcoberry', nameKr: '나코베리', amount: 5, icon: '🍇' },
+            { name: 'Spoiled Meat', nameKr: '썩은 고기', amount: 1, icon: '🤢' },
+        ]
     },
     {
         id: 'stimulant', nameKr: '각성제', nameEn: 'Stimulant', icon: '💉', category: 'consumable',
-        ingredients: [{ ingredientId: 'stimberry', amount: 5 }, { ingredientId: 'sparkpowder', amount: 2 }], result: 1
+        effect: '-40 Torpor, -15 Water', effectKr: '기절도 -40, 수분 -15',
+        craftedIn: 'Mortar & Pestle',
+        ingredients: [
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 5, icon: '🍓' },
+            { name: 'Sparkpowder', nameKr: '스파크파우더', amount: 2, icon: '✨' },
+        ]
     },
     {
         id: 'medical_brew', nameKr: '치료약', nameEn: 'Medical Brew', icon: '🧪', category: 'consumable',
-        ingredients: [{ ingredientId: 'tintoberry', amount: 20 }, { ingredientId: 'narcoberry', amount: 2 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '+40 HP'
+        effect: '+40 HP over 5 sec', effectKr: 'HP +40 (5초)',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Tintoberry', nameKr: '틴토베리', amount: 20, icon: '🍇' },
+            { name: 'Narcoberry', nameKr: '나코베리', amount: 2, icon: '🍇' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
     },
     {
         id: 'energy_brew', nameKr: '에너지 음료', nameEn: 'Energy Brew', icon: '⚡', category: 'consumable',
-        ingredients: [{ ingredientId: 'stimberry', amount: 20 }, { ingredientId: 'azulberry', amount: 2 }, { ingredientId: 'water', amount: 1 }], result: 1, note: '+40 스태미나'
+        effect: '+40 Stamina', effectKr: '기력 +40',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Azulberry', nameKr: '아줄베리', amount: 20, icon: '🫐' },
+            { name: 'Stimberry', nameKr: '스팀베리', amount: 2, icon: '🍓' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
+    },
+    {
+        id: 'sweet_cake', nameKr: '스위트 케이크', nameEn: 'Sweet Vegetable Cake', icon: '🍰', category: 'consumable',
+        effect: 'Heals herbivores +500 HP, Achatina food', effectKr: '초식공룡 HP +500, 아카티나 먹이',
+        craftedIn: 'Cooking Pot',
+        ingredients: [
+            { name: 'Giant Bee Honey', nameKr: '꿀', amount: 2, icon: '🍯' },
+            { name: 'Sap', nameKr: '수액', amount: 4, icon: '🧴' },
+            { name: 'Rockarrot', nameKr: '록캐롯', amount: 2, icon: '🥕' },
+            { name: 'Longrass', nameKr: '롱그라스', amount: 2, icon: '🌾' },
+            { name: 'Savoroot', nameKr: '세이보루트', amount: 2, icon: '🥔' },
+            { name: 'Citronal', nameKr: '시트로날', amount: 2, icon: '🍋' },
+            { name: 'Stimulant', nameKr: '각성제', amount: 4, icon: '💉' },
+            { name: 'Fiber', nameKr: '섬유', amount: 25, icon: '🧵' },
+            { name: 'Water', nameKr: '물', amount: 1, icon: '💧' },
+        ]
+    },
+    {
+        id: 'wyvern_milk', nameKr: '와이번 밀크', nameEn: 'Wyvern Milk', icon: '🥛', category: 'consumable',
+        effect: 'For raising baby Wyverns', effectKr: '와이번 새끼 양육용',
+        craftedIn: 'Alpha Wyvern',
+        ingredients: [
+            { name: 'From Alpha Wyvern', nameKr: '알파 와이번에서 획득', amount: 5, icon: '🐉' },
+        ]
+    },
+
+    // ========== OTHER ==========
+    {
+        id: 'jerky', nameKr: '육포', nameEn: 'Cooked Meat Jerky', icon: '🥓', category: 'other',
+        craftedIn: 'Preserving Bin',
+        ingredients: [
+            { name: 'Cooked Meat', nameKr: '익힌 고기', amount: 1, icon: '🍖' },
+            { name: 'Oil', nameKr: '오일', amount: 1, icon: '🛢️' },
+            { name: 'Sparkpowder', nameKr: '스파크파우더', amount: 3, icon: '✨' },
+        ]
+    },
+    {
+        id: 'prime_jerky', nameKr: '최상급 육포', nameEn: 'Prime Meat Jerky', icon: '🥓', category: 'other',
+        craftedIn: 'Preserving Bin',
+        ingredients: [
+            { name: 'Cooked Prime Meat', nameKr: '익힌 최상급', amount: 1, icon: '🍖' },
+            { name: 'Oil', nameKr: '오일', amount: 1, icon: '🛢️' },
+            { name: 'Sparkpowder', nameKr: '스파크파우더', amount: 3, icon: '✨' },
+        ]
+    },
+    {
+        id: 'sparkpowder', nameKr: '스파크파우더', nameEn: 'Sparkpowder', icon: '✨', category: 'other',
+        craftedIn: 'Mortar & Pestle',
+        ingredients: [
+            { name: 'Flint', nameKr: '부싯돌', amount: 2, icon: '🪨' },
+            { name: 'Stone', nameKr: '돌', amount: 1, icon: '🪨' },
+        ]
     },
 ];
 
 const CATEGORIES = [
     { id: 'all', labelKr: '전체', labelEn: 'All', icon: '📋' },
     { id: 'kibble', labelKr: '키블', labelEn: 'Kibble', icon: '🥣' },
-    { id: 'food', labelKr: '음식', labelEn: 'Food', icon: '🍲' },
+    { id: 'food', labelKr: '버프 음식', labelEn: 'Buff Food', icon: '🍲' },
     { id: 'consumable', labelKr: '소모품', labelEn: 'Consumables', icon: '💊' },
+    { id: 'other', labelKr: '기타', labelEn: 'Other', icon: '📦' },
 ];
 
 export function FoodCalculator() {
@@ -149,61 +308,50 @@ export function FoodCalculator() {
     const isKorean = i18n.language === 'ko';
 
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
-    const [quantities, setQuantities] = useState<Record<string, number>>({});
+    const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const filteredRecipes = useMemo(() => {
-        if (selectedCategory === 'all') return RECIPES;
-        return RECIPES.filter(r => r.category === selectedCategory);
-    }, [selectedCategory]);
-
-    const totalIngredients = useMemo(() => {
-        const totals: Record<string, number> = {};
-
-        for (const [recipeId, qty] of Object.entries(quantities)) {
-            if (qty <= 0) continue;
-            const recipe = RECIPES.find(r => r.id === recipeId);
-            if (!recipe) continue;
-
-            for (const ing of recipe.ingredients) {
-                totals[ing.ingredientId] = (totals[ing.ingredientId] || 0) + (ing.amount * qty);
-            }
+        let result = RECIPES;
+        if (selectedCategory !== 'all') {
+            result = result.filter(r => r.category === selectedCategory);
         }
-
-        return totals;
-    }, [quantities]);
-
-    const hasAnyQuantity = Object.values(quantities).some(q => q > 0);
-
-    const updateQuantity = (recipeId: string, delta: number) => {
-        setQuantities(prev => ({
-            ...prev,
-            [recipeId]: Math.max(0, (prev[recipeId] || 0) + delta)
-        }));
-    };
-
-    const setQuantity = (recipeId: string, value: number) => {
-        setQuantities(prev => ({
-            ...prev,
-            [recipeId]: Math.max(0, value)
-        }));
-    };
-
-    const clearAll = () => setQuantities({});
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            result = result.filter(r =>
+                r.nameKr.toLowerCase().includes(q) ||
+                r.nameEn.toLowerCase().includes(q)
+            );
+        }
+        return result;
+    }, [selectedCategory, searchQuery]);
 
     return (
-        <div className="food-calculator">
+        <div className="food-calc">
             {/* Header */}
-            <div className="food-header">
-                <h2>🍳 {isKorean ? '음식 재료 계산기' : 'Food Calculator'}</h2>
-                <p>{isKorean ? '필요한 수량을 입력하면 총 재료를 계산합니다' : 'Enter quantities to calculate total ingredients'}</p>
+            <div className="food-calc__header">
+                <h2>🍳 {isKorean ? '음식 & 레시피' : 'Food & Recipes'}</h2>
+                <p>{isKorean ? 'ARK 요리 레시피 및 재료 목록' : 'ARK cooking recipes and ingredients'}</p>
             </div>
 
-            {/* Category Filter */}
-            <div className="food-categories">
+            {/* Search */}
+            <div className="food-calc__search">
+                <span>🔍</span>
+                <input
+                    type="text"
+                    placeholder={isKorean ? '레시피 검색...' : 'Search recipes...'}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                {searchQuery && <button onClick={() => setSearchQuery('')}>✕</button>}
+            </div>
+
+            {/* Categories */}
+            <div className="food-calc__categories">
                 {CATEGORIES.map(cat => (
                     <button
                         key={cat.id}
-                        className={`food-category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
+                        className={`food-cat-btn ${selectedCategory === cat.id ? 'active' : ''}`}
                         onClick={() => setSelectedCategory(cat.id)}
                     >
                         {cat.icon} {isKorean ? cat.labelKr : cat.labelEn}
@@ -211,75 +359,60 @@ export function FoodCalculator() {
                 ))}
             </div>
 
-            <div className="food-content">
-                {/* Recipe List */}
-                <div className="food-recipes">
-                    <div className="food-recipes__header">
-                        <h3>{isKorean ? '레시피' : 'Recipes'}</h3>
-                        {hasAnyQuantity && (
-                            <button className="food-clear-btn" onClick={clearAll}>
-                                🗑️ {isKorean ? '초기화' : 'Clear'}
-                            </button>
-                        )}
+            {/* Recipe Grid - Dododex Style */}
+            <div className="food-grid">
+                {filteredRecipes.map(recipe => (
+                    <div
+                        key={recipe.id}
+                        className={`food-card ${selectedRecipe?.id === recipe.id ? 'food-card--selected' : ''}`}
+                        onClick={() => setSelectedRecipe(selectedRecipe?.id === recipe.id ? null : recipe)}
+                    >
+                        <span className="food-card__icon">{recipe.icon}</span>
+                        <span className="food-card__name">{isKorean ? recipe.nameKr : recipe.nameEn}</span>
+                        {recipe.tier && <span className="food-card__tier">{recipe.tier}</span>}
                     </div>
-                    <div className="food-recipes__list">
-                        {filteredRecipes.map(recipe => (
-                            <div key={recipe.id} className={`food-recipe-card ${(quantities[recipe.id] || 0) > 0 ? 'active' : ''}`}>
-                                <div className="food-recipe-card__info">
-                                    <span className="food-recipe-card__icon">{recipe.icon}</span>
-                                    <div className="food-recipe-card__text">
-                                        <span className="food-recipe-card__name">
-                                            {isKorean ? recipe.nameKr : recipe.nameEn}
-                                        </span>
-                                        {recipe.note && (
-                                            <span className="food-recipe-card__note">{recipe.note}</span>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="food-recipe-card__controls">
-                                    <button onClick={() => updateQuantity(recipe.id, -1)}>−</button>
-                                    <input
-                                        type="number"
-                                        value={quantities[recipe.id] || 0}
-                                        onChange={(e) => setQuantity(recipe.id, parseInt(e.target.value) || 0)}
-                                        min={0}
-                                    />
-                                    <button onClick={() => updateQuantity(recipe.id, 1)}>+</button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                ))}
+            </div>
 
-                {/* Total Ingredients */}
-                <div className="food-totals">
-                    <h3>📦 {isKorean ? '필요 재료' : 'Required Ingredients'}</h3>
-                    {hasAnyQuantity ? (
-                        <div className="food-totals__list">
-                            {Object.entries(totalIngredients)
-                                .sort(([, a], [, b]) => b - a)
-                                .map(([ingId, amount]) => {
-                                    const ing = INGREDIENTS[ingId];
-                                    if (!ing) return null;
-                                    return (
-                                        <div key={ingId} className="food-total-item">
-                                            <span className="food-total-item__icon">{ing.icon}</span>
-                                            <span className="food-total-item__name">
-                                                {isKorean ? ing.nameKr : ing.nameEn}
-                                            </span>
-                                            <span className="food-total-item__amount">×{amount}</span>
-                                        </div>
-                                    );
-                                })}
+            {/* Recipe Detail Panel - Dododex Style */}
+            {selectedRecipe && (
+                <div className="food-detail">
+                    <div className="food-detail__header">
+                        <div className="food-detail__title">
+                            <span className="food-detail__icon">{selectedRecipe.icon}</span>
+                            <div>
+                                <h3>{isKorean ? selectedRecipe.nameKr : selectedRecipe.nameEn}</h3>
+                                {selectedRecipe.craftedIn && (
+                                    <span className="food-detail__craft">
+                                        🔧 {selectedRecipe.craftedIn}
+                                    </span>
+                                )}
+                            </div>
                         </div>
-                    ) : (
-                        <div className="food-totals__empty">
-                            <span>🍽️</span>
-                            <p>{isKorean ? '레시피 수량을 입력하세요' : 'Enter recipe quantities'}</p>
+                        <button className="food-detail__close" onClick={() => setSelectedRecipe(null)}>✕</button>
+                    </div>
+
+                    {selectedRecipe.effect && (
+                        <div className="food-detail__effect">
+                            <span>✨</span>
+                            <span>{isKorean ? selectedRecipe.effectKr : selectedRecipe.effect}</span>
                         </div>
                     )}
+
+                    <div className="food-detail__ingredients">
+                        <h4>📦 {isKorean ? '재료' : 'Ingredients'}</h4>
+                        <div className="food-ingredient-list">
+                            {selectedRecipe.ingredients.map((ing, idx) => (
+                                <div key={idx} className="food-ingredient">
+                                    <span className="food-ingredient__icon">{ing.icon}</span>
+                                    <span className="food-ingredient__name">{isKorean ? ing.nameKr : ing.name}</span>
+                                    <span className="food-ingredient__amount">×{ing.amount}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }
