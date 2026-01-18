@@ -35,15 +35,21 @@ const ASE_ONLY_DINOS = ['astrocetus', 'astrodelphis', 'shadowmane', 'crystal_wyv
 // Get dino image URL
 function getDinoImageUrl(dinoId: string): string {
     const specialMappings: Record<string, string> = {
+        // Short names to full names
         'carcha': 'carcharodontosaurus', 'stego': 'stegosaurus', 'giga': 'giganotosaurus',
         'yuty': 'yutyrannus', 'rex': 'rex', 'daedon': 'daeodon', 'thyla': 'thylacoleo',
         'therizino': 'therizinosaur', 'rhynio': 'rhyniognatha', 'trike': 'triceratops',
         'paracer': 'paraceratherium', 'gasbag': 'gasbags', 'rhino': 'woolly-rhino',
-        'giant_bee': 'giant-queen-bee', 'woolly_rhino': 'woolly-rhino', 'dire_bear': 'dire-bear',
-        'rock_elemental': 'rock-elemental', 'rock_drake': 'rock-drake', 'snow_owl': 'snow-owl',
-        'terror_bird': 'terror-bird', 'dung_beetle': 'dung-beetle', 'thorny_dragon': 'thorny-dragon',
-        'crystal_wyvern': 'crystal-wyvern', 'tek_stryder': 'tek-stryder', 'stryder': 'tek-stryder',
-        'spinosaurus': 'spino',
+        'tropeo': 'tropeognathus', 'angler': 'anglerfish', 'stryder': 'tek-stryder',
+        // Underscore to hyphen conversions
+        'giant_bee': 'giant-queen-bee', 'royal_griffin': 'griffin', 'woolly_rhino': 'woolly-rhino',
+        'dire_bear': 'dire-bear', 'direbear': 'dire-bear', 'rock_elemental': 'rock-elemental',
+        'rock_drake': 'rock-drake', 'snow_owl': 'snow-owl', 'terror_bird': 'terror-bird',
+        'dung_beetle': 'dung-beetle', 'dungbeetle': 'dung-beetle', 'thorny_dragon': 'thorny-dragon',
+        'crystal_wyvern': 'crystal-wyvern', 'tek_stryder': 'tek-stryder', 'roll_rat': 'roll-rat',
+        // Spelling variations
+        'spinosaurus': 'spino', 'achatina': 'Achatina', 'unicorn': 'equus',
+        'hyaenodon': 'hyaenodon', 'megalania': 'megalania', 'reaper': 'reaper',
     };
     const mappedId = specialMappings[dinoId] || dinoId.replace(/_/g, '-');
     return `/dinos/${mappedId}.png`;
