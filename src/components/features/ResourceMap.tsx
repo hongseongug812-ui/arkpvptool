@@ -54,6 +54,11 @@ const RESOURCES: Record<string, Resource> = {
     water_vein: { id: 'water_vein', nameKr: '물 베인', nameEn: 'Water Vein', icon: '💧', color: '#00aaff' },
     oil_vein: { id: 'oil_vein', nameKr: '오일 베인', nameEn: 'Oil Vein', icon: '🛢️', color: '#333333' },
     wyvern: { id: 'wyvern', nameKr: '와이번 둥지', nameEn: 'Wyvern Nest', icon: '🐉', color: '#ff6600' },
+    charge_node: { id: 'charge_node', nameKr: '차지 노드', nameEn: 'Charge Node', icon: '⚡', color: '#ffff00' },
+    gas_vein: { id: 'gas_vein', nameKr: '가스 베인', nameEn: 'Gas Vein', icon: '💨', color: '#00ff88' },
+    drake_nest: { id: 'drake_nest', nameKr: '락 드레이크 둥지', nameEn: 'Rock Drake Nest', icon: '🦎', color: '#00ccff' },
+    reaper: { id: 'reaper', nameKr: '리퍼 퀘 구역', nameEn: 'Reaper Queen Zone', icon: '👾', color: '#ff0066' },
+    surface: { id: 'surface', nameKr: '지표 입구', nameEn: 'Surface Entrance', icon: '☀️', color: '#ffaa00' },
 };
 
 // Maps with resource locations
@@ -124,12 +129,32 @@ const MAPS: GameMap[] = [
         nameEn: 'Aberration',
         image: '/maps/Aberration.png',
         resources: [
-            { resourceId: 'metal', x: 50, y: 30, size: 'lg', note: '상층부' },
-            { resourceId: 'gem_blue', x: 30, y: 50, size: 'lg', note: '중층부' },
-            { resourceId: 'gem_green', x: 45, y: 55, size: 'lg', note: '중층부' },
-            { resourceId: 'gem_red', x: 60, y: 75, size: 'lg', note: '하층부' },
-            { resourceId: 'gas', x: 40, y: 70, size: 'md', note: '가스 구역' },
-            { resourceId: 'element', x: 50, y: 85, size: 'md', note: '방사능 구역' },
+            // ===== Charge Nodes =====
+            { resourceId: 'charge_node', x: 65, y: 21, size: 'lg', note: 'NE Cavern Cluster' },
+            { resourceId: 'charge_node', x: 50, y: 48, size: 'lg', note: 'Lower Grave' },
+            { resourceId: 'charge_node', x: 31, y: 42, size: 'md', note: 'West Spine Ridge' },
+            // ===== Gas Veins =====
+            { resourceId: 'gas_vein', x: 72, y: 36, size: 'lg', note: 'Upper Plateau Vent' },
+            { resourceId: 'gas_vein', x: 49, y: 50, size: 'lg', note: 'Deep Cavern Vent' },
+            // ===== Rock Drake Nests =====
+            { resourceId: 'drake_nest', x: 50, y: 47, size: 'lg', note: 'Grave of the Lost - Upper Ledge' },
+            { resourceId: 'drake_nest', x: 52, y: 46, size: 'lg', note: 'Grave of the Lost - Sky Tunnel' },
+            // ===== Reaper Queen Zones =====
+            { resourceId: 'reaper', x: 78, y: 21, size: 'lg', note: 'Main Chamber' },
+            { resourceId: 'reaper', x: 46, y: 60, size: 'lg', note: 'Side Tunnel Complex' },
+            // ===== Surface Entrances =====
+            { resourceId: 'surface', x: 84, y: 20, size: 'lg', note: 'Burn Point Alpha' },
+            { resourceId: 'surface', x: 26, y: 49, size: 'md', note: 'North Scar' },
+            // ===== Gems =====
+            { resourceId: 'gem_green', x: 54, y: 51, size: 'lg', note: 'Green Zone - Fungal Terrace' },
+            { resourceId: 'gem_blue', x: 40, y: 48, size: 'lg', note: 'Blue Zone - Luminous Cavern' },
+            { resourceId: 'gem_red', x: 76, y: 38, size: 'lg', note: 'Red Zone - Rift Veins' },
+            // ===== Element =====
+            { resourceId: 'element', x: 76, y: 38, size: 'lg', note: 'Core Rift - Element Ore' },
+            // ===== Metal =====
+            { resourceId: 'metal', x: 61, y: 39, size: 'md', note: 'Upper Ridge' },
+            // ===== Artifact Cave =====
+            { resourceId: 'cave', x: 50, y: 47, size: 'md', note: 'Grave of the Lost' },
         ]
     },
     {
