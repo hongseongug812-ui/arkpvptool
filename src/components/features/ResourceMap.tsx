@@ -48,6 +48,9 @@ const RESOURCES: Record<string, Resource> = {
     cactussap: { id: 'cactussap', nameKr: '선인장 수액', nameEn: 'Cactus Sap', icon: '🌵', color: '#228b22' },
     raremushroom: { id: 'raremushroom', nameKr: '희귀 버섯', nameEn: 'Rare Mushroom', icon: '🍄', color: '#8b0000' },
     rareflower: { id: 'rareflower', nameKr: '희귀 꽃', nameEn: 'Rare Flower', icon: '🌸', color: '#ff69b4' },
+    obelisk: { id: 'obelisk', nameKr: '오벨리스크', nameEn: 'Obelisk', icon: '🔺', color: '#ff4444' },
+    cave: { id: 'cave', nameKr: '동굴/아티팩트', nameEn: 'Cave/Artifact', icon: '🕳️', color: '#8844ff' },
+    deepsea: { id: 'deepsea', nameKr: '딥시 크레이트', nameEn: 'Deep Sea Crate', icon: '📦', color: '#0088ff' },
 };
 
 // Maps with resource locations
@@ -58,25 +61,33 @@ const MAPS: GameMap[] = [
         nameEn: 'The Island',
         image: '/maps/theisland.png',
         resources: [
-            // 철 (Metal) - 화산
-            { resourceId: 'metal', x: 38, y: 42, size: 'lg', note: '화산 (Volcano) - 최고의 철 광산' },
-            // 크리스탈 (Crystal) - 화산 꼭대기
-            { resourceId: 'crystal', x: 38, y: 42, size: 'lg', note: '화산 분화구 입구' },
-            // 흑요석 (Obsidian) - 화산 분화구 내부
-            { resourceId: 'obsidian', x: 38, y: 42, size: 'lg', note: '화산 분화구 내부' },
-            // 오일 (Oil) - 북서쪽 설원 해안가
-            { resourceId: 'oil', x: 40, y: 15, size: 'lg', note: '북서쪽 설원 해안가 - 물에 안 들어가도 됨' },
-            // 시멘트 풀 (Cementing Paste) - 히든 레이크
-            { resourceId: 'paste', x: 68, y: 22, size: 'lg', note: '히든 레이크 비버 댐' },
-            // 진주 (Silica Pearl) - 북서쪽 설원 얕은 물
-            { resourceId: 'silica', x: 10, y: 30, size: 'lg', note: '북서쪽 설원 얕은 물가' },
-            // 추가 자원들
-            { resourceId: 'metal', x: 20, y: 25, size: 'md', note: '눈산 (Snow Mountain)' },
-            { resourceId: 'crystal', x: 20, y: 25, size: 'md', note: '눈산' },
-            { resourceId: 'honey', x: 55, y: 65, size: 'md', note: '레드우드 (Redwood)' },
-            { resourceId: 'sap', x: 55, y: 65, size: 'lg', note: '레드우드 수액 탭' },
-            { resourceId: 'raremushroom', x: 55, y: 75, size: 'md', note: '늪지대 (Swamp)' },
-            { resourceId: 'rareflower', x: 55, y: 75, size: 'md', note: '늪지대' },
+            // ===== Metal Clusters =====
+            { resourceId: 'metal', x: 39.5, y: 42.5, size: 'lg', note: '화산 Rim - 최고의 철 광산' },
+            { resourceId: 'metal', x: 84, y: 56, size: 'lg', note: "Far's Peak / NE Mountain" },
+            { resourceId: 'metal', x: 45, y: 19, size: 'lg', note: 'NW Frozen Tooth 설원' },
+            { resourceId: 'metal', x: 28, y: 46, size: 'md', note: 'Grand Hills / West Mountain' },
+            { resourceId: 'metal', x: 57, y: 72, size: 'md', note: 'Red Peak / SE Mountains' },
+            // ===== Crystal =====
+            { resourceId: 'crystal', x: 22, y: 18, size: 'lg', note: 'Northern Snow Peaks' },
+            { resourceId: 'crystal', x: 38, y: 46, size: 'md', note: 'Near Volcano' },
+            // ===== Obsidian =====
+            { resourceId: 'obsidian', x: 40, y: 43.5, size: 'lg', note: 'Volcanic Interior' },
+            // ===== Oil =====
+            { resourceId: 'oil', x: 14, y: 8, size: 'lg', note: 'Deep Sea Trench SW (수중)' },
+            { resourceId: 'oil', x: 90, y: 65, size: 'lg', note: 'Deep Sea Trench NE (수중)' },
+            { resourceId: 'oil', x: 70, y: 75, size: 'md', note: 'Surface Oil SE 해안' },
+            // ===== Beaver Dams / Paste =====
+            { resourceId: 'paste', x: 46, y: 48, size: 'lg', note: 'Central River 비버 댐' },
+            { resourceId: 'paste', x: 18, y: 54, size: 'lg', note: 'Southern Swamp 비버 댐' },
+            // ===== Obelisks =====
+            { resourceId: 'obelisk', x: 12, y: 50, size: 'lg', note: 'South Obelisk 🔴' },
+            { resourceId: 'obelisk', x: 52, y: 10, size: 'lg', note: 'North Obelisk 🔵' },
+            { resourceId: 'obelisk', x: 92, y: 52, size: 'lg', note: 'East Obelisk 🟢' },
+            // ===== Caves =====
+            { resourceId: 'cave', x: 14.2, y: 53.5, size: 'md', note: 'Southern Swamp Cave' },
+            { resourceId: 'cave', x: 83.6, y: 68.2, size: 'md', note: 'NE Hill Cave' },
+            // ===== Deep Sea Crates =====
+            { resourceId: 'deepsea', x: 50, y: 12, size: 'lg', note: 'Deep Sea Loot Crates' },
         ]
     },
     {
