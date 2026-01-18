@@ -1,0 +1,276 @@
+/* Food Calculator Styles */
+.food-calculator {
+    padding: var(--spacing-md);
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+/* Header */
+.food-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.food-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.food-header p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Categories */
+.food-categories {
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.food-category-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.food-category-btn:hover {
+    border-color: var(--color-accent);
+}
+
+.food-category-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    font-weight: 600;
+}
+
+/* Content Layout */
+.food-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .food-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Recipes Section */
+.food-recipes {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+}
+
+.food-recipes__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.food-recipes__header h3 {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.food-clear-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    border-radius: var(--radius-md);
+    color: var(--color-danger);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.food-clear-btn:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+.food-recipes__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Recipe Card */
+.food-recipe-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.food-recipe-card.active {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+}
+
+.food-recipe-card__info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.food-recipe-card__icon {
+    font-size: 1.25rem;
+}
+
+.food-recipe-card__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.food-recipe-card__name {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.food-recipe-card__note {
+    font-size: 0.625rem;
+    color: var(--color-accent);
+}
+
+.food-recipe-card__controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.food-recipe-card__controls button {
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.food-recipe-card__controls button:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.food-recipe-card__controls input {
+    width: 50px;
+    text-align: center;
+    padding: var(--spacing-xs);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+}
+
+/* Totals Section */
+.food-totals {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    position: sticky;
+    top: var(--spacing-md);
+}
+
+.food-totals h3 {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.food-totals__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.food-total-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+.food-total-item__icon {
+    font-size: 1rem;
+}
+
+.food-total-item__name {
+    flex: 1;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.food-total-item__amount {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.food-totals__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.food-totals__empty span {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.food-totals__empty p {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Scrollbar */
+.food-recipes__list::-webkit-scrollbar,
+.food-totals__list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.food-recipes__list::-webkit-scrollbar-thumb,
+.food-totals__list::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 2px;
+}

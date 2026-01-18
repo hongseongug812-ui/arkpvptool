@@ -7,12 +7,13 @@ import { RaidCalculator } from './components/features/RaidCalculator';
 import { RatholeViewer } from './components/features/RatholeViewer';
 import { SoakingSimulator } from './components/features/SoakingSimulator';
 import { DinoEncyclopedia } from './components/features/DinoEncyclopedia';
+import { FoodCalculator } from './components/features/FoodCalculator';
 import { IniGenerator } from './components/features/IniGenerator';
 import { Settings } from './components/features/Settings';
 import { dataManager } from './services/DataManager';
 import './App.css';
 
-export type TabId = 'raid' | 'soak' | 'dino' | 'map' | 'ini' | 'settings';
+export type TabId = 'raid' | 'soak' | 'dino' | 'food' | 'map' | 'ini' | 'settings';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,7 +72,7 @@ function App() {
 
   // Get slide direction
   const getSlideDirection = () => {
-    const tabs: TabId[] = ['raid', 'soak', 'dino', 'map', 'ini', 'settings'];
+    const tabs: TabId[] = ['raid', 'soak', 'dino', 'food', 'map', 'ini', 'settings'];
     const prevIndex = tabs.indexOf(prevTab);
     const currIndex = tabs.indexOf(activeTab);
     return currIndex > prevIndex ? 'slide-left' : 'slide-right';
@@ -87,6 +88,9 @@ function App() {
       </div>
       <div className={`tab-panel ${activeTab === 'dino' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'dino' && <DinoEncyclopedia />}
+      </div>
+      <div className={`tab-panel ${activeTab === 'food' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
+        {activeTab === 'food' && <FoodCalculator />}
       </div>
       <div className={`tab-panel ${activeTab === 'map' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'map' && <RatholeViewer />}

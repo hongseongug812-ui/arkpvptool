@@ -9,6 +9,7 @@ const TABS = [
     { id: 'raid', label: 'Raid', icon: '💣' },
     { id: 'soak', label: 'Soaking', icon: '🛡️' },
     { id: 'dino', label: 'Dino', icon: '🦖' },
+    { id: 'food', label: 'Food', icon: '🍳' },
     { id: 'map', label: 'Map', icon: '🗺️' },
     { id: 'ini', label: 'INI', icon: '📝' },
     { id: 'settings', label: 'Settings', icon: '⚙️' },
