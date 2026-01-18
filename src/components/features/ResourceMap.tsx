@@ -574,6 +574,14 @@ export function ResourceMap() {
                             >
                                 <span>{res.icon}</span>
                                 {isCustom && <span className="custom-badge">✦</span>}
+                                {editMode && isCustom && (
+                                    <button
+                                        className="delete-marker-btn"
+                                        onClick={(e) => { e.stopPropagation(); deleteMarker(allIdx); }}
+                                    >
+                                        ✕
+                                    </button>
+                                )}
                             </div>
                         );
                     })}

@@ -270,6 +270,34 @@
     color: #00ff88;
 }
 
+.delete-marker-btn {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    border-radius: 50%;
+    background: #ff4444;
+    color: white;
+    font-size: 0.625rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.resource-point:hover .delete-marker-btn {
+    opacity: 1;
+}
+
+.delete-marker-btn:hover {
+    background: #ff0000;
+    transform: scale(1.2);
+}
+
 @keyframes pointPulse {
 
     0%,
