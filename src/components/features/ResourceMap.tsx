@@ -63,6 +63,10 @@ const RESOURCES: Record<string, Resource> = {
     element_vein: { id: 'element_vein', nameKr: '엘리먼트 베인', nameEn: 'Element Vein', icon: '💎', color: '#ff00ff' },
     titan: { id: 'titan', nameKr: '타이탄 터미널', nameEn: 'Titan Terminal', icon: '👹', color: '#ff4400' },
     city: { id: 'city', nameKr: '도시 터미널', nameEn: 'City Terminal', icon: '🏙️', color: '#00ffff' },
+    whale: { id: 'whale', nameKr: '좌초된 고래', nameEn: 'Beached Whale', icon: '🐋', color: '#4488ff' },
+    charcoal: { id: 'charcoal', nameKr: '숭', nameEn: 'Charcoal', icon: '🪨', color: '#333333' },
+    dungeon: { id: 'dungeon', nameKr: '던전 입구', nameEn: 'Dungeon Entrance', icon: '🚧', color: '#aa4400' },
+    wild_crop: { id: 'wild_crop', nameKr: '야생 작물', nameEn: 'Wild Crops', icon: '🥕', color: '#88cc00' },
 };
 
 // Maps with resource locations
@@ -197,13 +201,34 @@ const MAPS: GameMap[] = [
         nameEn: 'Ragnarok',
         image: '/maps/Ragnarok.png',
         resources: [
-            { resourceId: 'metal', x: 25, y: 35, size: 'lg', note: '하이랜드' },
-            { resourceId: 'metal', x: 45, y: 15, size: 'lg', note: '화산' },
-            { resourceId: 'metal', x: 80, y: 45, size: 'md', note: '바이킹 베이' },
-            { resourceId: 'crystal', x: 20, y: 40, size: 'lg', note: '하이랜드' },
-            { resourceId: 'obsidian', x: 45, y: 12, size: 'lg', note: '화산' },
-            { resourceId: 'oil', x: 10, y: 20, size: 'lg', note: '북서 해안' },
-            { resourceId: 'silica', x: 90, y: 80, size: 'md', note: '남동 해저' },
+            // ===== Beached Whales =====
+            { resourceId: 'whale', x: 34.8, y: 26.4, size: 'lg', note: 'Highlands Strand A' },
+            { resourceId: 'whale', x: 36.6, y: 29, size: 'md', note: 'Highlands Strand B' },
+            { resourceId: 'whale', x: 18.5, y: 12.2, size: 'md', note: 'Lowland Strand C' },
+            // ===== Wild Crops =====
+            { resourceId: 'wild_crop', x: 42.2, y: 31.7, size: 'lg', note: 'Savoroot - Highland Terrace' },
+            { resourceId: 'wild_crop', x: 45, y: 34, size: 'md', note: 'Rockarrot - Highland Scree' },
+            // ===== Obsidian =====
+            { resourceId: 'obsidian', x: 72.4, y: 50.1, size: 'lg', note: 'Volcano Flank' },
+            { resourceId: 'obsidian', x: 74.1, y: 48.3, size: 'md', note: 'Volcano Cave' },
+            // ===== Charcoal =====
+            { resourceId: 'charcoal', x: 70.9, y: 52, size: 'lg', note: 'Burnt Tree Field' },
+            { resourceId: 'charcoal', x: 68, y: 58, size: 'md', note: 'Burnt Ridge' },
+            // ===== Wyvern Trench (Fire/Lightning/Poison) =====
+            { resourceId: 'wyvern', x: 72.6, y: 49.9, size: 'lg', note: 'Fire Wyverns - Trench Center' },
+            { resourceId: 'wyvern', x: 75.5, y: 53.2, size: 'lg', note: 'Lightning Wyverns - NE Edge' },
+            { resourceId: 'wyvern', x: 70, y: 55.7, size: 'lg', note: 'Poison Wyverns - SE Edge' },
+            // ===== Ice Wyvern Nests =====
+            { resourceId: 'wyvern', x: 10.5, y: 84, size: 'lg', note: 'Ice Wyverns - Murder Snow A' },
+            { resourceId: 'wyvern', x: 8.7, y: 80.6, size: 'lg', note: 'Ice Wyverns - Murder Snow B' },
+            // ===== Dungeons =====
+            { resourceId: 'dungeon', x: 73.9, y: 46.5, size: 'lg', note: 'Lava Golem Cave' },
+            { resourceId: 'dungeon', x: 11.2, y: 81.9, size: 'lg', note: 'Ice Worm Queen Cave' },
+            { resourceId: 'dungeon', x: 52.6, y: 62.9, size: 'lg', note: 'Jungle Labyrinth' },
+            { resourceId: 'dungeon', x: 19.9, y: 52, size: 'md', note: "Life's Labyrinth" },
+            // ===== Oil Veins =====
+            { resourceId: 'oil_vein', x: 84.8, y: 22.7, size: 'lg', note: 'Desert Pump Site' },
+            { resourceId: 'oil_vein', x: 12.5, y: 78.9, size: 'md', note: 'Snowfield Pump Site' },
         ]
     },
     {
