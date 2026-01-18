@@ -18,40 +18,40 @@ const MAP_SIZE = 100;
 // All maps have AI-generated backgrounds
 const MAP_IMAGES: Record<string, string> = {
     // The Island
-    'the_island': '/maps/the_island.png',
-    'the_island_asa': '/maps/the_island.png',
-    'the_island_ase': '/maps/the_island.png',
+    'the_island': '/maps/theisland.png',
+    'the_island_asa': '/maps/theisland.png',
+    'the_island_ase': '/maps/theisland.png',
     // Scorched Earth
-    'scorched_earth': '/maps/scorched_earth.png',
-    'scorched_earth_asa': '/maps/scorched_earth.png',
-    'scorched_earth_ase': '/maps/scorched_earth.png',
+    'scorched_earth': '/maps/ScorchedEarth.png',
+    'scorched_earth_asa': '/maps/ScorchedEarth.png',
+    'scorched_earth_ase': '/maps/ScorchedEarth.png',
     // Aberration
-    'aberration': '/maps/aberration.png',
-    'aberration_asa': '/maps/aberration.png',
-    'aberration_ase': '/maps/aberration.png',
+    'aberration': '/maps/Aberration.png',
+    'aberration_asa': '/maps/Aberration.png',
+    'aberration_ase': '/maps/Aberration.png',
     // The Center
-    'the_center': '/maps/the_center.png',
-    'the_center_asa': '/maps/the_center.png',
-    'the_center_ase': '/maps/the_center.png',
+    'the_center': '/maps/thecenter.png',
+    'the_center_asa': '/maps/thecenter.png',
+    'the_center_ase': '/maps/thecenter.png',
     // Extinction
-    'extinction': '/maps/extinction.png',
-    'extinction_ase': '/maps/extinction.png',
+    'extinction': '/maps/Extinction.png',
+    'extinction_ase': '/maps/Extinction.png',
     // Ragnarok
-    'ragnarok': '/maps/ragnarok.png',
-    'ragnarok_ase': '/maps/ragnarok.png',
+    'ragnarok': '/maps/Ragnarok.png',
+    'ragnarok_ase': '/maps/Ragnarok.png',
     // Valguero
-    'valguero': '/maps/valguero.png',
-    'valguero_ase': '/maps/valguero.png',
+    'valguero': '/maps/Valguero.png',
+    'valguero_ase': '/maps/Valguero.png',
     // Genesis (Part 1 and Part 2)
-    'genesis': '/maps/genesis.png',
-    'genesis_ase': '/maps/genesis.png',
-    'genesis_1': '/maps/genesis.png',
-    'genesis_1_ase': '/maps/genesis.png',
-    'genesis_2': '/maps/genesis.png',
-    'genesis_2_ase': '/maps/genesis.png',
+    'genesis': '/maps/Gensispart1.png',
+    'genesis_ase': '/maps/Gensispart1.png',
+    'genesis_1': '/maps/Gensispart1.png',
+    'genesis_1_ase': '/maps/Gensispart1.png',
+    'genesis_2': '/maps/GenesisPart2.png',
+    'genesis_2_ase': '/maps/GenesisPart2.png',
     // Crystal Isles
-    'crystal_isles': '/maps/crystal_isles.png',
-    'crystal_isles_ase': '/maps/crystal_isles.png',
+    'crystal_isles': '/maps/CrystalIsles.png',
+    'crystal_isles_ase': '/maps/CrystalIsles.png',
     // Lost Island
     'lost_island': '/maps/lost_island.png',
     'lost_island_ase': '/maps/lost_island.png',
