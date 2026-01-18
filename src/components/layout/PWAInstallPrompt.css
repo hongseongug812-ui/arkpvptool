@@ -1,0 +1,98 @@
+.pwa-prompt {
+    position: fixed;
+    bottom: calc(var(--bottom-nav-height) + var(--spacing-md));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: var(--shadow-lg), 0 0 20px var(--color-accent-glow);
+    z-index: 1000;
+    max-width: calc(100vw - 32px);
+}
+
+.pwa-prompt__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.pwa-prompt__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.pwa-prompt__title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+}
+
+.pwa-prompt__desc {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pwa-prompt__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.pwa-prompt__btn {
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.75rem;
+    transition: all var(--transition-fast);
+}
+
+.pwa-prompt__btn--install {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--gradient-accent);
+    color: var(--color-bg-primary);
+}
+
+.pwa-prompt__btn--install:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+.pwa-prompt__btn--dismiss {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.pwa-prompt__btn--dismiss:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 480px) {
+    .pwa-prompt {
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+        transform: none;
+        max-width: none;
+    }
+
+    .pwa-prompt__desc {
+        display: none;
+    }
+}

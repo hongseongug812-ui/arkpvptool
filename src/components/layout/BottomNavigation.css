@@ -88,9 +88,32 @@
     color: var(--color-text-secondary);
 }
 
-/* Small screens */
-@media (max-width: 400px) {
+/* Small screens - 6 tabs optimization */
+@media (max-width: 768px) {
     .bottom-nav__item {
-        padding: var(--spacing-sm) var(--spacing-md);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .bottom-nav__icon {
+        font-size: 1.25rem;
+    }
+
+    .bottom-nav__label {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bottom-nav__item {
+        padding: var(--spacing-xs);
+    }
+
+    .bottom-nav__icon {
+        font-size: 1.125rem;
+    }
+
+    .bottom-nav__label {
+        font-size: 0.438rem;
+        letter-spacing: 0;
     }
 }

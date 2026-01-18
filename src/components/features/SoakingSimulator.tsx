@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dataManager } from '../../services/DataManager';
+import { ShareButton } from '../common/ShareButton';
 import type { Dino } from '../../types';
 import './SoakingSimulator.css';
 
@@ -31,6 +32,7 @@ export function SoakingSimulator() {
     const [selectedAbility, setSelectedAbility] = useState<string | undefined>(dinos[0]?.special_abilities[0]?.mode_id);
     const [turretCounts, setTurretCounts] = useState({ auto: 10, heavy: 5, tek: 0 });
     const [activeBuffs, setActiveBuffs] = useState<Record<string, boolean>>({ mate_boost: false, yuty_courage: false });
+    const resultRef = useRef<HTMLDivElement>(null);
 
     const result = useMemo(() => {
         if (!selectedDino) return null;
@@ -161,8 +163,11 @@ export function SoakingSimulator() {
             </div>
 
             {result && (
-                <div className="card soaking-results">
-                    <h3 className="card__title">📊 {t('common.result')}</h3>
+                <div className="card soaking-results" ref={resultRef}>
+                    <div className="card__header">
+                        <h3 className="card__title">📊 {t('common.result')}</h3>
+                        <ShareButton targetRef={resultRef} title="ARK-Soak-Result" compact />
+                    </div>
                     <div className="result-main-grid">
                         <div className="result-cards">
                             <div className="result-box result-box--primary">

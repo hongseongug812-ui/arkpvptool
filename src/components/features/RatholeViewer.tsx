@@ -3,6 +3,10 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useGameVersion } from '../../context/GameVersionContext';
 import { dataManager } from '../../services/DataManager';
+import { InteractiveMap } from './InteractiveMap';
+import { FavoriteButton } from './SearchBar';
+import { useFavorites } from '../../hooks/useFavorites';
+import { useRecentHistory } from '../../hooks/useRecentHistory';
 import type { RatholeLocation, TribeSize } from '../../types';
 import './RatholeViewer.css';
 
@@ -24,16 +28,31 @@ export function RatholeViewer() {
     const [selectedMapId, setSelectedMapId] = useState<string | null>(null);
     const [selectedLocation, setSelectedLocation] = useState<RatholeLocation | null>(null);
     const [tribeSizeFilter, setTribeSizeFilter] = useState<TribeSize | 'all'>('all');
+    const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
+    const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
     const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
+    const { isFavorite, toggleFavorite, getFavoritesByType } = useFavorites();
+    const { recentItems, addToHistory } = useRecentHistory();
 
     const maps = useMemo(() => dataManager.getRatholeMaps(gameVersion), [gameVersion]);
     const effectiveMapId = selectedMapId || maps[0]?.map_id || null;
 
+    // Handle location selection with history tracking
+    const handleLocationSelect = useCallback((location: RatholeLocation | null) => {
+        setSelectedLocation(location);
+        if (location) {
+            addToHistory({ id: location.id, type: 'rathole', name: location.name, mapId: effectiveMapId || undefined });
+        }
+    }, [addToHistory, effectiveMapId]);
+
+    const favoriteIds = useMemo(() => getFavoritesByType('rathole').map(f => f.id), [getFavoritesByType]);
+
     const locations = useMemo(() => {
         let locs: RatholeLocation[] = effectiveMapId ? dataManager.getRatholesByMapId(effectiveMapId, gameVersion) : dataManager.getAllRatholeLocations(gameVersion);
         if (tribeSizeFilter !== 'all') locs = locs.filter((loc) => loc.tribe_size.includes(tribeSizeFilter));
+        if (showFavoritesOnly) locs = locs.filter((loc) => favoriteIds.includes(loc.id));
         return locs;
-    }, [effectiveMapId, gameVersion, tribeSizeFilter]);
+    }, [effectiveMapId, gameVersion, tribeSizeFilter, showFavoritesOnly, favoriteIds]);
 
     const showToast = useCallback((message: string) => { setToast({ show: true, message }); setTimeout(() => setToast({ show: false, message: '' }), 2000); }, []);
 
@@ -53,8 +72,33 @@ export function RatholeViewer() {
     return (
         <div className="rathole-viewer">
             <div className="page-header">
-                <h2 className="page-title">🗺️ {t('map.title')}</h2>
-                <p className="page-desc">{t('map.desc')} ({locations.length}{isKorean ? '개' : ' locations'})</p>
+                <div className="page-header__top">
+                    <div>
+                        <h2 className="page-title">🗺️ {t('map.title')}</h2>
+                        <p className="page-desc">{t('map.desc')} ({locations.length}{isKorean ? '개' : ' locations'})</p>
+                    </div>
+                    <div className="view-toggle">
+                        <button
+                            className={`view-toggle__btn ${showFavoritesOnly ? 'view-toggle__btn--active' : ''}`}
+                            onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                            title={isKorean ? '즐겨찾기만 보기' : 'Show favorites only'}
+                        >
+                            {showFavoritesOnly ? '★' : '☆'} {isKorean ? '즐겨찾기' : 'Favorites'}
+                        </button>
+                        <button
+                            className={`view-toggle__btn ${viewMode === 'map' ? 'view-toggle__btn--active' : ''}`}
+                            onClick={() => setViewMode('map')}
+                        >
+                            🗺️ {isKorean ? '맵' : 'Map'}
+                        </button>
+                        <button
+                            className={`view-toggle__btn ${viewMode === 'list' ? 'view-toggle__btn--active' : ''}`}
+                            onClick={() => setViewMode('list')}
+                        >
+                            📝 {isKorean ? '리스트' : 'List'}
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div className="filter-toggle-group">
@@ -69,6 +113,27 @@ export function RatholeViewer() {
                 </div>
             </div>
 
+            {/* Recent History */}
+            {recentItems.length > 0 && (
+                <div className="recent-history">
+                    <span className="recent-history__label">🕒 {isKorean ? '최근 조회' : 'Recent'}:</span>
+                    <div className="recent-history__chips">
+                        {recentItems.slice(0, 5).map((item) => (
+                            <button
+                                key={item.id}
+                                className="recent-chip"
+                                onClick={() => {
+                                    const loc = locations.find(l => l.id === item.id);
+                                    if (loc) handleLocationSelect(loc);
+                                }}
+                            >
+                                {item.name.length > 15 ? item.name.slice(0, 15) + '...' : item.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             <div className="map-tabs">
                 {maps.map((map) => (
                     <button key={map.map_id} className={`map-tab ${effectiveMapId === map.map_id ? 'map-tab--active' : ''}`} onClick={() => setSelectedMapId(map.map_id)}>
@@ -78,38 +143,59 @@ export function RatholeViewer() {
                 ))}
             </div>
 
-            <div className="location-grid">
-                {locations.length === 0 ? (
-                    <div className="empty-state"><span>🔍</span><p>{t('map.noResults')}</p></div>
-                ) : locations.map((loc) => (
-                    <div key={loc.id} className="card card--hover location-card" onClick={() => setSelectedLocation(loc)}>
-                        <div className="location-card__thumbnail">
-                            <span className="thumbnail-icon">{getTypeIcon(loc.type)}</span>
-                            <span className={`thumbnail-difficulty thumbnail-difficulty--${loc.difficulty.toLowerCase()}`}>{loc.difficulty}</span>
-                        </div>
-                        <div className="location-card__content">
-                            <div className="location-card__header"><h4>{loc.name}</h4></div>
-                            <div className="location-card__meta">
-                                <span className="badge badge--accent">{loc.type}</span>
-                                <span className="tribe-size">{loc.tribe_size}</span>
+            {/* Interactive Map View */}
+            {viewMode === 'map' && effectiveMapId && (
+                <InteractiveMap
+                    mapId={effectiveMapId}
+                    mapName={maps.find(m => m.map_id === effectiveMapId)?.map_name || effectiveMapId}
+                    locations={locations}
+                    onLocationClick={handleLocationSelect}
+                    isKorean={isKorean}
+                />
+            )}
+
+            {/* List View */}
+            {viewMode === 'list' && (
+                <div className="location-grid">
+                    {locations.length === 0 ? (
+                        <div className="empty-state"><span>🔍</span><p>{t('map.noResults')}</p></div>
+                    ) : locations.map((loc) => (
+                        <div key={loc.id} className="card card--hover location-card" onClick={() => handleLocationSelect(loc)}>
+                            <div className="location-card__thumbnail">
+                                <span className="thumbnail-icon">{getTypeIcon(loc.type)}</span>
+                                <span className={`thumbnail-difficulty thumbnail-difficulty--${loc.difficulty.toLowerCase()}`}>{loc.difficulty}</span>
                             </div>
-                            {loc.coords && (
-                                <div className="coords-row">
-                                    <span className="coords-text">📍 {loc.coords.lat.toFixed(1)}, {loc.coords.lon.toFixed(1)}</span>
-                                    <button className="copy-btn" onClick={(e) => handleCopyCoords(loc.coords!, e)} title={isKorean ? '좌표 복사' : 'Copy coordinates'}>📋</button>
+                            <div className="location-card__content">
+                                <div className="location-card__header">
+                                    <h4>{loc.name}</h4>
+                                    <FavoriteButton
+                                        isActive={isFavorite(loc.id)}
+                                        onClick={() => toggleFavorite({ id: loc.id, type: 'rathole', name: loc.name })}
+                                        size="small"
+                                    />
                                 </div>
-                            )}
-                            <p className="description">{loc.description}</p>
-                            {(loc.pros?.length || loc.cons?.length) && (
-                                <div className="tags">
-                                    {loc.pros?.[0] && <span className="tag tag--pro">✓ {loc.pros[0]}</span>}
-                                    {loc.cons?.[0] && <span className="tag tag--con">✗ {loc.cons[0]}</span>}
+                                <div className="location-card__meta">
+                                    <span className="badge badge--accent">{loc.type}</span>
+                                    <span className="tribe-size">{loc.tribe_size}</span>
                                 </div>
-                            )}
+                                {loc.coords && (
+                                    <div className="coords-row">
+                                        <span className="coords-text">📍 {loc.coords.lat.toFixed(1)}, {loc.coords.lon.toFixed(1)}</span>
+                                        <button className="copy-btn" onClick={(e) => handleCopyCoords(loc.coords!, e)} title={isKorean ? '좌표 복사' : 'Copy coordinates'}>📋</button>
+                                    </div>
+                                )}
+                                <p className="description">{loc.description}</p>
+                                {(loc.pros?.length || loc.cons?.length) && (
+                                    <div className="tags">
+                                        {loc.pros?.[0] && <span className="tag tag--pro">✓ {loc.pros[0]}</span>}
+                                        {loc.cons?.[0] && <span className="tag tag--con">✗ {loc.cons[0]}</span>}
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
 
             {toast.show && <div className="toast animate-slide-up">{toast.message}</div>}
 

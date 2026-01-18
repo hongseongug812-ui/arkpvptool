@@ -1,0 +1,245 @@
+/* Hatching Timer Overlay */
+.hatching-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-lg);
+}
+
+.hatching-timer {
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px var(--color-accent-glow);
+}
+
+.hatching-timer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hatching-timer__header h2 {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+}
+
+.hatching-timer__close {
+    width: 32px;
+    height: 32px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.hatching-timer__close:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+}
+
+.hatching-timer__content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Notification Banner */
+.notification-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-warning-dim);
+    border: 1px solid var(--color-warning);
+    border-radius: var(--radius-md);
+    font-size: 0.813rem;
+}
+
+/* Add Egg Form */
+.add-egg-form {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.form-row {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.form-row .input,
+.form-row .select {
+    flex: 1;
+}
+
+.server-rate {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.server-rate label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.server-rate input {
+    width: 60px;
+    text-align: center;
+}
+
+/* Eggs List */
+.eggs-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.eggs-list h3 {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+}
+
+.eggs-empty {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Egg Card */
+.egg-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.egg-card--done {
+    border-color: var(--color-success);
+    background: rgba(0, 255, 102, 0.1);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.egg-card__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.egg-card__name {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.egg-card__type {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+}
+
+.egg-card__progress {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--color-bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+    border-radius: 4px;
+    transition: width 1s linear;
+}
+
+.egg-card__time {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    font-family: var(--font-display);
+}
+
+.egg-card__time.done {
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.egg-card__remove {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 0.625rem;
+    transition: all var(--transition-fast);
+}
+
+.egg-card__remove:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .egg-card {
+        flex-wrap: wrap;
+    }
+
+    .egg-card__progress {
+        flex-basis: 100%;
+        order: 3;
+    }
+}

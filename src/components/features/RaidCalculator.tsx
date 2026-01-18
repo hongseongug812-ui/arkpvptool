@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dataManager } from '../../services/DataManager';
+import { ShareButton } from '../common/ShareButton';
 import type { Structure, Explosive } from '../../types';
 import './RaidCalculator.css';
 
@@ -20,6 +21,7 @@ export function RaidCalculator() {
     const [selectedExplosive, setSelectedExplosive] = useState<Explosive | null>(explosives[0] || null);
     const [quantity, setQuantity] = useState(1);
     const [showResult, setShowResult] = useState(false);
+    const resultRef = useRef<HTMLDivElement>(null);
 
     const calculation = useMemo(() => {
         if (!selectedStructure || !selectedExplosive) return null;
@@ -108,8 +110,13 @@ export function RaidCalculator() {
                     </button>
                 </div>
 
-                <div className="card raid-calculator__result">
-                    <h3 className="card__title">📊 {t('common.result')}</h3>
+                <div className="card raid-calculator__result" ref={resultRef}>
+                    <div className="card__header">
+                        <h3 className="card__title">📊 {t('common.result')}</h3>
+                        {showResult && calculation?.needed && (
+                            <ShareButton targetRef={resultRef} title="ARK-Raid-Result" compact />
+                        )}
+                    </div>
 
                     {!showResult ? (
                         <div className="result-placeholder">

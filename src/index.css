@@ -85,6 +85,53 @@
 }
 
 /* ============================================
+   Light Mode Theme
+   ============================================ */
+[data-color-mode="light"] {
+  /* Light Mode Background Colors */
+  --color-bg-primary: #f5f7fa;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #e8ecf1;
+  --color-bg-card: #ffffff;
+  --color-bg-hover: #eef1f6;
+
+  /* Dynamic Accent (Darker for contrast) */
+  --color-accent: #0099cc;
+  --color-accent-dim: rgba(0, 153, 204, 0.12);
+  --color-accent-glow: rgba(0, 153, 204, 0.25);
+
+  /* Secondary Colors (Slightly adjusted for light bg) */
+  --color-success: #00b852;
+  --color-success-dim: rgba(0, 184, 82, 0.12);
+  --color-warning: #e69500;
+  --color-warning-dim: rgba(230, 149, 0, 0.12);
+  --color-danger: #e62e24;
+  --color-danger-dim: rgba(230, 46, 36, 0.12);
+
+  /* Text Colors */
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #5a5a72;
+  --color-text-muted: #8a8aa0;
+
+  /* Border Colors */
+  --color-border: #d8dce5;
+  --color-border-active: var(--color-accent);
+
+  /* Shadows (Softer for light mode) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+}
+
+/* Light + ASE combo */
+[data-color-mode="light"][data-theme="ASE"] {
+  --color-accent: #d69200;
+  --color-accent-dim: rgba(214, 146, 0, 0.12);
+  --color-accent-glow: rgba(214, 146, 0, 0.25);
+}
+
+/* ============================================
    Reset & Base Styles
    ============================================ */
 *,
@@ -453,4 +500,27 @@ h4 {
   .container {
     padding: 0 var(--spacing-sm);
   }
+}
+
+/* ============================================
+   Light Mode Specific Overrides
+   ============================================ */
+[data-color-mode="light"] .select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a5a72' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-color-mode="light"] .card::before {
+  opacity: 0.3;
+}
+
+[data-color-mode="light"] ::-webkit-scrollbar-track {
+  background: #f0f2f5;
+}
+
+[data-color-mode="light"] ::-webkit-scrollbar-thumb {
+  background: #c8ccd4;
+}
+
+[data-color-mode="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #a0a4ac;
 }

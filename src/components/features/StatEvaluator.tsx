@@ -2,6 +2,9 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGameVersion } from '../../context/GameVersionContext';
 import { dataManager } from '../../services/DataManager';
+import { DinoCompare } from './DinoCompare';
+import { BreedingSimulator } from './BreedingSimulator';
+import { RaidTimer } from './RaidTimer';
 import type { DinoStatsEntry, WatchlistEntry } from '../../types';
 import './StatEvaluator.css';
 
@@ -158,6 +161,9 @@ export function StatEvaluator() {
     const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
     const [levelCapPreset, setLevelCapPreset] = useState('official');
     const [customLevelCap, setCustomLevelCap] = useState(150);
+    const [showCompare, setShowCompare] = useState(false);
+    const [showBreeding, setShowBreeding] = useState(false);
+    const [showRaidTimer, setShowRaidTimer] = useState(false);
 
     const maxLevel = useMemo(() => {
         if (levelCapPreset === 'custom') return customLevelCap;
@@ -248,8 +254,21 @@ export function StatEvaluator() {
     return (
         <div className="stat-evaluator">
             <div className="page-header">
-                <h2 className="page-title">🎯 {t('stats.title')}</h2>
-                <p className="page-desc">{t('stats.desc')}</p>
+                <div className="page-header__top">
+                    <div>
+                        <h2 className="page-title">🎯 {t('stats.title')}</h2>
+                        <p className="page-desc">{t('stats.desc')}</p>
+                    </div>
+                    <button className="compare-btn" onClick={() => setShowCompare(true)}>
+                        📊 {isKorean ? '비교' : 'Compare'}
+                    </button>
+                    <button className="compare-btn" onClick={() => setShowBreeding(true)}>
+                        🧬 {isKorean ? '브리딩' : 'Breeding'}
+                    </button>
+                    <button className="compare-btn" onClick={() => setShowRaidTimer(true)}>
+                        ⏱️ {isKorean ? '레이드' : 'Raid'}
+                    </button>
+                </div>
             </div>
 
             {/* Server Level Cap Settings */}
@@ -366,6 +385,11 @@ export function StatEvaluator() {
                     })
                 )}
             </div>
+
+            {/* Compare Modal */}
+            {showCompare && <DinoCompare onClose={() => setShowCompare(false)} />}
+            {showBreeding && <BreedingSimulator onClose={() => setShowBreeding(false)} />}
+            {showRaidTimer && <RaidTimer onClose={() => setShowRaidTimer(false)} />}
         </div>
     );
 }

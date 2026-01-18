@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGameVersion } from '../../context/GameVersionContext';
+import { useTheme } from '../../context/ThemeContext';
 import { changeLanguage } from '../../i18n';
+import { SearchBar } from '../features/SearchBar';
+import { AuthButton } from './AuthButton';
 import './Header.css';
 
 interface HeaderProps {
@@ -11,6 +14,7 @@ interface HeaderProps {
 export function Header({ onLogoClick }: HeaderProps) {
     const { t, i18n } = useTranslation();
     const { gameVersion, setGameVersion } = useGameVersion();
+    const { theme, toggleTheme } = useTheme();
     const [showLangMenu, setShowLangMenu] = useState(false);
 
     const currentLang = i18n.language;
@@ -35,7 +39,30 @@ export function Header({ onLogoClick }: HeaderProps) {
                 </div>
             </div>
 
+            {/* Global Search */}
+            <div className="header__search">
+                <SearchBar />
+            </div>
+
             <div className="header__controls">
+                {/* Auth Button */}
+                <AuthButton />
+                {/* Theme Toggle */}
+                <button
+                    className="theme-toggle"
+                    onClick={toggleTheme}
+                    title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                    aria-label="Toggle theme"
+                >
+                    <span className={`theme-toggle__icon ${theme === 'dark' ? 'theme-toggle__icon--active' : ''}`}>
+                        🌙
+                    </span>
+                    <span className={`theme-toggle__icon ${theme === 'light' ? 'theme-toggle__icon--active' : ''}`}>
+                        ☀️
+                    </span>
+                    <span className={`theme-toggle__slider theme-toggle__slider--${theme}`}></span>
+                </button>
+
                 {/* Language Selector */}
                 <div className="lang-selector">
                     <button
@@ -89,3 +116,4 @@ export function Header({ onLogoClick }: HeaderProps) {
         </header>
     );
 }
+

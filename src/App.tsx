@@ -2,14 +2,17 @@ import { useState, useEffect, useCallback } from 'react';
 import { SplashScreen } from './components/layout/SplashScreen';
 import { Header } from './components/layout/Header';
 import { BottomNavigation } from './components/layout/BottomNavigation';
+import { PWAInstallPrompt } from './components/layout/PWAInstallPrompt';
 import { RaidCalculator } from './components/features/RaidCalculator';
 import { RatholeViewer } from './components/features/RatholeViewer';
 import { SoakingSimulator } from './components/features/SoakingSimulator';
 import { StatEvaluator } from './components/features/StatEvaluator';
+import { BreedingCalculator } from './components/features/BreedingCalculator';
+import { Settings } from './components/features/Settings';
 import { dataManager } from './services/DataManager';
 import './App.css';
 
-type TabId = 'raid' | 'soak' | 'stat' | 'map';
+type TabId = 'raid' | 'soak' | 'stat' | 'breed' | 'map' | 'settings';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +71,7 @@ function App() {
 
   // Get slide direction
   const getSlideDirection = () => {
-    const tabs: TabId[] = ['raid', 'soak', 'stat', 'map'];
+    const tabs: TabId[] = ['raid', 'soak', 'stat', 'breed', 'map', 'settings'];
     const prevIndex = tabs.indexOf(prevTab);
     const currIndex = tabs.indexOf(activeTab);
     return currIndex > prevIndex ? 'slide-left' : 'slide-right';
@@ -85,8 +88,14 @@ function App() {
       <div className={`tab-panel ${activeTab === 'stat' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'stat' && <StatEvaluator />}
       </div>
+      <div className={`tab-panel ${activeTab === 'breed' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
+        {activeTab === 'breed' && <BreedingCalculator />}
+      </div>
       <div className={`tab-panel ${activeTab === 'map' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'map' && <RatholeViewer />}
+      </div>
+      <div className={`tab-panel ${activeTab === 'settings' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
+        {activeTab === 'settings' && <Settings />}
       </div>
     </div>
   );
@@ -104,6 +113,7 @@ function App() {
         </div>
       </main>
       <BottomNavigation activeTab={activeTab} onTabChange={handleTabChange} />
+      <PWAInstallPrompt />
     </div>
   );
 }

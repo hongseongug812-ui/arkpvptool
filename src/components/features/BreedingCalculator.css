@@ -1,0 +1,313 @@
+/* Page Header */
+.breeding-calculator .page-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.breeding-calculator .page-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-accent-glow);
+    margin-bottom: var(--spacing-xs);
+}
+
+.breeding-calculator .page-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* Breeding Grid */
+.breeding-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    align-items: start;
+}
+
+/* Parent Cards */
+.parent-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.parent-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.parent-card__gender {
+    font-size: 1.5rem;
+}
+
+.parent-card__title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.parent-card--male .parent-card__title {
+    color: #5DADE2;
+}
+
+.parent-card--female .parent-card__title {
+    color: #F1948A;
+}
+
+.parent-card--male {
+    border-top: 3px solid #5DADE2;
+}
+
+.parent-card--female {
+    border-top: 3px solid #F1948A;
+}
+
+/* Mutation Status */
+.mutation-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: var(--spacing-xs);
+}
+
+.mutation-status--ok {
+    color: var(--color-success);
+}
+
+.mutation-status--capped {
+    color: var(--color-danger);
+}
+
+/* Breeding Center */
+.breeding-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.heart-icon {
+    font-size: 2.5rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.breeding-arrow {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    letter-spacing: 4px;
+}
+
+/* Card Header */
+.breeding-results .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.breeding-results .card__title {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Results Grid */
+.breeding-results__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.result-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.result-stat--wide {
+    grid-column: 1 / -1;
+}
+
+.result-stat__label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
+}
+
+.result-stat__value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.result-stat__value--accent {
+    color: var(--color-accent);
+    text-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.result-stat__sub {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+.result-stat__info {
+    font-size: 0.875rem;
+    color: var(--color-success);
+}
+
+.result-stat__info--warning {
+    color: var(--color-warning);
+}
+
+/* Mutation Planner */
+.mutation-planner {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-accent-dim) 0%, var(--color-bg-secondary) 100%);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.mutation-planner__title {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+}
+
+.planner-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.planner-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.planner-result {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-md);
+}
+
+.planner-result__icon {
+    font-size: 2rem;
+}
+
+.planner-result__label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+}
+
+.planner-result__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+/* Mutation Tips */
+.mutation-tips {
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-warning);
+}
+
+.mutation-tips h4 {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-warning);
+    margin-bottom: var(--spacing-sm);
+}
+
+.mutation-tips ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mutation-tips li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.813rem;
+    color: var(--color-text-secondary);
+}
+
+.mutation-tips li::before {
+    content: '•';
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--color-warning);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .breeding-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .breeding-center {
+        flex-direction: row;
+        padding: var(--spacing-md);
+    }
+
+    .breeding-arrow {
+        transform: rotate(90deg);
+    }
+
+    .planner-inputs,
+    .planner-results {
+        grid-template-columns: 1fr;
+    }
+
+    .result-stat__value {
+        font-size: 2rem;
+    }
+}

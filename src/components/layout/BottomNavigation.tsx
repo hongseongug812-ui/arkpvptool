@@ -9,7 +9,9 @@ const TABS = [
     { id: 'raid', label: 'Raid', icon: '💣' },
     { id: 'soak', label: 'Soaking', icon: '🛡️' },
     { id: 'stat', label: 'Stats', icon: '🦖' },
+    { id: 'breed', label: 'Breeding', icon: '🧬' },
     { id: 'map', label: 'Map', icon: '🗺️' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
 export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationProps) {

@@ -1,0 +1,14 @@
+{
+    "name": "ark-pvp-backend",
+    "version": "1.0.0",
+    "description": "ARK PVP Tool Lambda Backend",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "deploy": "zip -r function.zip . && aws lambda update-function-code --function-name ark-pvp-api --zip-file fileb://function.zip"
+    },
+    "dependencies": {
+        "pg": "^8.11.0"
+    }
+}
