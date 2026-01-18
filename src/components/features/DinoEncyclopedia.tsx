@@ -192,7 +192,7 @@ function DinoDetailModal({ dino, onClose, isKorean, maxLevel }: DinoDetailModalP
 
 // Main Component
 export function DinoEncyclopedia() {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const { gameVersion } = useGameVersion();
     const isKorean = i18n.language === 'ko';
     const allDinos = dataManager.getAllDinoStats();

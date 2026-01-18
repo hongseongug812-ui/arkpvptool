@@ -303,10 +303,6 @@ export function StatEvaluator() {
     const handleRemove = useCallback((index: number) => { setWatchlist(prev => prev.filter((_, i) => i !== index)); }, []);
     const handleClearAll = useCallback(() => { if (confirm(isKorean ? '워치리스트를 전체 삭제할까요?' : 'Clear all watchlist?')) setWatchlist([]); }, [isKorean]);
 
-    const toggleCategory = (catKey: string) => {
-        setExpandedCategory(expandedCategory === catKey ? null : catKey);
-    };
-
     const ratio = maxLevel / 150;
     const ratingThresholds = { godly: Math.round(50 * ratio), great: Math.round(40 * ratio), good: Math.round(30 * ratio), average: Math.round(20 * ratio) };
 
