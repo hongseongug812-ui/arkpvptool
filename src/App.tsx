@@ -8,11 +8,12 @@ import { RatholeViewer } from './components/features/RatholeViewer';
 import { SoakingSimulator } from './components/features/SoakingSimulator';
 import { StatEvaluator } from './components/features/StatEvaluator';
 import { BreedingCalculator } from './components/features/BreedingCalculator';
+import { IniGenerator } from './components/features/IniGenerator';
 import { Settings } from './components/features/Settings';
 import { dataManager } from './services/DataManager';
 import './App.css';
 
-export type TabId = 'raid' | 'soak' | 'stat' | 'breed' | 'map' | 'settings';
+export type TabId = 'raid' | 'soak' | 'stat' | 'breed' | 'map' | 'ini' | 'settings';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,7 +72,7 @@ function App() {
 
   // Get slide direction
   const getSlideDirection = () => {
-    const tabs: TabId[] = ['raid', 'soak', 'stat', 'breed', 'map', 'settings'];
+    const tabs: TabId[] = ['raid', 'soak', 'stat', 'breed', 'map', 'ini', 'settings'];
     const prevIndex = tabs.indexOf(prevTab);
     const currIndex = tabs.indexOf(activeTab);
     return currIndex > prevIndex ? 'slide-left' : 'slide-right';
@@ -93,6 +94,9 @@ function App() {
       </div>
       <div className={`tab-panel ${activeTab === 'map' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'map' && <RatholeViewer />}
+      </div>
+      <div className={`tab-panel ${activeTab === 'ini' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
+        {activeTab === 'ini' && <IniGenerator />}
       </div>
       <div className={`tab-panel ${activeTab === 'settings' ? `tab-panel--active ${getSlideDirection()}` : ''}`}>
         {activeTab === 'settings' && <Settings />}

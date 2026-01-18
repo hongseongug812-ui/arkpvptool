@@ -11,6 +11,7 @@ const TABS = [
     { id: 'stat', label: 'Stats', icon: '🦖' },
     { id: 'breed', label: 'Breeding', icon: '🧬' },
     { id: 'map', label: 'Map', icon: '🗺️' },
+    { id: 'ini', label: 'INI', icon: '📝' },
     { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
