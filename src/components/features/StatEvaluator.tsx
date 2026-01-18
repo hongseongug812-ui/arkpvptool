@@ -360,8 +360,16 @@ export function StatEvaluator() {
                     {searchQuery && <button className="search-clear" onClick={() => setSearchQuery('')}>✕</button>}
                 </div>
 
-                {/* Category Tabs Row */}
+                {/* Category Filter Tabs */}
                 <div className="category-tabs-row">
+                    <button
+                        className={`category-tab-btn ${expandedCategory === null ? 'category-tab-btn--active' : ''}`}
+                        onClick={() => setExpandedCategory(null)}
+                    >
+                        <span className="category-tab-btn__icon">📋</span>
+                        <span className="category-tab-btn__label">{isKorean ? '전체' : 'All'}</span>
+                        <span className="category-tab-btn__count">{versionFilteredDinos.length}</span>
+                    </button>
                     {Object.entries(DINO_CATEGORIES).map(([key, cat]) => {
                         const dinosInCat = filteredDinosByCategory[key] || [];
                         const selectedCount = dinosInCat.filter(d => watchlist.some(w => w.dinoId === d.id)).length;
@@ -370,7 +378,7 @@ export function StatEvaluator() {
                             <button
                                 key={key}
                                 className={`category-tab-btn ${expandedCategory === key ? 'category-tab-btn--active' : ''} ${selectedCount > 0 ? 'category-tab-btn--has-selected' : ''}`}
-                                onClick={() => toggleCategory(key)}
+                                onClick={() => setExpandedCategory(expandedCategory === key ? null : key)}
                             >
                                 <span className="category-tab-btn__icon">{cat.icon}</span>
                                 <span className="category-tab-btn__label">{isKorean ? cat.labelKr : cat.labelEn}</span>
@@ -380,45 +388,57 @@ export function StatEvaluator() {
                     })}
                 </div>
 
-                {/* Expanded Category Grid */}
-                {expandedCategory && filteredDinosByCategory[expandedCategory] && (
-                    <div className="category-expanded-panel">
-                        <div className="category-panel-header">
-                            <span>{DINO_CATEGORIES[expandedCategory]?.icon} {isKorean ? DINO_CATEGORIES[expandedCategory]?.labelKr : DINO_CATEGORIES[expandedCategory]?.labelEn}</span>
-                            <span className="category-panel-count">{filteredDinosByCategory[expandedCategory].length}{isKorean ? '종' : ' dinos'}</span>
-                        </div>
-                        <div className="dino-select-grid">
-                            {filteredDinosByCategory[expandedCategory].map((dino) => {
-                                const isSelected = watchlist.some(w => w.dinoId === dino.id);
-                                const dinoName = dino.name_kr.split('(')[0].trim();
-                                const dinoRole = dino.name_kr.includes('(') ? dino.name_kr.split('(')[1]?.replace(')', '') : '';
-
-                                return (
-                                    <div key={dino.id} className={`dino-select-card ${isSelected ? 'dino-select-card--selected' : ''}`} onClick={() => handleAddDino(dino)}>
-                                        <div className="dino-select-card__avatar">
-                                            <img
-                                                src={getDinoImageUrl(dino.id)}
-                                                alt={dinoName}
-                                                className="dino-select-card__avatar-img"
-                                                onError={(e) => {
-                                                    e.currentTarget.style.display = 'none';
-                                                    const sibling = e.currentTarget.nextElementSibling as HTMLElement;
-                                                    if (sibling) sibling.style.display = 'flex';
-                                                }}
-                                            />
-                                            <span className="dino-select-card__initial" style={{ display: 'none' }}>{dinoName.charAt(0)}</span>
-                                            {isSelected && <div className="dino-select-card__check">✓</div>}
-                                        </div>
-                                        <div className="dino-select-card__info">
-                                            <span className="dino-select-card__name">{dinoName}</span>
-                                            {dinoRole && <span className="dino-select-card__role">{dinoRole}</span>}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                {/* Dino Grid - Always Visible */}
+                <div className="category-expanded-panel">
+                    <div className="category-panel-header">
+                        <span>
+                            {expandedCategory ? (
+                                <>{DINO_CATEGORIES[expandedCategory]?.icon} {isKorean ? DINO_CATEGORIES[expandedCategory]?.labelKr : DINO_CATEGORIES[expandedCategory]?.labelEn}</>
+                            ) : (
+                                <>{isKorean ? '📋 전체 공룡' : '📋 All Dinos'}</>
+                            )}
+                        </span>
+                        <span className="category-panel-count">
+                            {expandedCategory
+                                ? (filteredDinosByCategory[expandedCategory]?.length || 0)
+                                : versionFilteredDinos.filter(d => !searchQuery || d.name_kr.toLowerCase().includes(searchQuery.toLowerCase()) || d.id.toLowerCase().includes(searchQuery.toLowerCase())).length
+                            }{isKorean ? '종' : ' dinos'}
+                        </span>
                     </div>
-                )}
+                    <div className="dino-select-grid">
+                        {(expandedCategory
+                            ? (filteredDinosByCategory[expandedCategory] || [])
+                            : versionFilteredDinos.filter(d => !searchQuery || d.name_kr.toLowerCase().includes(searchQuery.toLowerCase()) || d.id.toLowerCase().includes(searchQuery.toLowerCase()))
+                        ).map((dino) => {
+                            const isSelected = watchlist.some(w => w.dinoId === dino.id);
+                            const dinoName = dino.name_kr.split('(')[0].trim();
+                            const dinoRole = dino.name_kr.includes('(') ? dino.name_kr.split('(')[1]?.replace(')', '') : '';
+
+                            return (
+                                <div key={dino.id} className={`dino-select-card ${isSelected ? 'dino-select-card--selected' : ''}`} onClick={() => handleAddDino(dino)}>
+                                    <div className="dino-select-card__avatar">
+                                        <img
+                                            src={getDinoImageUrl(dino.id)}
+                                            alt={dinoName}
+                                            className="dino-select-card__avatar-img"
+                                            onError={(e) => {
+                                                e.currentTarget.style.display = 'none';
+                                                const sibling = e.currentTarget.nextElementSibling as HTMLElement;
+                                                if (sibling) sibling.style.display = 'flex';
+                                            }}
+                                        />
+                                        <span className="dino-select-card__initial" style={{ display: 'none' }}>{dinoName.charAt(0)}</span>
+                                        {isSelected && <div className="dino-select-card__check">✓</div>}
+                                    </div>
+                                    <div className="dino-select-card__info">
+                                        <span className="dino-select-card__name">{dinoName}</span>
+                                        {dinoRole && <span className="dino-select-card__role">{dinoRole}</span>}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
 
                 {/* Action Bar */}
                 {watchlist.length > 0 && (
