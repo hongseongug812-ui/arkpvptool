@@ -72,6 +72,9 @@ const RESOURCES: Record<string, Resource> = {
     glitch: { id: 'glitch', nameKr: '글리치', nameEn: 'Story Glitch', icon: '👾', color: '#ff00aa' },
     ambergris: { id: 'ambergris', nameKr: '앨버그리스', nameEn: 'Ambergris', icon: '🟢', color: '#44ff44' },
     element_shard: { id: 'element_shard', nameKr: '엘리먼트 샤드', nameEn: 'Element Shard', icon: '🔶', color: '#ff44ff' },
+    mutagen: { id: 'mutagen', nameKr: '뮤타젠 벌브', nameEn: 'Mutagen Bulb', icon: '🧪', color: '#00ff00' },
+    rplant: { id: 'rplant', nameKr: 'R-플랜트', nameEn: 'R-Plant Zone', icon: '🌿', color: '#88ff88' },
+    bridge: { id: 'bridge', nameKr: '브릿지', nameEn: 'Bridge/Connector', icon: '🌉', color: '#ffaa00' },
 };
 
 // Maps with resource locations
@@ -282,6 +285,27 @@ const MAPS: GameMap[] = [
             // ===== Ambergris (Lunar) =====
             { resourceId: 'ambergris', x: 11.2, y: 39, size: 'lg', note: 'Green Rocks A' },
             { resourceId: 'ambergris', x: 9.1, y: 41, size: 'md', note: 'Green Rocks B' },
+        ]
+    },
+    {
+        id: 'genesis2',
+        nameKr: '제네시스 파트 2',
+        nameEn: 'Genesis Part 2',
+        image: '/maps/Genesispart2.png',
+        resources: [
+            // ===== Mutagen Bulbs =====
+            { resourceId: 'mutagen', x: 47.3, y: 46.5, size: 'lg', note: 'Rockwell Innards Bulb 1' },
+            { resourceId: 'mutagen', x: 49, y: 48.1, size: 'lg', note: 'Rockwell Innards Bulb 2' },
+            // ===== R-Plant Zones =====
+            { resourceId: 'rplant', x: 52.6, y: 61.2, size: 'lg', note: 'Eastern Deck' },
+            { resourceId: 'rplant', x: 46.7, y: 39.8, size: 'md', note: 'Western Annex' },
+            // ===== Mission Terminals =====
+            { resourceId: 'mission', x: 48, y: 34.5, size: 'lg', note: 'Eden Hub Terminal' },
+            { resourceId: 'mission', x: 52, y: 51, size: 'lg', note: 'Rockwell Control Terminal' },
+            // ===== Bridge Landmark =====
+            { resourceId: 'bridge', x: 50.5, y: 44, size: 'lg', note: 'Eden ⇄ Rockwell Connector' },
+            // ===== Space Biome Center =====
+            { resourceId: 'obelisk', x: 50, y: 50, size: 'lg', note: 'Space Biome Center' },
         ]
     },
 ];
