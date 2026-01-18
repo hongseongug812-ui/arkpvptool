@@ -1,0 +1,464 @@
+/* Dino Encyclopedia - Main Container */
+.dino-encyclopedia {
+    padding: var(--spacing-md);
+}
+
+.dino-encyclopedia__header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.dino-encyclopedia__header h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-accent);
+    text-shadow: 0 0 15px var(--color-accent-glow);
+    margin-bottom: var(--spacing-xs);
+}
+
+.dino-encyclopedia__header p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Level Cap Row */
+.level-cap-row {
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.level-cap-chip {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.level-cap-chip:hover {
+    border-color: var(--color-accent);
+}
+
+.level-cap-chip--active {
+    background: var(--color-accent-dim);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Search Box */
+.dino-search {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dino-search:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px var(--color-accent-glow);
+}
+
+.dino-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.dino-search button {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* Category Chips */
+.category-chips {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.category-chip {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.category-chip:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.category-chip--active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+/* Dino Count */
+.dino-count {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Dino Grid - Flowing Natural Layout */
+.dino-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--spacing-md);
+    max-height: calc(100vh - 350px);
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+}
+
+.dino-grid::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dino-grid::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 2px;
+}
+
+/* Dino Card - Clean Minimal Style */
+.dino-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-lg);
+}
+
+.dino-card:hover {
+    background: var(--color-bg-secondary);
+    transform: scale(1.05);
+}
+
+.dino-card__image {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg-tertiary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.dino-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dino-card__name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ============================================
+   DINO DETAIL MODAL
+   ============================================ */
+.dino-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-md);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.dino-modal {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-xl);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dino-modal__close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    z-index: 10;
+    transition: all var(--transition-fast);
+}
+
+.dino-modal__close:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+/* Modal Header */
+.dino-modal__header {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-bg-tertiary), transparent);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.dino-modal__image {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--color-bg-primary);
+    border: 2px solid var(--color-accent);
+}
+
+.dino-modal__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dino-modal__title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dino-modal__title h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.dino-modal__role {
+    display: inline-block;
+    background: var(--color-accent-dim);
+    color: var(--color-accent);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.dino-modal__note {
+    font-size: 0.813rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Modal Content */
+.dino-modal__content {
+    padding: var(--spacing-lg);
+}
+
+.dino-modal__section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.dino-modal__section:last-child {
+    margin-bottom: 0;
+}
+
+.dino-modal__section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Stat Calculator */
+.stat-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.stat-row__label {
+    flex: 1;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.stat-row__controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.stat-row__controls button {
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.stat-row__controls button:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.stat-row__controls input {
+    width: 60px;
+    text-align: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+.stat-row__point {
+    min-width: 60px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.stat-base-info {
+    margin-top: var(--spacing-sm);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+/* Breeding Info Grid */
+.breeding-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.breeding-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.breeding-info-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.breeding-info-label {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+}
+
+.breeding-info-value {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .dino-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .dino-card__image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .dino-modal__header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .breeding-info-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -8,8 +8,7 @@ interface BottomNavigationProps {
 const TABS = [
     { id: 'raid', label: 'Raid', icon: '💣' },
     { id: 'soak', label: 'Soaking', icon: '🛡️' },
-    { id: 'stat', label: 'Stats', icon: '🦖' },
-    { id: 'breed', label: 'Breeding', icon: '🧬' },
+    { id: 'dino', label: 'Dino', icon: '🦖' },
     { id: 'map', label: 'Map', icon: '🗺️' },
     { id: 'ini', label: 'INI', icon: '📝' },
     { id: 'settings', label: 'Settings', icon: '⚙️' },
