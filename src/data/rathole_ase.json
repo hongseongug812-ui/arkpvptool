@@ -18,14 +18,16 @@
                     "tribe_size": "Alpha",
                     "difficulty": "Extreme",
                     "entrance_size": "Crouch",
-                    "description": "입구가 매우 좁아 기어서 진입해야 함. 내부는 광활함.",
-                    "strategy_note": "부동의 1티어. 입구 방어만 성공하면 뚫는 것이 거의 불가능함.",
+                    "description": "🏆 TOP 10 | 클래식하고 클래식한 초창기부터 사기였고 앞으로도 사기일 집터. 원래 온라인 레이드로 뚫은 부족이 아예 없을 정도로 개사기였음.",
+                    "strategy_note": "요즘 박쥐/테크렉스/데이노/섀도메인 피통이 너무 좋아져서 잘못하면 밀릴 수 있음. 방어법을 제대로 알고 2명 정도가 상시 온라인 유지해야 됨. 크라우치 부분 나가서 깝치다가 넷건 묶이지 말고 조용히 안에서 중력자탄 쏘고 훅질만 하자.",
                     "pros": [
-                        "좁은 입구",
-                        "넓은 내부"
+                        "입구가 매우 좁아 방어 용이",
+                        "넓은 내부 공간",
+                        "TOP 10 사기 집터"
                     ],
                     "cons": [
-                        "서버 내 가장 치열한 경쟁"
+                        "최근 공격 메타에 밀릴 수 있음",
+                        "2인 이상 온라인 유지 필요"
                     ]
                 },
                 {
@@ -97,7 +99,7 @@
             "locations": [
                 {
                     "id": "cnt_north_ice",
-                    "name": "북쪽 얼음 동굴 (North Ice)",
+                    "name": "센터 아이스케이브 (North Ice)",
                     "coords": {
                         "lat": 60.0,
                         "lon": 19.0
@@ -106,13 +108,38 @@
                     "tribe_size": "Alpha",
                     "difficulty": "Extreme",
                     "entrance_size": "Crouch",
-                    "description": "입구가 매우 좁고 긴 터널 형태. 센터 맵 존재의 이유.",
-                    "strategy_note": "공격 측 진입 불가 수준. 알파 부족 1순위.",
+                    "description": "🏆 TOP 10 | 문풀 구간으로 먹고사는 케이브. 듀핑친 NSS 멕으로 러쉬 뛰면 와르르 무너지는 것을 구경해야 함.. 근데 이게 가능한 부족은 개씹초대형 부족 말고는 거의 없음.",
+                    "strategy_note": "듀핑 멕 러쉬를 제외하면 뚫을 각이 아예 없고 TOP 10에 무조건 들어가는 사기 베이스임. (어거지 무지성 훅런이랑 섀도메인런 제외)",
                     "pros": [
-                        "완벽한 방어 구조"
+                        "문풀 구간 방어 최적화",
+                        "TOP 10 사기 집터"
                     ],
                     "cons": [
-                        "치열한 경쟁"
+                        "초대형 부족의 멕 러쉬에 취약",
+                        "훅런/섀도메인런 주의"
+                    ]
+                },
+                {
+                    "id": "cnt_pearl_cave",
+                    "name": "펄 케이브 (Pearl Cave)",
+                    "coords": {
+                        "lat": 20.2,
+                        "lon": 46.3
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Small",
+                    "description": "🏆 TOP 10 | 입구 좁고 안쪽은 넓고 다 좋은데 데이노런만 아니면.. 총알 뺄 필요도 없이 맥주빨고 데이노로 점프 뛰면 나도 모르고 적도 모르는 사이에 터렛라인 도착.",
+                    "strategy_note": "데이노런 말고는 뚫을 방법이 아예 없는 사기케이브. 넷건 맞추는 연습하고 방어라인에 블러드스토커 여러마리 놓자.",
+                    "pros": [
+                        "입구 좁고 내부 넓음",
+                        "데이노런 외엔 뚫을 방법 없음",
+                        "TOP 10 사기 케이브"
+                    ],
+                    "cons": [
+                        "데이노런에 치명적 취약",
+                        "블러드스토커 방어 필수"
                     ]
                 },
                 {
@@ -2017,16 +2044,18 @@
                     },
                     "type": "Cave",
                     "tribe_size": "Alpha",
-                    "difficulty": "Hard",
+                    "difficulty": "Extreme",
                     "entrance_size": "Medium",
-                    "description": "입구가 어두운 그림자에 가려져 있음 (투명 동굴).",
-                    "strategy_note": "내부가 매우 넓어 알파 부족 기지로 적합.",
+                    "description": "🏆 TOP 10 | 물 부분이 6배 데미지가 아닌 부분이 있음. 거기에 진공관 겹쳐놓고 포탑 깔거나 HP 섀도메인 풀어놓으면 뚫기 개힘듦.",
+                    "strategy_note": "에버가 수중 테이밍 공룡이나 틸라콜레오, 기가노토 못 가져오고 테크렉스도 없어서 쟤들 잡을 방법이 아예 없음 ㅋㅋ 근데 에버가 브리딩 못하는 공룡이 너무 많아서 갠적으로 비추. 방어는 진짜 좋긴 함.",
                     "pros": [
-                        "넓은 내부",
-                        "시각적 은폐"
+                        "6배 데미지 아닌 물 구간 존재",
+                        "공룡 제한으로 방어 매우 유리",
+                        "TOP 10 방어력"
                     ],
                     "cons": [
-                        "유명한 위치"
+                        "브리딩 제한 공룡 too many",
+                        "에버 맵 특성상 생활 불편"
                     ]
                 },
                 {
@@ -2047,6 +2076,28 @@
                     ],
                     "cons": [
                         "유지비(방호복) 듦"
+                    ]
+                },
+                {
+                    "id": "abb_glowtail_cave",
+                    "name": "글로우테일 케이브 (Glowtail Cave)",
+                    "coords": {
+                        "lat": 48.3,
+                        "lon": 27.2
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Medium",
+                    "difficulty": "Hard",
+                    "entrance_size": "Crouch",
+                    "description": "첫 입구 쭈구려해서 들어가는 크라우치 부분이랑 메인월 코너 부분이 괜찮음.",
+                    "strategy_note": "그래도 누가 살라하면서 주면 난 안받을듯. 크라우치 부분과 메인월 코너에서 방어 가능.",
+                    "pros": [
+                        "크라우치 입구 방어 가능",
+                        "메인월 코너 방어 가능"
+                    ],
+                    "cons": [
+                        "알파 집터치고는 아쉬움",
+                        "집터 특성상 비추"
                     ]
                 },
                 {
@@ -2749,43 +2800,48 @@
                 },
                 {
                     "id": "val_spider_cave",
-                    "name": "거미 동굴 (Spider Cave)",
+                    "name": "스파이더 케이브 (Spider Cave)",
                     "coords": {
                         "lat": 73.0,
                         "lon": 40.0
                     },
                     "type": "Cave",
-                    "tribe_size": "Small",
-                    "difficulty": "Medium",
+                    "tribe_size": "Medium",
+                    "difficulty": "Hard",
                     "entrance_size": "Tiny",
-                    "description": "입구가 매우 작아 프테라노돈도 겨우 진입.",
-                    "strategy_note": "내부 독가스 주의. 방어하기 매우 좋음.",
+                    "description": "독 데미지 때문에 가스마스크 차고 레이드 해야됨. 입구 좁고 언덕에서 기가 꺼내서 씹을 수 있고 다 좋긴 함.",
+                    "strategy_note": "프테라런, 아울런, 훅런, 데이노런 등등 공격 입장에서 시도할 수 있는게 너무 많음. 방어 자신있으면 좋은 집터인데 난 안 살고 싶음.",
                     "pros": [
+                        "독 데미지로 가스마스크 강제",
                         "좁은 입구",
-                        "자연 방어"
+                        "언덕에서 기가로 방어 가능"
                     ],
                     "cons": [
-                        "독가스"
+                        "프테라런/아울런/훅런/데이노런 취약",
+                        "공격 옵션이 너무 많음"
                     ]
                 },
                 {
                     "id": "val_ab_tree",
-                    "name": "지하 방사능 나무",
+                    "name": "알파트리 (Rad Tree)",
                     "coords": {
-                        "lat": 38.0,
-                        "lon": 57.0
+                        "lat": 40.5,
+                        "lon": 61.6
                     },
                     "type": "Tree Platform",
-                    "tribe_size": "Small",
-                    "difficulty": "Hardcore",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
                     "entrance_size": "Climber",
-                    "description": "지하 레드존의 보라색 거대 버섯 나무 위.",
-                    "strategy_note": "방사능 + 시야 차단으로 완벽한 은신.",
+                    "description": "익팅 알파트리 하위호환이라고 보면 됨. 날탈 못쓰는거 빼고 익팅 알파트리랑 거의 비슷한데 발게로 원소 많이 딸려서 익팅만큼 확장을 못시킴.",
+                    "strategy_note": "아크에 인생 바쳐서 살아갈거면 나름 나쁘지 않긴 한데 방어하려면 최소 3명은 있어야함. 나뭇잎 많이 거슬려서 살기 싫음; 이니링면 나무도 같이 없어져서 끄지도 못하고 불편해.",
                     "pros": [
-                        "2중 방어막"
+                        "익팅 알파트리 유사 구조",
+                        "날탈 불가로 접근성 제한"
                     ],
                     "cons": [
-                        "방사능"
+                        "원소 부족으로 확장 제한",
+                        "나뭇잎 시야 방해",
+                        "3인 이상 방어 필수"
                     ]
                 },
                 {
@@ -3575,6 +3631,52 @@
                     ]
                 },
                 {
+                    "id": "gen1_big_luna",
+                    "name": "빅루나 (Big Luna)",
+                    "coords": {
+                        "lat": 52.4,
+                        "lon": 13.2
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Large",
+                    "description": "🏆 TOP 10 | 젠1 1티어. 모든 알파가 노리는 곳. 자기장 때문에 터렛 스캐닝이 안됨.",
+                    "strategy_note": "자기장으로 스캐닝 무력화 + 넓은 내부 공간으로 대규모 방어 가능. 소형 부족이 들어가면 레이드 당하자마자 바로 나가리됨.",
+                    "pros": [
+                        "자기장으로 터렛 스캐닝 무력화",
+                        "넓은 내부 공간",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "서버 내 가장 치열한 경쟁",
+                        "소형 부족에겐 부적합"
+                    ]
+                },
+                {
+                    "id": "gen1_corner_pillar",
+                    "name": "코너필러 (Corner Pillar)",
+                    "coords": {
+                        "lat": 14.0,
+                        "lon": 61.6
+                    },
+                    "type": "Pillar",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Large",
+                    "description": "🏆 TOP 10 | 오션 바이옴 코너에 있는 기둥 꼭대기. 자기장으로 스캐닝 안됨.",
+                    "strategy_note": "빅루나처럼 자기장 효과 + 높이 이점으로 강력한 방어력. 접근 방향이 제한되어 있어서 방어 용이.",
+                    "pros": [
+                        "자기장 스캐닝 무력화",
+                        "높이 이점",
+                        "접근 방향 제한",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "빅루나 다음으로 경쟁 치열"
+                    ]
+                },
+                {
                     "id": "gen1_rat_01",
                     "name": "젠1 렛홀 #01",
                     "coords": {
@@ -4277,6 +4379,101 @@
             ]
         },
         {
+            "map_id": "extinction_ase",
+            "map_name": "Extinction",
+            "locations": [
+                {
+                    "id": "ext_alpha_tree",
+                    "name": "알파트리 (Alpha Tree)",
+                    "coords": {
+                        "lat": 45.0,
+                        "lon": 93.0
+                    },
+                    "type": "Tree Platform",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Large",
+                    "description": "🏆 TOP 10 | 익팅 최강 집터. 거대한 나무 위에 플랫폼 설치. 날탈 없이는 접근 불가.",
+                    "strategy_note": "날탈 없으면 접근 자체가 불가능. 원소가 넘쳐나서 무한 확장 가능. 알파부족 메인베이스 1순위.",
+                    "pros": [
+                        "날탈 필수로 접근성 제한",
+                        "원소 무한 공급",
+                        "무한 확장 가능",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "서버 내 경쟁 최상위",
+                        "대형 부족만 유지 가능"
+                    ]
+                },
+                {
+                    "id": "ext_skylight",
+                    "name": "스카이라이트 (Skylight)",
+                    "coords": {
+                        "lat": 31.5,
+                        "lon": 8.9
+                    },
+                    "type": "Ceiling",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Climber",
+                    "description": "🏆 TOP 10 | 선큰포레스트 천장에 있는 집터. 천장 틈새에 클리프 플랫폼 설치해서 건설.",
+                    "strategy_note": "말 그대로 천장. 위에서 내려다보면서 방어 가능. 레이드가 개빡셈.",
+                    "pros": [
+                        "천장 위치로 접근 극히 제한",
+                        "위에서 아래로 방어 유리",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "건설 난이도 극상",
+                        "공식서버 높이제한에 걸릴수도"
+                    ]
+                },
+                {
+                    "id": "ext_sunken_ceiling",
+                    "name": "선큰포레스트 시링 (Sunken Ceiling)",
+                    "coords": {
+                        "lat": 11.3,
+                        "lon": 10.0
+                    },
+                    "type": "Ceiling",
+                    "tribe_size": "Medium",
+                    "difficulty": "Hard",
+                    "entrance_size": "Climber",
+                    "description": "선큰포레스트 뿌리 사이 천장 틈새. 클리프 플랫폼으로 샹들리에 레이아웃 가능.",
+                    "strategy_note": "스카이라이트랑 비슷한 컨셉인데 좀 더 작음. 그래도 괜찮은 중형부족 집터.",
+                    "pros": [
+                        "샹들리에 레이아웃 가능",
+                        "접근성 제한"
+                    ],
+                    "cons": [
+                        "스카이라이트보다 작음"
+                    ]
+                },
+                {
+                    "id": "ext_city_building",
+                    "name": "시티 빌딩 내부",
+                    "coords": {
+                        "lat": 45.6,
+                        "lon": 60.7
+                    },
+                    "type": "Building",
+                    "tribe_size": "Medium",
+                    "difficulty": "Hard",
+                    "entrance_size": "Large",
+                    "description": "생츄어리 시티 건물 내부. 파괴 불가 건물 안에 기지 건설.",
+                    "strategy_note": "건물 자체가 벽 역할해서 방어 유리. 근데 알파트리나 스카이라이트에 비하면 좀 아쉬움.",
+                    "pros": [
+                        "건물 벽이 자연 방어",
+                        "시티 내 자원 접근 용이"
+                    ],
+                    "cons": [
+                        "최상위 티어는 아님"
+                    ]
+                }
+            ]
+        },
+        {
             "map_id": "fjordur_ase",
             "map_name": "Fjordur",
             "locations": [
@@ -4549,6 +4746,74 @@
                     "entrance_size": "Small",
                     "description": "보스 터미널이 있는 동굴.",
                     "strategy_note": "보스전을 위한 전진 기지나 숨겨진 창고로 활용."
+                },
+                {
+                    "id": "fjo_labyrinth",
+                    "name": "레비린스 케이브 (Labyrinth Cave)",
+                    "coords": {
+                        "lat": 72.0,
+                        "lon": 15.0
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Medium",
+                    "description": "🏆 TOP 10 | 미로같은 내부 구조. 길을 모르면 헤맴. 방어자 입장에서 매우 유리한 지형.",
+                    "strategy_note": "미로 구조라서 공격자가 길을 모르면 개털림. 코너코너마다 터렛 배치하면 지옥이 됨.",
+                    "pros": [
+                        "미로 구조로 공격자 혼란",
+                        "코너터렛 방어 최적화",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "본인도 길 외워야 함",
+                        "경쟁 치열"
+                    ]
+                },
+                {
+                    "id": "fjo_swamp_cave",
+                    "name": "스왐프 케이브 (Swamp Cave)",
+                    "coords": {
+                        "lat": 49.7,
+                        "lon": 14.0
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Medium",
+                    "difficulty": "Hard",
+                    "entrance_size": "Small",
+                    "description": "늪지대 동굴. 독가스 때문에 가스마스크 필수. 입구 좁고 내부 적당히 넓음.",
+                    "strategy_note": "독가스 + 좁은 입구로 방어 유리. 근데 TOP 10은 아님.",
+                    "pros": [
+                        "독가스로 가스마스크 강제",
+                        "좁은 입구"
+                    ],
+                    "cons": [
+                        "독가스 지속 데미지",
+                        "생활 불편"
+                    ]
+                },
+                {
+                    "id": "fjo_yeti_cave",
+                    "name": "예티 케이브 (Yeti Cave)",
+                    "coords": {
+                        "lat": 10.0,
+                        "lon": 25.1
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Crouch",
+                    "description": "🏆 TOP 10 | 거대한 얼음 동굴. 예티랑 퓨어로비아 많이 스폰됨. 내부 매우 넓음.",
+                    "strategy_note": "크라우치 입구 + 넓은 내부로 대규모 기지 구축 가능. 얼음데미지 주의.",
+                    "pros": [
+                        "크라우치 입구 방어 용이",
+                        "넓은 내부 공간",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "추위 데미지",
+                        "야생 공룡 스폰"
+                    ]
                 }
             ]
         },
@@ -4614,6 +4879,30 @@
                     ],
                     "cons": [
                         "혐오스러움"
+                    ]
+                },
+                {
+                    "id": "gen2_fishbowl",
+                    "name": "피쉬바울 (Fish Bowl)",
+                    "coords": {
+                        "lat": 43.3,
+                        "lon": 68.5
+                    },
+                    "type": "Underwater",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Swimmer",
+                    "description": "🏆 TOP 10 | 수중 큐브 내부. 두 개의 문풀 입구로만 진입 가능. 터렛 샹들리에 설치하면 거의 불가공.",
+                    "strategy_note": "문풀 2개만 막으면 됨. 수중이라 대부분의 공룡 진입 불가. 외부에 터렛 샹들리에 설치 가능해서 방어력 극강.",
+                    "pros": [
+                        "문풀 2개만 방어하면 됨",
+                        "수중 환경으로 공룡 제한",
+                        "외부 터렛 샹들리에 설치 가능",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "수중 생활 불편",
+                        "경쟁 치열"
                     ]
                 }
             ]
@@ -5568,22 +5857,69 @@
             "locations": [
                 {
                     "id": "li_crouch_cave",
-                    "name": "크라우치 케이브 (대표)",
+                    "name": "크라우치 케이브 (Crouch Cave)",
                     "coords": {
-                        "lat": 37.1,
-                        "lon": 32.7
+                        "lat": 60.3,
+                        "lon": 45.8
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Alpha",
+                    "difficulty": "Extreme",
+                    "entrance_size": "Crouch",
+                    "description": "🏆 TOP 10 | 폭포 뒤에 숨겨진 동굴. 크라우치 입구라서 공룡 진입 불가. 로스트아일랜드 최고 집터.",
+                    "strategy_note": "크라우치라서 공룡이 못 들어옴. 경량화되면 튕겨날정도로 좁아서 방어하기 개쉬움. 근데 위치가 너무 유명해서 경쟁 치열함.",
+                    "pros": [
+                        "크라우치 입구로 공룡 진입 불가",
+                        "방어 매우 용이",
+                        "TOP 10 사기 집터"
+                    ],
+                    "cons": [
+                        "위치가 너무 유명함",
+                        "경쟁 치열"
+                    ]
+                },
+                {
+                    "id": "li_goblin_cave",
+                    "name": "고블린 케이브 (Castle Cave)",
+                    "coords": {
+                        "lat": 74.2,
+                        "lon": 38.7
+                    },
+                    "type": "Cave",
+                    "tribe_size": "Small",
+                    "difficulty": "Hard",
+                    "entrance_size": "Tiny",
+                    "description": "캐슬 근처에 있는 숨겨진 동굴. 입구가 매우 작아서 발견하기 어려움. 작은 부족 은신처로 최적.",
+                    "strategy_note": "입구가 진짜 작아서 대형 공룡 진입 불가. 숨어살기에 좋음. 근데 대규모 기지는 못 지음.",
+                    "pros": [
+                        "입구 극히 작음",
+                        "발견 어려움",
+                        "은신처로 최적"
+                    ],
+                    "cons": [
+                        "대규모 기지 불가",
+                        "솔로/듀오 전용"
+                    ]
+                },
+                {
+                    "id": "li_waterfall_maze",
+                    "name": "폭포 미로 동굴 (Waterfall Maze)",
+                    "coords": {
+                        "lat": 19.7,
+                        "lon": 23.6
                     },
                     "type": "Cave",
                     "tribe_size": "Medium",
-                    "difficulty": "Extreme",
-                    "entrance_size": "Crouch",
-                    "description": "폭포 뒤에 숨겨진 동굴. 입구가 좁아 기어 들어가야 함.",
-                    "strategy_note": "방어 효율 최상. 로스트 아일랜드 필수 거점.",
+                    "difficulty": "Hard",
+                    "entrance_size": "Small",
+                    "description": "절벽 쪽 작은 입구로 들어가면 거대한 미로가 나옴. 숨길 곳이 진짜 많음.",
+                    "strategy_note": "미로 구조라서 공격자가 길 모르면 개헤맴. 작은 부족이 대형 부족한테 숨어살기에 좋음.",
                     "pros": [
-                        "소킹 면역"
+                        "미로 구조로 은폐 용이",
+                        "숨길 곳 많음"
                     ],
                     "cons": [
-                        "입구 좁음"
+                        "본인도 길 외워야 함"
                     ]
                 },
                 {
