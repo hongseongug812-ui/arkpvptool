@@ -1737,6 +1737,7 @@
         {
             "id": "deinonychus",
             "name_kr": "데이노니쿠스",
+            "description": "🏆 PVP 필수 | 데이노런 피킹용. 출혈+벙타기 가능. 발굴로 적 붙어서 물어뛯음. 넹드 누르고 기지 진입하는 전술.",
             "stats": {
                 "health": {
                     "base": 250,
@@ -1782,6 +1783,7 @@
         {
             "id": "dimetrodon",
             "name_kr": "디메트로돈",
+            "description": "살아있는 에어컨. 알 부화할 때 미친듯이 유용. 에어컨 필요없이 부화 가능.",
             "stats": {
                 "health": {
                     "base": 125,
@@ -1805,6 +1807,7 @@
         {
             "id": "dinopithecus",
             "name_kr": "디노피테쿠스 (전투 원숭이)",
+            "description": "🏆 PVP 필수 | 수류탄 쓴+벙타기. 어마어 무코하는 수류탄 던짐. 아있 위에서 슸 수 있음.",
             "stats": {
                 "health": {
                     "base": 625,
@@ -1851,6 +1854,7 @@
         {
             "id": "direbear",
             "name_kr": "다이어 베어",
+            "description": "꽀 채집+높은 데미지. 초반에 컬러로 괜찮음. PVP에서 건간히 쓰임.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -1874,6 +1878,7 @@
         {
             "id": "direwolf",
             "name_kr": "다이어울프",
+            "description": "안장 없이 탑승+무리 버프. 초반에 괜찮음. PVP에서 거의 안 쓰여.",
             "stats": {
                 "health": {
                     "base": 330,
@@ -1919,6 +1924,7 @@
         {
             "id": "doedicurus",
             "name_kr": "도에디쿠루스",
+            "description": "돌 채집 필수. 구르기로 빠른 이동. PVE 필수. PVP에선 채집용.",
             "stats": {
                 "health": {
                     "base": 850,
@@ -1942,6 +1948,7 @@
         {
             "id": "dreadnoughtus",
             "name_kr": "드레드노투스 (ASA)",
+            "description": "ASA 전용 초거대 플랫폼. 피통 엄청남. 움직이는 기지로 쓸 수 있음.",
             "stats": {
                 "health": {
                     "base": 100000,
@@ -2034,6 +2041,7 @@
         {
             "id": "fenrir",
             "name_kr": "펜리르",
+            "description": "피요르드 보스 보상. 얼음 갑옷으로 자신 보호. PVP에서 타고 다니는 용.",
             "stats": {
                 "health": {
                     "base": 350,
@@ -2057,6 +2065,7 @@
         {
             "id": "ferox",
             "name_kr": "페록스",
+            "description": "원소 먹으면 거대화. 변신하면 전투력 상승. PVP에서 간혹 딜러로 쓰임.",
             "stats": {
                 "health": {
                     "base": 300,
@@ -2080,6 +2089,7 @@
         {
             "id": "gacha",
             "name_kr": "가챠",
+            "description": "자원 먹으면 아이템 크리스탈 생성. PVE 자동화 필수. PVP에서 간혹 자원 공급용.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -2287,6 +2297,7 @@
         {
             "id": "kaprosuchus",
             "name_kr": "카프로수쿠스",
+            "description": "🏆 PVP 유용 | 지상/수중 둘 다 잡기 가능. 사람 낚아채서 물고 놀음. 지상에서 아이뽔리난하고 비슷한 역할.",
             "stats": {
                 "health": {
                     "base": 250,
@@ -2310,6 +2321,7 @@
         {
             "id": "karkinos",
             "name_kr": "카르키노스 (게)",
+            "description": "🏆 PVP 필수 | 집기 능력 최고. 생물 두 마리 동시에 집어서 던짐. 방사능 면역. 레이드 시 충격대 역할.",
             "stats": {
                 "health": {
                     "base": 2700,
@@ -2379,6 +2391,7 @@
         {
             "id": "maewing",
             "name_kr": "메이윙",
+            "description": "🏆 PVP 유용 | 초고속 활강 이동. 아기 공룥 육아 담당. 브리딩 자동화에 필수. 복수 아기 동시 육아 가능.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -2402,6 +2415,7 @@
         {
             "id": "magmasaur",
             "name_kr": "마그마사우루스",
+            "description": "이동식 화로+화염 브레스 공격. 철 굿기+용암 수영 가능. PVP에서 간혹 화력용.",
             "stats": {
                 "health": {
                     "base": 4500,
@@ -2448,6 +2462,7 @@
         {
             "id": "managarmr",
             "name_kr": "마나가르마",
+            "description": "🏆 PVP 필수 | 로켓 점프+냉동 브레스. 하늘을 날아다니면서 아래로 분사. 기동성+어리기 최고.",
             "stats": {
                 "health": {
                     "base": 850,
@@ -2563,6 +2578,7 @@
         {
             "id": "megatherium",
             "name_kr": "메가테리움",
+            "description": "벨레 잡으면 버프 획득+키틴 채집 최고. 밌크 동굴에서 미친듯이 강함. PVP에서 간혹 쓰임.",
             "stats": {
                 "health": {
                     "base": 740,
