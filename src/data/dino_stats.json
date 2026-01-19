@@ -465,6 +465,7 @@
         {
             "id": "archaeopteryx",
             "name_kr": "아르카이옵테릭스",
+            "description": "글라이더처럼 쓸 수 있음. 높은 곳에서 뛰어내릴 때 유용. PVP에선 거의 안 씀.",
             "stats": {
                 "health": {
                     "base": 130,
@@ -487,6 +488,7 @@
         {
             "id": "astrocetus",
             "name_kr": "아스트로시터스 (우주 고래)",
+            "description": "우주공간 전용 거대 고래. 하이퍼점프 가능. 제네시스2 우주 바이옴에서 유용하지만 PVP에선 비추.",
             "stats": {
                 "health": {
                     "base": 24000,
@@ -509,6 +511,7 @@
         {
             "id": "astrodelphis",
             "name_kr": "아스트로델피스",
+            "description": "우주 돌고래. 제네시스2 전용. 미사일 발사 가능해서 공중전에서 진짜 강함. 근데 어차피 제네시스2 전용.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -531,6 +534,7 @@
         {
             "id": "crystal_wyvern",
             "name_kr": "크리스탈 와이번",
+            "description": "일반 와이번보다 테임 쉽고 브리딩도 됨. 초반 버틱용으로 괜찮음. 끝물에서 일반 와이번에 밀림.",
             "stats": {
                 "health": {
                     "base": 850,
@@ -553,6 +557,7 @@
         {
             "id": "desmodus",
             "name_kr": "데스모두스",
+            "description": "🏆 PVP 유용 | 거대 박쥐. 야간투시+피통흘혁+적 위치 감지 버프. 적진 정찰할 때 박쥐터면서 돌아다니면 상대가 못 찾음.",
             "stats": {
                 "health": {
                     "base": 325,
@@ -575,6 +580,7 @@
         {
             "id": "dimorphodon",
             "name_kr": "디모르포돈",
+            "description": "어깨 공룥. 때로 맞으면 진짜 아픔. PVP에서 간혹 적 피케 미끼 붙여서 죽이는 용도로 쓰기도 함.",
             "stats": {
                 "health": {
                     "base": 125,
@@ -597,6 +603,7 @@
         {
             "id": "featherlight",
             "name_kr": "페더라이트",
+            "description": "에버레이션 탐게 펫. 어깨에 올려놓으면 밝은 빛 내주고 차지 애니메이션 무효화. PVP에선 비추.",
             "stats": {
                 "health": {
                     "base": 120,
@@ -619,6 +626,7 @@
         {
             "id": "fjordhawk",
             "name_kr": "피요르드호크",
+            "description": "🏆 PVP 필수 | 죽으면 아이템 회수해옴. 영혼바인드 시키면 죽어도 아이템 안 잃음. PVP에서 필수랩.",
             "stats": {
                 "health": {
                     "base": 200,
@@ -641,6 +649,7 @@
         {
             "id": "giant_bee",
             "name_kr": "거대 벌 (여왕)",
+            "description": "벌집 설치하면 꽀 생산. 초반에 케이크 만들기 위해 테임함. PVP에서 직접 전투 용도는 아님.",
             "stats": {
                 "health": {
                     "base": 250,
@@ -663,6 +672,7 @@
         {
             "id": "griffin",
             "name_kr": "그리핀",
+            "description": "급강하+등에서 사격 가능. PVP에서 고속 기동+등에서 샃으로 쓰면 꽤 강력함. 근데 브리딩 안됨.",
             "stats": {
                 "health": {
                     "base": 950,
@@ -685,6 +695,7 @@
         {
             "id": "ichthyornis",
             "name_kr": "이크티오르니스",
+            "description": "짜증나는 새. 사냥해오면 버프된 고품질 고기 줌. 아이템 훔쳐가는 단점.",
             "stats": {
                 "health": {
                     "base": 50,
@@ -707,6 +718,7 @@
         {
             "id": "lymantria",
             "name_kr": "리만트리아 (나방)",
+            "description": "스코치드엔스 초반 비행탈것. 느리지만 스태미나 안 씀. PVP에선 안 쓰임.",
             "stats": {
                 "health": {
                     "base": 250,
@@ -729,6 +741,7 @@
         {
             "id": "onyc",
             "name_kr": "오닉 (박쥐)",
+            "description": "동굴 박쥐. 광견병 걸리게 함. PVP에선 테이밍해서 적한테 보내기도 하는데 거의 안 쓰임.",
             "stats": {
                 "health": {
                     "base": 275,
@@ -751,6 +764,7 @@
         {
             "id": "pelagornis",
             "name_kr": "펠라고르니스",
+            "description": "물가 땅 안가리고 뛸. 물 위에서 쉬며서 스태미나 회복 가능. PVP에선 특수 상황 외엔 안 씀.",
             "stats": {
                 "health": {
                     "base": 150,
@@ -773,6 +787,7 @@
         {
             "id": "phoenix",
             "name_kr": "피닉스",
+            "description": "합금 제련 전용기. 등에타면 금속 녹여서 합금 만들어줌. PVP에서 전투 용도는 아님.",
             "stats": {
                 "health": {
                     "base": 600,
@@ -795,6 +810,7 @@
         {
             "id": "royal_griffin",
             "name_kr": "로얄 그리핀",
+            "description": "일반 그리핀보다 스탯 좋음. 브리딩 가능. 근데 요즘 그리핀 자체가 별로 안 쓰여서 비추.",
             "stats": {
                 "health": {
                     "base": 1250,
@@ -817,6 +833,7 @@
         {
             "id": "sinomacrops",
             "name_kr": "시노마크롭스",
+            "description": "🏆 PVP 필수 | 어깨에 올리면 글라이딩 가능. 높은데서 뛰어내리면 하늘을 날아다님. 원소 없이 날수있어서 필수.",
             "stats": {
                 "health": {
                     "base": 200,
@@ -839,6 +856,7 @@
         {
             "id": "snow_owl",
             "name_kr": "설원 올빼미",
+            "description": "🏆 PVP 필수 | 코피 힌+어리기 가능. 전투 중 글벌하게 다친 공룥이나 사람 힌해주는 역할. 필수급.",
             "stats": {
                 "health": {
                     "base": 325,
@@ -861,6 +879,7 @@
         {
             "id": "tapejara",
             "name_kr": "타페자라",
+            "description": "벽에 붙을 수 있음. 3인승+등에서 사격가능. PVP에서 간혹 틈새용으로 씀.",
             "stats": {
                 "health": {
                     "base": 280,
@@ -883,6 +902,7 @@
         {
             "id": "tropeo",
             "name_kr": "트로페오그나투스",
+            "description": "🏆 PVP 필수 | 그롌더+제트번추력 효과. 사람 타고 빠르게 이동 가능. 등에서 사격도 됨. 필수급.",
             "stats": {
                 "health": {
                     "base": 450,
@@ -905,6 +925,7 @@
         {
             "id": "voidwyrm",
             "name_kr": "보이드와이번",
+            "description": "제네시스2 전용 와이번. 전기 브레스 공격. 일반 와이번보다 테임 어려움.",
             "stats": {
                 "health": {
                     "base": 1050,
@@ -927,6 +948,7 @@
         {
             "id": "vulture",
             "name_kr": "검독수리",
+            "description": "어깨 펫. 시체 먹으면 체력 회복. PVP에서 거의 안 씀.",
             "stats": {
                 "health": {
                     "base": 140,
@@ -949,6 +971,7 @@
         {
             "id": "mosasaurus",
             "name_kr": "모사사우루스 (심해의 패왕)",
+            "description": "🏆 수중 필수 | 심해 최강 탱커/딜러. 플랫폼 가능. 수중기지 방어나 공격 시 필수기.",
             "stats": {
                 "health": {
                     "base": 3600,
@@ -971,6 +994,7 @@
         {
             "id": "plesiosaur",
             "name_kr": "플레시오사우루스 (수중 플랫폼)",
+            "description": "수중 플랫폼 가능. 모사보다는 약하지만 가성비 좋음. 수중 FOB로 사용 가능.",
             "stats": {
                 "health": {
                     "base": 2400,
@@ -993,6 +1017,7 @@
         {
             "id": "basilosaurus",
             "name_kr": "바실로사우루스 (CC 면역)",
+            "description": "🏆 수중 필수 | 전기+잡기 등 모든 CC에 면역. 투소나 일렉같은 잡기류에 안잡힘. 수중기지 공격 시 좋음.",
             "stats": {
                 "health": {
                     "base": 2400,
@@ -1016,6 +1041,7 @@
         {
             "id": "megalodon",
             "name_kr": "메갈로돈 (상어)",
+            "description": "기본 수중 공룥. 초반 수중 이동용. 바실로나 모사보다 훨씬 약함.",
             "stats": {
                 "health": {
                     "base": 600,
@@ -1038,6 +1064,7 @@
         {
             "id": "baryonyx",
             "name_kr": "바리오닉스 (수륙양용 스턴)",
+            "description": "수중에서 꼬리치기로 스턴. 동굴 돌기에 좋고 수륙양용이라 편리함. PVP에서 수중전에 간혹 씀.",
             "stats": {
                 "health": {
                     "base": 440,
@@ -1061,6 +1088,7 @@
         {
             "id": "sarco",
             "name_kr": "사르코 (악어/고속)",
+            "description": "수중 고속 이동 가능. 사람 넷건으로 묶으면 잡기처럼 물고 죽여버림. PVP에서 간혹 쓴.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -1082,7 +1110,8 @@
         },
         {
             "id": "dunkleosteus",
-            "name_kr": "둔클레오스테우스 (수중 탱커)",
+            "name_kr": "둘클레오스테우스 (수중 탱커)",
+            "description": "데미지 감소율 높음. 금속/오일 채집 가능. 수중 자원 채집용으로 좋음.",
             "stats": {
                 "health": {
                     "base": 710,
@@ -1106,6 +1135,7 @@
         {
             "id": "megachelon",
             "name_kr": "메가켈론 (거대 거북)",
+            "description": "제네시스1 거대 거북. 등 위에 기지 건설 가능. 수중이동하면서 등 위는 방 처럼 사용 가능.",
             "stats": {
                 "health": {
                     "base": 4800,
@@ -1127,7 +1157,8 @@
         },
         {
             "id": "angler",
-            "name_kr": "아귀 (진주 채집)",
+            "name_kr": "아구 (진주 채집)",
+            "description": "심해 진주 채집 전문. 빛내서 심해에서 시야 확보도 됨. PVP에서 전투용은 아님.",
             "stats": {
                 "health": {
                     "base": 300,
@@ -1150,6 +1181,7 @@
         {
             "id": "manta",
             "name_kr": "만타 (고속 정찰)",
+            "description": "수중 고속 이동. 초반 수중 정찰용. 다른 수중공룥보다 훨씬 약함.",
             "stats": {
                 "health": {
                     "base": 220,
@@ -1172,6 +1204,7 @@
         {
             "id": "ichthyosaurus",
             "name_kr": "이크티오사우루스 (돌고래)",
+            "description": "초반 수중 이동용. 심해 가는 용도로 괜찮음. 테임 센찬.",
             "stats": {
                 "health": {
                     "base": 225,
@@ -1194,6 +1227,7 @@
         {
             "id": "castoroides",
             "name_kr": "카스토로이데스 (비버)",
+            "description": "나무 채집 필수. 안장에서 스미스 가능. 수중 대시+댓 건설 가능해서 유용.",
             "stats": {
                 "health": {
                     "base": 450,
@@ -1215,7 +1249,8 @@
         },
         {
             "id": "electrophorus",
-            "name_kr": "에렉트로포루스 (전기뱀장어)",
+            "name_kr": "에렉트로포루스 (전기뽀장어)",
+            "description": "수중에서 전기 공격으로 스턴. 바실로 아니면 다 걸림. PVP에서 간혹 방어용으로 씀.",
             "stats": {
                 "health": {
                     "base": 200,
@@ -1238,6 +1273,7 @@
         {
             "id": "otter",
             "name_kr": "수달 (온도/아티팩트)",
+            "description": "어깨펫. 추위/더위 저항력+아티팩트 운반 가능. 동굴런 때 유용.",
             "stats": {
                 "health": {
                     "base": 40,
@@ -1261,6 +1297,7 @@
         {
             "id": "diplocaulus",
             "name_kr": "디플로카울루스 (산소통)",
+            "description": "타면 산소 공급해줌. 수중 장시간 잠수할 때 유용.",
             "stats": {
                 "health": {
                     "base": 180,
@@ -1284,6 +1321,7 @@
         {
             "id": "hesperornis",
             "name_kr": "헤스페로니스 (오리)",
+            "description": "골든 알 낳음. 아기 공룥 임프린팅에 필요한 상급 사료 생산.",
             "stats": {
                 "health": {
                     "base": 120,
@@ -1306,6 +1344,7 @@
         {
             "id": "andrewsarchus",
             "name_kr": "앤드류사르쿠스 (수륙양용)",
+            "description": "🏆 PVP 유용 | 수중 바닥 걸어다님+미니건 쓰기 가능. 수중기지 공격 시 올라가면서 쓰면 유용.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -1329,6 +1368,7 @@
         {
             "id": "shastasaurus",
             "name_kr": "샤스타사우루스 (ASA/잠수함)",
+            "description": "ASA 전용 수중 플랫폼. 피통 엄청남. 수중에서 잔수함처럼 쓰임.",
             "stats": {
                 "health": {
                     "base": 5000,
@@ -1375,6 +1415,7 @@
         {
             "id": "allosaurus",
             "name_kr": "알로사우루스",
+            "description": "무리 버프+출혈 공격. 3마리 모이면 리더 버프. PVP에서 간혹 수비용으로 씀.",
             "stats": {
                 "health": {
                     "base": 630,
@@ -1421,6 +1462,7 @@
         {
             "id": "ankylosaurus",
             "name_kr": "안킬로사우루스",
+            "description": "철 채집 필수. 횡사로 비행공룥 기절시킴. PVE/PVP 둘 다 필수.",
             "stats": {
                 "health": {
                     "base": 700,
@@ -1466,6 +1508,7 @@
         {
             "id": "arthropluera",
             "name_kr": "아스로플레우라 (지네)",
+            "description": "🏆 PVP 필수 | 반사데미지+구조물 파괴. 터렛이 쑔으로 젓는데도 반사로 자콡함. 레이드 시 텄밍 필수.",
             "stats": {
                 "health": {
                     "base": 200,
@@ -1489,6 +1532,7 @@
         {
             "id": "basilisk",
             "name_kr": "바실리스크",
+            "description": "에버레이션 대형 공룡. 땅에 숨기 가능. PVP에서 간혹 매복용으로 씀.",
             "stats": {
                 "health": {
                     "base": 2200,
@@ -1534,6 +1578,7 @@
         {
             "id": "bloodstalker",
             "name_kr": "블러드스토커",
+            "description": "🏆 PVP 핵심 | 거미줄으로 다 해결. 프레이어를 낚아채면 넷건같은 효과. 데이노런 대응 필수.",
             "stats": {
                 "health": {
                     "base": 350,
@@ -1556,6 +1601,7 @@
         {
             "id": "brontosaurus",
             "name_kr": "브론토사우루스",
+            "description": "리소스 채집용. 피통 높고 넘치 좋음. PVP에서 소킹용으로도 간혹 씀.",
             "stats": {
                 "health": {
                     "base": 2070,
@@ -1600,6 +1646,7 @@
         {
             "id": "carnotaurus",
             "name_kr": "카르노타우루스",
+            "description": "출혈 공격 가능. 초반 육식 공룡으로 괜찮음. PVP에서 거의 안 쓰여.",
             "stats": {
                 "health": {
                     "base": 420,
