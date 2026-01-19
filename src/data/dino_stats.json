@@ -2625,6 +2625,7 @@
         {
             "id": "microraptor",
             "name_kr": "마이크로랩터",
+            "description": "🏆 PVP 유용 | 공격하면 기수 강제 하차+기절. 적 프테라 떨어뜨리는 용. 어깨펫으로 간지하고 다님.",
             "stats": {
                 "health": {
                     "base": 70,
@@ -2694,6 +2695,7 @@
         {
             "id": "noglin",
             "name_kr": "노글린",
+            "description": "🏆 PVP 핵심 | 적 공룥/플레이어 정신 지배. 적 기가를 게린 노글린으로 조종해서 적 진영에서 테러. 공식에서 금지됨.",
             "stats": {
                 "health": {
                     "base": 70,
@@ -2716,7 +2718,8 @@
         },
         {
             "id": "oviraptor",
-            "name_kr": "오비랍토르",
+            "name_kr": "오비럍토르",
+            "description": "브리딩 필수. 주변 공룥들 산란 속도 증가. 알 기반 계획이면 필수로 테임.",
             "stats": {
                 "health": {
                     "base": 140,
@@ -2809,6 +2812,7 @@
         {
             "id": "parasaur",
             "name_kr": "파라사우롤로푸스",
+            "description": "🏆 PVP 필수 | 적 감지 레이더. 적 접근 시 알림. 기지에 위쪻드로 놓아놓으면 감지 타워 역할.",
             "stats": {
                 "health": {
                     "base": 150,
@@ -2877,7 +2881,8 @@
         },
         {
             "id": "procoptodon",
-            "name_kr": "프로콥토돈 (캥거루)",
+            "name_kr": "프로콥토돈 (캅거루)",
+            "description": "🏆 브리딩 필수 | 아기 공룥 육아 보조+높은 점프력. 주머니에 아기 넣고 다니면 반경 대폭 감소.",
             "stats": {
                 "health": {
                     "base": 350,
@@ -2923,7 +2928,8 @@
         },
         {
             "id": "purlovia",
-            "name_kr": "푸를로비아",
+            "name_kr": "푸르로비아",
+            "description": "🏆 PVP 유용 | 땅속 매복 기습으로 스턴. 지뢰 역할. 기지 주변에 묻어놓으면 진입하는 적 기절.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -2970,6 +2976,7 @@
         {
             "id": "ravager",
             "name_kr": "래비저",
+            "description": "집라인 이동+자원 무게 감소. 에버레이션에서 기본 이동수단으로 좋음. PVP에서 운송용.",
             "stats": {
                 "health": {
                     "base": 400,
@@ -2993,6 +3000,7 @@
         {
             "id": "reaper",
             "name_kr": "리퍼 킹",
+            "description": "🏆 PVP 필수 | 임신으로만 획득. 마친 피통+데미지. 빛 없으면 받는 데미지 대폭 감소. 에버레이션 최강 탱커/딜러.",
             "stats": {
                 "health": {
                     "base": 11500,
@@ -3016,6 +3024,7 @@
         {
             "id": "rock_drake",
             "name_kr": "락 드레이크",
+            "description": "🏆 PVP 필수 | 밑타기+활강+은신+방사능 면역. 불빛 프레이어처럼 쓸 수 있음. 에버레이션 필수 탈것.",
             "stats": {
                 "health": {
                     "base": 1950,
@@ -3039,6 +3048,7 @@
         {
             "id": "rock_elemental",
             "name_kr": "바위 정령 (골렘)",
+            "description": "🏆 PVP 필수 | 물리 데미지 50~90% 감소. 최강 탱커. 레이드 시 터렛데미지 빨아들이는 역할.",
             "stats": {
                 "health": {
                     "base": 9000,
@@ -3131,6 +3141,7 @@
         {
             "id": "spinosaurus",
             "name_kr": "스피노사우루스",
+            "description": "물 버프(Hydrated) 시 능력치 대폭 상승. 수륙양용이라 편리함. PVP에서 간혹 쓴.",
             "stats": {
                 "health": {
                     "base": 700,
@@ -3223,6 +3234,7 @@
         {
             "id": "titanosaur",
             "name_kr": "티타노사우루스",
+            "description": "🏆 레이드 필수 | 공성 병기. 기지 밀고 들어가서 다 부셤. 일시적 조련이라 유지비 없음.",
             "stats": {
                 "health": {
                     "base": 230000,
@@ -3246,6 +3258,7 @@
         {
             "id": "troodon",
             "name_kr": "트루돈",
+            "description": "🏆 PVP 유용 | 밤에 매우 강력함. 기절 수치 급상승. 기지 방어용으로 밤에 풀어놓으면 진입하는 적 기절.",
             "stats": {
                 "health": {
                     "base": 120,
@@ -3292,6 +3305,7 @@
         {
             "id": "velonasaur",
             "name_kr": "벨로나사우루스",
+            "description": "🏆 PVP 필수 | 가시 발사(기관총) 모드. 생체 터렛 역할. 기지 방어에 놓아놓으면 진입하는 비행공룥 보조 공격.",
             "stats": {
                 "health": {
                     "base": 450,
@@ -3338,6 +3352,7 @@
         {
             "id": "yi_ling",
             "name_kr": "이 링 (ASA)",
+            "description": "ASA 에버레이션 생물. 벽 점프+깃털 발사. 락드레이크 대용급.",
             "stats": {
                 "health": {
                     "base": 450,
@@ -3361,6 +3376,7 @@
         {
             "id": "stryder",
             "name_kr": "텍 스트라이더",
+            "description": "다양한 장착 모듈 가능. 자원 스캔+채집 자동화. PVE 자동화 필수. PVP에서 채집용.",
             "stats": {
                 "health": {
                     "base": 1200,
